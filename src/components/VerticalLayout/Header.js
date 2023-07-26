@@ -1,27 +1,42 @@
+import PropTypes from 'prop-types';
 import React, { useState } from "react";
 
-import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { Row, Col, Button } from "reactstrap";
+import { Link, useNavigate } from "react-router-dom";
 
-import NotificationDropdown from "../../Common/NotificationDropdown";
+// Reactstrap
+import { Dropdown, DropdownToggle, DropdownMenu } from "reactstrap";
 
-import github from "../../../assets/images/brands/github.png";
-import bitbucket from "../../../assets/images/brands/bitbucket.png";
-import dribbble from "../../../assets/images/brands/dribbble.png";
-import dropbox from "../../../assets/images/brands/dropbox.png";
-import mail_chimp from "../../../assets/images/brands/mail_chimp.png";
-import slack from "../../../assets/images/brands/slack.png";
+// Import menuDropdown
+import LanguageDropdown from "../CommonForBoth/TopbarDropdown/LanguageDropdown";
+import NotificationDropdown from "../CommonForBoth/TopbarDropdown/NotificationDropdown";
+import ProfileMenu from "../CommonForBoth/TopbarDropdown/ProfileMenu";
+import megamenuImg from "../../assets/images/megamenu-img.png";
 
-import logo from '../../../assets/images/logo.svg'
-import logoLightSvg from '../../../assets/images/logo.svg'
-import megamenuImg from '../../../assets/images/megamenu-img.png'
+// import images
+import github from "../../assets/images/brands/github.png";
+import bitbucket from "../../assets/images/brands/bitbucket.png";
+import dribbble from "../../assets/images/brands/dribbble.png";
+import dropbox from "../../assets/images/brands/dropbox.png";
+import mail_chimp from "../../assets/images/brands/mail_chimp.png";
+import slack from "../../assets/images/brands/slack.png";
 
-import { Dropdown, DropdownToggle, DropdownMenu, Row, Col } from "reactstrap";
+import logo from "../../assets/images/logo.svg";
+import logoLightSvg from "../../assets/images/logo-light.svg";
 
+//i18n
 import { withTranslation } from "react-i18next";
 
-function Header(props) {
+// Redux Store
+import {
+  showRightSidebarAction,
+  toggleLeftmenu,
+  changeSidebarType,
+} from "../../store/actions";
 
-    const [search, setsearch] = useState(false);
+const Header = props => {
+  const [search, setsearch] = useState(false);
   const [megaMenu, setmegaMenu] = useState(false);
   const [socialDrp, setsocialDrp] = useState(false);
 
@@ -60,6 +75,14 @@ function Header(props) {
       body.classList.toggle("vertical-collpsed");
       body.classList.toggle("sidebar-enable");
     }
+
+  }
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("authUser")
+    return navigate("/")
   }
 
   return (
@@ -67,6 +90,7 @@ function Header(props) {
       <header id="page-topbar">
         <div className="navbar-header">
           <div className="d-flex">
+
             <div className="navbar-brand-box d-lg-none d-md-block">
               <Link to="/" className="logo logo-dark">
                 <span className="logo-sm">
@@ -110,7 +134,11 @@ function Header(props) {
                 setmegaMenu(!megaMenu);
               }}
             >
-              <DropdownToggle className="btn header-item " caret tag="button">
+              <DropdownToggle
+                className="btn header-item "
+                caret
+                tag="button"
+              >
                 {" "}
                 {props.t("Mega Menu")} <i className="mdi mdi-chevron-down" />
               </DropdownToggle>
@@ -289,7 +317,7 @@ function Header(props) {
               </div>
             </div>
 
-            {/* <LanguageDropdown /> */}
+            <LanguageDropdown />
 
             <Dropdown
               className="d-none d-lg-inline-block ms-1"
@@ -368,7 +396,7 @@ function Header(props) {
             {/* <ProfileMenu /> */}
 
             <div
-              onClick={() => {
+               onClick={() => {
                 props.showRightSidebarAction(!props.showRightSidebar);
               }}
               className="dropdown d-inline-block"
@@ -380,11 +408,42 @@ function Header(props) {
                 <i className="bx bx-cog bx-spin" />
               </button>
             </div>
+            {/* d-none d-lg-inline-block ms-1 */}
+            {/* <Button className='my-3' onClick={handleLogout}>ออกจากระบบ</Button> */}
+            <Button
+              onClick={handleLogout}
+              color="primary"
+              className="btn btn-primary waves-effect waves-light"
+            >ออกจากระบบ</Button>
           </div>
         </div>
       </header>
     </React.Fragment>
   );
-}
+};
 
-export default withTranslation()(Header);
+Header.propTypes = {
+  changeSidebarType: PropTypes.func,
+  leftMenu: PropTypes.any,
+  leftSideBarType: PropTypes.any,
+  showRightSidebar: PropTypes.any,
+  showRightSidebarAction: PropTypes.func,
+  t: PropTypes.any,
+  toggleLeftmenu: PropTypes.func
+};
+
+const mapStatetoProps = state => {
+  const {
+    layoutType,
+    showRightSidebar,
+    leftMenu,
+    leftSideBarType,
+  } = state.Layout;
+  return { layoutType, showRightSidebar, leftMenu, leftSideBarType };
+};
+
+export default connect(mapStatetoProps, {
+  showRightSidebarAction,
+  toggleLeftmenu,
+  changeSidebarType,
+})(withTranslation()(Header));

@@ -1,8 +1,7 @@
-import React from "react";
+import React from "react"
+import { Container, Row, Col } from "reactstrap"
 
-import { Container, Row, Col } from "reactstrap";
-
-function Footer() {
+const Footer = () => {
   return (
     <React.Fragment>
       <footer className="footer">
@@ -18,7 +17,7 @@ function Footer() {
         </Container>
       </footer>
     </React.Fragment>
-  );
+  )
 }
 
-export default Footer;
+export default Footer

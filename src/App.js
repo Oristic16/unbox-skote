@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types';
-import VerticalLayout from './components/Layout/VerticalLayout'
 import React from "react";
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Routes, Route } from "react-router-dom";
-// import { layoutTypes } from "./constants/layout";
+import { layoutTypes } from "./constants/layout";
 // Import Routes all
 import { authProtectedRoutes, publicRoutes } from "./routes";
 
@@ -11,7 +10,8 @@ import { authProtectedRoutes, publicRoutes } from "./routes";
 import Authmiddleware from "./routes/route";
 
 // layouts Format
-// import HorizontalLayout from "./components/HorizontalLayout/";
+import VerticalLayout from "./components/VerticalLayout/";
+import HorizontalLayout from "./components/HorizontalLayout/";
 import NonAuthLayout from "./components/NonAuthLayout";
 
 // Import scss
@@ -23,7 +23,6 @@ import "./assets/scss/theme.scss";
 // import fakeBackend from "./helpers/AuthType/fakeBackend";
 
 // Activating fake backend
-// fakeBackend();
 
 // const firebaseConfig = {
 //   apiKey: process.env.REACT_APP_APIKEY,
@@ -40,28 +39,28 @@ import "./assets/scss/theme.scss";
 // initFirebaseBackend(firebaseConfig);
 
 
-// const getLayout = (layoutType) => {
-//   let Layout = VerticalLayout;
-//   switch (layoutType) {
-//     case layoutTypes.VERTICAL:
-//       Layout = VerticalLayout;
-//       break;
-//     case layoutTypes.HORIZONTAL:
-//       Layout = HorizontalLayout;
-//       break;
-//     default:
-//       break;
-//   }
-//   return Layout;
-// };
+const getLayout = (layoutType) => {
+  let Layout = VerticalLayout;
+  switch (layoutType) {
+    case layoutTypes.VERTICAL:
+      Layout = VerticalLayout;
+      break;
+    case layoutTypes.HORIZONTAL:
+      Layout = HorizontalLayout;
+      break;
+    default:
+      break;
+  }
+  return Layout;
+};
 
 const App = () => {
 
-  // const { layoutType } = useSelector((state) => ({
-  //   layoutType: state.Layout.layoutType,
-  // }));
+  const { layoutType } = useSelector((state) => ({
+    layoutType: state.Layout.layoutType,
+  }));
 
-  // const Layout = getLayout(layoutType);
+  const Layout = getLayout(layoutType);
 
   return (
     <React.Fragment>
@@ -84,7 +83,7 @@ const App = () => {
             path={route.path}
             element={
               <Authmiddleware>
-                <VerticalLayout>{route.component}</VerticalLayout>
+                <Layout>{route.component}</Layout>
               </Authmiddleware>}
             key={idx}
             exact={true}
@@ -96,7 +95,7 @@ const App = () => {
 };
 
 App.propTypes = {
-  // layout: PropTypes.any
+  layout: PropTypes.any
 };
 
 export default App;

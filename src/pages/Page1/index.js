@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Card, CardBody, Table } from 'reactstrap'
+import { Card, CardBody, Container, Table } from 'reactstrap'
 import axios from 'axios'
 
-function Page1() {
+import { withTranslation } from 'react-i18next'
+
+const Page1 = () => {
 
   const [data, setData] = useState([])
 
@@ -24,16 +26,19 @@ function Page1() {
   return (
     <React.Fragment>
         <div className='page-content'>
-          <h1>Hello</h1>
+          <Container fluid>
+          <h4>Hello</h4>
           <Card>
             <CardBody>
               <h1>Hi, this is Page1</h1>
               <Table>
                 <thead>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                  </tr>
                 </thead>
                 <tbody>
                   {data.map((item,idx) => {
@@ -50,9 +55,10 @@ function Page1() {
               </Table>
             </CardBody>
           </Card>
+          </Container>
         </div>
     </React.Fragment>
   )
 }
 
-export default Page1
+export default withTranslation()(Page1)
