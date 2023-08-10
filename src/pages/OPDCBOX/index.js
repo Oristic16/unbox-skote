@@ -206,7 +206,7 @@ function OPDCBox({ isDragging, text}) {
                 <CardTitle>
                   <i class="fa-solid fa-list-check"></i> บริหารจัดการ
                 </CardTitle>
-                <Nav pills className="navtab-bg nav-justified mt-3">
+                <Nav tabs pills className="navtab-bg nav-justified mt-3">
                   <NavItem>
                     <NavLink
                       style={{ cursor: "pointer" }}

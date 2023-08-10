@@ -1,0 +1,8 @@
+.custom-select::after {
+    color: red;
+}
+
+.custom-select option:checked {
+    background-color: blue;
+    color: #fff;
+}
