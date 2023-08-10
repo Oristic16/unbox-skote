@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Button,
   Card,
@@ -7,6 +7,7 @@ import {
   Col,
   Container,
   Form,
+  FormFeedback,
   FormGroup,
   Input,
   Label,
@@ -14,6 +15,9 @@ import {
 } from "reactstrap";
 
 import profile from '../../assets/images/profile-img.png'
+import { useFormik } from "formik";
+
+import * as Yup from 'yup'
 
 function Login() {
   const navigate = useNavigate();
@@ -29,6 +33,26 @@ function Login() {
     localStorage.setItem("authUser", userJSON);
     return navigate("/");
   };
+
+  const validation = useFormik({
+    // enableReinitialize : use this flag when initial values needs to be changed
+    enableReinitialize: true,
+
+    initialValues: {
+      username: '',
+      password: '',
+      role: ''
+    },
+    validationSchema: Yup.object({
+      username: Yup.string().required("Please Enter Your Username"),
+      password: Yup.string().required("Please Enter Your Password"),
+    }),
+    onSubmit: (values) => {
+      console.log(values);
+      localStorage.setItem("authUser", JSON.stringify(values));
+      return navigate("/");
+    }
+  })
 
   return (
     <React.Fragment>
@@ -57,7 +81,7 @@ function Login() {
                     <Col xs={7}>
                       <div className="text-primary p-4">
                         <h5 className="text-primary">Welcome Back !</h5>
-                        <p>Sign in to continue to Skote.</p>
+                        <p>Sign In to continue to Skote.</p>
                       </div>
                     </Col>
                     <Col className="col-5 align-self-end">
@@ -66,53 +90,113 @@ function Login() {
                   </Row>
                 </div>
                 <CardBody>
-                  <Form onSubmit={handleSubmit}>
-                    <FormGroup floating>
-                      <Input
-                        type="text"
-                        placeholder="Enter your Username..."
-                        onChange={(e) =>
-                          setUser({ ...user, username: e.target.value })
-                        }
-                      />
-                      <Label className="form-label" htmlFor="">
-                        <i className="fa-solid fa-user me-2"></i>Username
-                      </Label>
-                    </FormGroup>
-                    <FormGroup floating>
-                      <Input
-                        type="password"
-                        placeholder="Enter your Password..."
-                        onChange={(e) =>
-                          setUser({ ...user, password: e.target.value })
-                        }
-                      />
-                      <Label>
-                        <i className="fa-solid fa-key me-2"></i>Password
-                      </Label>
-                    </FormGroup>
-                    <div className="form-check">
-                      <Row>
-                        <Col xs={6} sm={6} md={6} lg={6} xl={6}>
-                        <input
-                          type="checkbox"
-                          className="form-check-input"
-                          id="customControlInline"
+                <Form className="form-horizontal"
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        validation.handleSubmit();
+                        return false;
+                      }}
+                    >
+                      <FormGroup floating>
+                        
+                        <Input
+                          id="username"
+                          name="username"
+                          placeholder="Enter Username"
+                          type="text"
+                          onChange={validation.handleChange}
+                          onBlur={validation.handleBlur}
+                          value={validation.values.username || ""}
+                          invalid={
+                            validation.touched.username && validation.errors.username ? true : false
+                          }
                         />
-                        <label
-                          className="form-check-label"
-                          htmlFor="customControlInline"
+                        <Label className="form-label">Username</Label>
+                        {validation.touched.username && validation.errors.username ? (
+                          <FormFeedback type="invalid">{validation.errors.username} </FormFeedback>
+                        ) : null}
+                      </FormGroup>
+                      
+
+                      <FormGroup floating>
+                        <Input
+                          name="password"
+                          type="password"
+                          placeholder="Enter Password"
+                          onChange={validation.handleChange}
+                          onBlur={validation.handleBlur}
+                          value={validation.values.password || ""}
+                          invalid={
+                            validation.touched.password && validation.errors.password ? true : false
+                          }
+                        />
+                        <Label>Password</Label>
+                        {validation.touched.password && validation.errors.password ? (
+                          <FormFeedback type="invalid">{validation.errors.password}</FormFeedback>
+                        ) : null}
+                      </FormGroup>
+                      
+                      <select name="role" onChange={validation.handleChange} className="form-control">
+                        <option value="">กรุณาระบุ Role</option>
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
+                      </select>
+
+                      <div className="mt-4 d-grid">
+                        <button
+                          className="btn btn-primary btn-block "
+                          type="submit"
                         >
-                          Remember me
-                        </label>
-                        </Col>
-                        <Col xs={6} sm={6} md={6} lg={6} xl={6} className="text-end">
-                          <a href="/login">Forgot your Password</a>
-                        </Col>
-                        </Row>
+                          Login
+                        </button>
                       </div>
-                    <Button color="primary" className="mt-3" style={{ width: "100%" }}>SIgn In</Button>
-                  </Form>
+
+                      <div className="mt-4 text-center">
+                        <h5 className="font-size-14 mb-3">Sign up using</h5>
+
+                        <ul className="list-inline">
+                          <li className="list-inline-item">
+                            <Link
+                              to="#"
+                              className="social-list-item bg-primary text-white border-primary"
+                            >
+                              <i className="mdi mdi-facebook" />
+                            </Link>
+                          </li>{" "}
+                          <li className="list-inline-item">
+                            <Link
+                              to="#"
+                              className="social-list-item bg-info text-white border-info"
+                            >
+                              <i className="mdi mdi-twitter" />
+                            </Link>
+                          </li>{" "}
+                          <li className="list-inline-item">
+                            <Link
+                              to="#"
+                              className="social-list-item bg-danger text-white border-danger"
+                            >
+                              <i className="mdi mdi-google" />
+                            </Link>
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div className="mt-4 text-center">
+                        <p className="mb-0">
+                          By registering you agree to the Skote{" "}
+                          <Link to="#" className="text-primary">
+                            Terms of Use
+                          </Link>
+                        </p>
+                      </div>
+                    </Form>
+                  <Row className="mt-3">
+                    <Col style={{display:"flex", justifyContent:"center"}}>
+                      <Link to="/register">Don't have an account? Sign up Here</Link>
+                    </Col>
+                  </Row>
+                  
                 </CardBody>
               </Card>
             </Col>

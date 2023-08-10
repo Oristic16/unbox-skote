@@ -106,6 +106,9 @@ const RightSidebar = props => {
                 onChange={e => {
                   if (e.target.checked) {
                     props.changeLayoutMode(e.target.value);
+                    if(e.target.value !== 'light') {
+                      localStorage.setItem('theme', 'dark')
+                    }
                   }
                 }}
               />
@@ -119,6 +122,9 @@ const RightSidebar = props => {
                 onChange={e => {
                   if (e.target.checked) {
                     props.changeLayoutMode(e.target.value);
+                    if(e.target.value !== 'dark') {
+                      localStorage.setItem('theme', 'light')
+                    }
                   }
                 }}
               />

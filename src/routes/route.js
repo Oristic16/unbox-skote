@@ -1,5 +1,6 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
+import Breadcrumbs from "../components/Common/Breadcrumb";
 
 const Authmiddleware = (props) => {
   if (!localStorage.getItem("authUser")) {

@@ -13,8 +13,10 @@ import { Link } from "react-router-dom";
 
 //i18n
 import { withTranslation } from "react-i18next";
+import { Button } from "reactstrap";
 
 const SidebarContent = props => {
+
   const ref = useRef();
   const activateParentDropdown = useCallback((item) => {
     item.classList.add("active");
@@ -139,20 +141,173 @@ const SidebarContent = props => {
       }
     }
   }
+  
+  const checkRole = JSON.parse(localStorage.getItem('authUser')) 
+  console.log("Role = " + checkRole.role)
+
+  const checkLocalRole = () => {
+    if(checkRole.role === 'user') {
+      return (
+        <ul className="metismenu list-unstyled" id="side-menu">
+              <li className="menu-title">{props.t("Menu")} </li>
+
+              <li>
+                <Link to="/page1">
+                  <i className="fa-solid fa-calendar-days"></i>
+                  <span>{props.t("OPDC Timeline")}</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/opdcbox">
+                <i className="fa-solid fa-boxes-packing"></i>
+                  <span>{props.t("OPDC BOX")}</span>
+                </Link>
+              </li>
+
+              <li>
+                <Link to="/page1">
+                <i className="fa-regular fa-people-roof"></i>
+                  <span>{props.t("บริหารทรัพยากรออนไลน์")}</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/setdata">
+                <i className="fa-solid fa-file-shield"></i>
+                  <span>{props.t("กำหนดข้อมูล")}</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/page1">
+                <i className="fa-solid fa-user-shield"></i>
+                  <span>{props.t("การประเมินผลการปฏิบัติราชการ")}</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/page1">
+                  <i className="bx bxs-bell"></i>
+                  <span>{props.t("การลาออนไลน์")}</span>
+                </Link>
+              </li>
+              <li>
+                <Button color="primary" className="mt-3 ms-4">
+                <i className="fa-solid fa-handshake-angle"></i>
+                  {" "}Help Desk
+                </Button>
+              </li>
+            </ul>
+      )
+    } else if(checkRole.role) {
+      return (
+        <ul className="metismenu list-unstyled" id="side-menu">
+              <li className="menu-title">{props.t("Menu")} </li>
+              <li>
+                <Link to="/dashboard2">
+                  <i className="bx bx-home-circle"></i>
+                  <span>{props.t("Dashboard")}</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/page1">
+                  <i className="bx bx-home-circle"></i>
+                  <span>{props.t("OPDC Timeline")}</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/page1">
+                  <i className="bx bx-home-circle"></i>
+                  <span>{props.t("OPDC BOX")}</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/page1">
+                  <i className="bx bx-home-circle"></i>
+                  <span>{props.t("OPDC Intelligence")}</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/page1">
+                  <i className="bx bx-home-circle"></i>
+                  <span>{props.t("บริหารทรัพยากรออนไลน์")}</span>
+                </Link>
+              </li>
+
+              <li>
+                <Button color="primary" className="mt-3 ms-4">
+                  <i className="bx bx-home-circle"></i>
+                  {" "}Help Desk
+                </Button>
+              </li>
+            </ul>
+      )
+    }
+  }
+
+  
 
   return (
     <React.Fragment>
       <SimpleBar className="h-100" ref={ref}>
         <div id="sidebar-menu">
-          <ul className="metismenu list-unstyled" id="side-menu">
+          {/* <ul className="metismenu list-unstyled" id="side-menu">
             <li className="menu-title">{props.t("Menu")} </li>
             <li>
-              <Link to="/region">
+              <Link to="/dashboard2">
                 <i className="bx bx-home-circle"></i>
-                <span>{props.t("Region")}</span>
+                <span>{props.t("Dashboard")}</span>
               </Link>
             </li>
             <li>
+              <Link to="/page1">
+                <i className="bx bx-home-circle"></i>
+                <span>{props.t("OPDC Timeline")}</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/page1">
+                <i className="bx bx-home-circle"></i>
+                <span>{props.t("OPDC BOX")}</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/page1">
+                <i className="bx bx-home-circle"></i>
+                <span>{props.t("OPDC Intelligence")}</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/page1">
+                <i className="bx bx-home-circle"></i>
+                <span>{props.t("บริหารทรัพยากรออนไลน์")}</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/page1">
+                <i className="bx bx-home-circle"></i>
+                <span>{props.t("กำหนดข้อมูล")}</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/page1">
+                <i className="bx bx-home-circle"></i>
+                <span>{props.t("การประเมินผลการปฏิบัติราชการ")}</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/page1">
+                <i className="bx bx-home-circle"></i>
+                <span>{props.t("การลาออนไลน์")}</span>
+              </Link>
+            </li>
+            <li>
+              <Button color="primary" className="mt-3 ms-4">
+                <i className="bx bx-home-circle"></i>
+                {" "}Help Desk
+              </Button>
+            </li>
+          </ul> */}
+          {checkLocalRole()}
+            
+            {/* <li>
               <Link to="/#" className="has-arrow">
                 <i className="bx bx-home-circle"></i>
                 <span>{props.t("Dashboards")}</span>
@@ -177,9 +332,9 @@ const SidebarContent = props => {
                   </Link>
                 </li>
               </ul>
-            </li>
+            </li> */}
 
-            <li className="menu-title">{props.t("Apps")}</li>
+            {/* <li className="menu-title">{props.t("Apps")}</li>
 
             <li>
               <Link to="/calendar" >
@@ -517,9 +672,9 @@ const SidebarContent = props => {
                   <Link to="/pages-500">{props.t("Error 500")}</Link>
                 </li>
               </ul>
-            </li>
+            </li> */}
 
-            <li className="menu-title">{props.t("Components")}</li>
+            {/* <li className="menu-title">{props.t("Components")}</li>
 
             <li>
               <Link to="/#" className="has-arrow">
@@ -575,11 +730,11 @@ const SidebarContent = props => {
                 <li>
                   <Link to="/ui-placeholders">{props.t("Placeholders")}</Link>
                 </li>
-                {/* <li>
+                <li>
                   <Link to="/ui-sweet-alert">
                     {props.t("Sweet-Alert")}
                   </Link>
-                </li> */}
+                </li>
                 <li>
                   <Link to="/ui-tabs-accordions">
                     {props.t("Tabs & Accordions")}
@@ -610,11 +765,11 @@ const SidebarContent = props => {
                     {props.t("Notifications")}
                   </Link>
                 </li>
-                {/* <li>
+                <li>
                   <Link to="/ui-breadcrumb">
                     {props.t("Breadcrumb")}
                   </Link>
-                </li> */}
+                </li>
                 <li>
                   <Link to="/ui-utilities">
                     {props.t("Utilities")}
@@ -622,9 +777,9 @@ const SidebarContent = props => {
                   </Link>
                 </li>
               </ul>
-            </li>
+            </li> */}
 
-            <li>
+            {/* <li>
               <Link to="/#" >
                 <i className="bx bxs-eraser"></i>
                 <span className="badge rounded-pill bg-danger float-end">
@@ -662,13 +817,13 @@ const SidebarContent = props => {
                 <li>
                   <Link to="/form-mask">{props.t("Form Mask")}</Link>
                 </li>
-                {/* <li>
+                <li>
                   <Link to="/dual-listbox">{props.t("Transfer List")}</Link>
-                </li> */}
+                </li>
               </ul>
-            </li>
+            </li> */}
 
-            <li>
+            {/* <li>
               <Link to="/#" className="has-arrow ">
                 <i className="bx bx-list-ul"></i>
                 <span>{props.t("Tables")}</span>
@@ -689,9 +844,9 @@ const SidebarContent = props => {
                   <Link to="/tables-dragndrop">{props.t("Drag & Drop Table")}</Link>
                 </li>
               </ul>
-            </li>
+            </li> */}
 
-            <li>
+            {/* <li>
               <Link to="/#" className="has-arrow ">
                 <i className="bx bxs-bar-chart-alt-2"></i>
                 <span>{props.t("Charts")}</span>
@@ -722,9 +877,9 @@ const SidebarContent = props => {
                   <Link to="/re-charts">{props.t("Re Chart")}</Link>
                 </li>
               </ul>
-            </li>
+            </li> */}
 
-            <li>
+            {/* <li>
               <Link to="/#" className="has-arrow ">
                 <i className="bx bx-aperture"></i>
                 <span>{props.t("Icons")}</span>
@@ -745,8 +900,8 @@ const SidebarContent = props => {
                   <Link to="/icons-fontawesome">{props.t("Font awesome")}</Link>
                 </li>
               </ul>
-            </li>
-
+            </li> */}
+{/* 
             <li>
               <Link to="/#" className="has-arrow ">
                 <i className="bx bx-map"></i>
@@ -763,9 +918,9 @@ const SidebarContent = props => {
                   <Link to="/maps-leaflet">{props.t("Leaflet Maps")}</Link>
                 </li>
               </ul>
-            </li>
+            </li> */}
 
-            <li>
+            {/* <li>
               <Link to="/#" className="has-arrow ">
                 <i className="bx bx-share-alt"></i>
                 <span>{props.t("Multi Level")}</span>
@@ -789,7 +944,7 @@ const SidebarContent = props => {
                 </li>
               </ul>
             </li>
-          </ul>
+            </ul> */}
         </div>
       </SimpleBar>
     </React.Fragment>

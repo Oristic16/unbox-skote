@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from "react";
 import { useSelector } from "react-redux";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, json } from "react-router-dom";
 import { layoutTypes } from "./constants/layout";
 // Import Routes all
 import { authProtectedRoutes, publicRoutes } from "./routes";
@@ -16,6 +16,8 @@ import NonAuthLayout from "./components/NonAuthLayout";
 
 // Import scss
 import "./assets/scss/theme.scss";
+
+
 
 // Import Firebase Configuration file
 // import { initFirebaseBackend } from "./helpers/firebase_helper";
@@ -54,13 +56,29 @@ const getLayout = (layoutType) => {
   return Layout;
 };
 
+export const createThemeLocalStore = () => {
+  if(!localStorage.getItem('theme')) {
+    localStorage.setItem('theme', 'light')
+
+
+  } else {
+
+  }
+}
+
 const App = () => {
+
+  createThemeLocalStore()
 
   const { layoutType } = useSelector((state) => ({
     layoutType: state.Layout.layoutType,
+    layoutModeType: state.Layout.layoutModeType
   }));
 
   const Layout = getLayout(layoutType);
+
+  // const checkRole = JSON.parse(localStorage.getItem('authUser'))
+  // console.log("File App Role = " +checkRole.role)
 
   return (
     <React.Fragment>
