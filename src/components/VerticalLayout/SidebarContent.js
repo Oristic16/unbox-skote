@@ -188,11 +188,17 @@ const SidebarContent = props => {
                   <span>{props.t("การลาออนไลน์")}</span>
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Button color="primary" className="mt-3 ms-4">
                 <i className="fa-solid fa-handshake-angle"></i>
-                  {" "}Help Desk
+                  {" "}<span>{props.t("Help Desk")}</span>
                 </Button>
+              </li> */}
+              <li>
+                <Link to="/page1">
+                  <i className="bx bxs-bell"></i>
+                  <span>{props.t("Help Desk")}</span>
+                </Link>
               </li>
             </ul>
       )

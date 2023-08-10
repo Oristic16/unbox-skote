@@ -407,14 +407,15 @@ const Header = props => {
               >
                 <i className="bx bx-cog bx-spin" />
               </button>
-            </div>
-            {/* d-none d-lg-inline-block ms-1 */}
-            {/* <Button className='my-3' onClick={handleLogout}>ออกจากระบบ</Button> */}
-            <Button
+              <Button
               onClick={handleLogout}
               color="primary"
               className="btn btn-primary waves-effect waves-light"
             >ออกจากระบบ</Button>
+            </div>
+            {/* d-none d-lg-inline-block ms-1 */}
+            {/* <Button className='my-3' onClick={handleLogout}>ออกจากระบบ</Button> */}
+            
           </div>
         </div>
       </header>

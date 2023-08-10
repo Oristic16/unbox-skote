@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {
+  Badge,
   Button,
   Card,
   CardBody,
@@ -13,7 +14,7 @@ import {
 import { Chart as ChartJS, registerables } from "chart.js";
 import { Doughnut, Bar } from "react-chartjs-2";
 
-import Breadcrumbs from '../../components/Common/Breadcrumb'
+import Breadcrumbs from "../../components/Common/Breadcrumb";
 
 ChartJS.register(...registerables);
 
@@ -34,10 +35,23 @@ export default class Dashboard2 extends Component {
 
   componentDidMount() {
     this.checkRole();
+    this.setTimeAuto();
   }
 
   handleClick = () => {
     window.open("https://www.youtube.com");
+  };
+
+  handleRedirect = () => {
+    return (window.location.href = "http://www.google.com");
+  };
+
+  setTimeAuto = () => {
+    var timer = setInterval(() => this.setState({ timeNow: new Date() }), 1000);
+
+    return function cleanup() {
+      clearInterval(timer);
+    };
   };
 
   render() {
@@ -129,7 +143,12 @@ export default class Dashboard2 extends Component {
                   <Col sm={6} md={6} lg={3} xl={3}>
                     <Card>
                       <CardBody>
-                        <Button style={{ width: "100%" }}>Link1</Button>
+                        <Button
+                          onClick={this.handleRedirect}
+                          style={{ width: "100%" }}
+                        >
+                          Link1
+                        </Button>
                       </CardBody>
                     </Card>
                   </Col>
@@ -162,8 +181,8 @@ export default class Dashboard2 extends Component {
                 </Row>
                 <Row>
                   <Col lg={9}>
-                    <Card>
-                      <CardBody>
+                    <Card className="pb-0">
+                      <CardBody className="pb-0">
                         <CardTitle>ภาพรวมการลาปฏิบัติงาน</CardTitle>
                         <Row>
                           <Col lg={4}>
@@ -218,60 +237,138 @@ export default class Dashboard2 extends Component {
                   </Col>
                   <Col lg={3}>
                     <Card>
-                      <CardBody>
-                        <CardTitle>ลงเวลาปฏิบัติงาน</CardTitle>
-                        <Row>
-                          <Col lg={6}>
+                      <CardHeader style={{ fontSize: "1.1em" }}>
+                        <i class="fa-solid fa-sun-cloud"></i> ลงเวลาปฏิบัติงาน
+                      </CardHeader>
+                      <CardBody className="pt-2">
+                        <Row className="mb-2">
+                          <Col lg={1}></Col>
+                          <Col
+                            lg={5}
+                            style={{ display: "flex", justifyContent: "end" }}
+                          >
                             <h5>เวลาเข้างาน</h5>
                           </Col>
-                          <Col lg={6}>
+                          <Col lg={5}>
                             <h5>เวลาออกงาน</h5>
                           </Col>
                         </Row>
-                        <Row>
-                          <Col lg={6}>
+                        <Row className="mb-2">
+                          <Col lg={1}></Col>
+                          <Col
+                            lg={5}
+                            style={{ display: "flex", justifyContent: "end" }}
+                          >
                             <h5>{timeNow.toLocaleTimeString()}</h5>
                           </Col>
-                          <Col lg={6}>
-                            <h5></h5>
+                          <Col lg={5}>
+                            <h5>-</h5>
                           </Col>
                         </Row>
-                        <Row>
-                          <Col lg={6}>
-                            <Button color="success"> เข้างาน</Button>
+                        <Row className="mb-3">
+                          <Col lg={1}></Col>
+                          <Col
+                            lg={5}
+                            style={{ display: "flex", justifyContent: "end" }}
+                          >
+                            <Button color="success">
+                              <i class="fa-solid fa-right-to-bracket"></i>{" "}
+                              เข้างาน
+                            </Button>
                           </Col>
-                          <Col lg={6}>
+                          <Col lg={5}>
                             <Button color="danger" outline>
-                              {" "}
-                              ออกงาน
+                              ออกงาน{" "}
+                              <i class="fa-solid fa-right-from-bracket"></i>
                             </Button>
                           </Col>
                         </Row>
-                        <Row>
-                          <Col lg={6}>
+                        <Row className="mt-4">
+                          <Col
+                            style={{
+                              display: "flex",
+                              justifyContent: "center",
+                            }}
+                          >
                             <h6>เวลาประมาณการ</h6>
                           </Col>
                         </Row>
                         <Row>
-                          <Col lg={6}>
-                            <h6>ต้องออกงานหลังเวลา 15:30 น.</h6>
+                          <Col
+                            style={{
+                              display: "flex",
+                              justifyContent: "center",
+                            }}
+                          >
+                            <p>ต้องออกงานหลังเวลา 15:30 น.</p>
                           </Col>
                         </Row>
-                        <hr />
-                        <Row>
-                          <Col lg={6}>
-                            <h6>Popular Topic</h6>
+                      </CardBody>
+                      <CardHeader
+                        className="mt-0"
+                        style={{ fontSize: "1.1em" }}
+                      >
+                        <Row className="d-flex align-items-center">
+                          <Col lg={8}>
+                            <i class="fa-regular fa-newspaper"></i> Popular
+                            Topic
                           </Col>
-                          <Col lg={6}>
-                            <Button>อ่านทั้งหมด</Button>
+                          <Col
+                            lg={4}
+                            style={{ display: "flex", justifyContent: "end" }}
+                          >
+                            <Button
+                              color="primary"
+                              style={{ fontSize: "10px", padding: "5px" }}
+                            >
+                              อ่านทั้งหมด
+                            </Button>
                           </Col>
                         </Row>
+                      </CardHeader>
+                      <CardBody>
                         <Row>
-                          <Col lg={6}>
-                            <h6>Popular Topic</h6>
+                          <Col lg={2}>
+                            <h5>
+                              <Badge pill>01</Badge>
+                            </h5>
                           </Col>
-                          <Col lg={6}>
-                            <Button>อ่านทั้งหมด</Button>
+                          <Col>
+                            <Row>
+                              <Col>
+                                <h6>แบบฟอร์ม HR</h6>
+                              </Col>
+                            </Row>
+                            <Row className="d-flex align-items-center">
+                              <Col>
+                                <span
+                                  style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                  }}
+                                >
+                                  <h4>
+                                    <Badge color="info">HR</Badge>
+                                  </h4>{" "}
+                                  8 ตุลาคม 2562
+                                </span>
+                              </Col>
+                            </Row>
+                          </Col>
+                        </Row>
+                        <Row className="mt-3">
+                          <Col lg={2}>
+                            <h5>
+                              <Badge pill>02</Badge>
+                            </h5>
+                          </Col>
+                          <Col>
+                            <Row>
+                              <Col lg={10}>
+                                <h6>รายชื่อข้าราชการตามมอบหมาย ณ 1 กุมภาพันธ์ 2565</h6>
+                              </Col>
+                            </Row>
+                            
                           </Col>
                         </Row>
                       </CardBody>
@@ -329,18 +426,17 @@ export default class Dashboard2 extends Component {
                             <Row>
                               <Col lg={8}>
                                 <Row>
-                                  <Col>
-                                    รายการ ณ วันที่ปัจจุบัน
-                                  </Col>
+                                  <Col>รายการ ณ วันที่ปัจจุบัน</Col>
                                 </Row>
                                 <Row>
-                                  <Col>
-                                    158 รายการ
-                                  </Col>
+                                  <Col>158 รายการ</Col>
                                 </Row>
                               </Col>
-                              <Col lg={4} className="d-flex justify-content-end align-items-center">
-                              <i className="fa-solid fa-database fa-3x"></i>
+                              <Col
+                                lg={4}
+                                className="d-flex justify-content-end align-items-center"
+                              >
+                                <i className="fa-solid fa-database fa-3x"></i>
                               </Col>
                             </Row>
                           </CardBody>
@@ -355,17 +451,16 @@ export default class Dashboard2 extends Component {
                             <Row>
                               <Col lg={8}>
                                 <Row>
-                                  <Col>
-                                    รายการ ณ วันที่ปัจจุบัน
-                                  </Col>
+                                  <Col>รายการ ณ วันที่ปัจจุบัน</Col>
                                 </Row>
                                 <Row>
-                                  <Col>
-                                    123 รายการ
-                                  </Col>
+                                  <Col>123 รายการ</Col>
                                 </Row>
                               </Col>
-                              <Col lg={4} className="d-flex justify-content-end align-items-center">
+                              <Col
+                                lg={4}
+                                className="d-flex justify-content-end align-items-center"
+                              >
                                 <i className="fa-solid fa-paper-plane fa-3x"></i>
                               </Col>
                             </Row>
@@ -381,17 +476,16 @@ export default class Dashboard2 extends Component {
                             <Row>
                               <Col lg={8}>
                                 <Row>
-                                  <Col>
-                                    รายการ ณ วันที่ปัจจุบัน
-                                  </Col>
+                                  <Col>รายการ ณ วันที่ปัจจุบัน</Col>
                                 </Row>
                                 <Row>
-                                  <Col>
-                                    19 คำขอ
-                                  </Col>
+                                  <Col>19 คำขอ</Col>
                                 </Row>
                               </Col>
-                              <Col lg={4} className="d-flex justify-content-end align-items-center">
+                              <Col
+                                lg={4}
+                                className="d-flex justify-content-end align-items-center"
+                              >
                                 <i className="fa-solid fa-screen-users fa-3x"></i>
                               </Col>
                             </Row>
@@ -407,17 +501,16 @@ export default class Dashboard2 extends Component {
                             <Row>
                               <Col lg={8}>
                                 <Row>
-                                  <Col>
-                                    รายการ ณ วันที่ปัจจุบัน
-                                  </Col>
+                                  <Col>รายการ ณ วันที่ปัจจุบัน</Col>
                                 </Row>
                                 <Row>
-                                  <Col>
-                                    27 คำขอ
-                                  </Col>
+                                  <Col>27 คำขอ</Col>
                                 </Row>
                               </Col>
-                              <Col lg={4} className="d-flex justify-content-end align-items-center">
+                              <Col
+                                lg={4}
+                                className="d-flex justify-content-end align-items-center"
+                              >
                                 <i className="fa-solid fa-cars fa-3x"></i>
                               </Col>
                             </Row>
