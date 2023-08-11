@@ -152,7 +152,7 @@ const SidebarContent = props => {
               <li className="menu-title">{props.t("Menu")} </li>
 
               <li>
-                <Link to="/page1">
+                <Link to="/dashboard2">
                   <i className="fa-solid fa-calendar-days"></i>
                   <span>{props.t("OPDC Timeline")}</span>
                 </Link>
@@ -165,7 +165,7 @@ const SidebarContent = props => {
               </li>
 
               <li>
-                <Link to="/page1">
+                <Link to="/managesorce">
                 <i className="fa-regular fa-people-roof"></i>
                   <span>{props.t("บริหารทรัพยากรออนไลน์")}</span>
                 </Link>
@@ -177,7 +177,7 @@ const SidebarContent = props => {
                 </Link>
               </li>
               <li>
-                <Link to="/page1">
+                <Link to="/rateservice">
                 <i className="fa-solid fa-user-shield"></i>
                   <span>{props.t("การประเมินผลการปฏิบัติราชการ")}</span>
                 </Link>
@@ -194,12 +194,12 @@ const SidebarContent = props => {
                   {" "}<span>{props.t("Help Desk")}</span>
                 </Button>
               </li> */}
-              <li>
+              {/* <li>
                 <Link to="/page1">
                   <i className="bx bxs-bell"></i>
                   <span>{props.t("Help Desk")}</span>
                 </Link>
-              </li>
+              </li> */}
             </ul>
       )
     } else if(checkRole.role) {

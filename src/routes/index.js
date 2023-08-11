@@ -11,6 +11,8 @@ import Page2 from "../pages/Page2/index";
 import Dashboard2 from "../pages/Dashboard2";
 import OPDCBox from "../pages/OPDCBOX";
 import SetData from "../pages/SetData";
+import RateService from '../pages/การประเมิน/index'
+import ManageSorce from "../pages/ManageSorce";
 
 const authProtectedRoutes = [
 
@@ -20,6 +22,8 @@ const authProtectedRoutes = [
   { path: "/dashboard2", component: <Dashboard2 /> },
   { path: "/opdcbox", component: <OPDCBox /> },
   { path: "/setdata", component: <SetData /> },
+  { path: "/rateservice", component: <RateService /> },
+  { path: "/managesorce", component: <ManageSorce /> },
   // { path: "*", component: <NotFound404 /> },
   {
     path: "/",

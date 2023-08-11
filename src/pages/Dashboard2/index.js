@@ -8,8 +8,19 @@ import {
   CardTitle,
   Col,
   Container,
+  Form,
+  Input,
+  Label,
+  Nav,
+  NavItem,
+  NavLink,
+  Progress,
   Row,
+  TabContent,
+  TabPane,
 } from "reactstrap";
+
+import classnames from "classnames";
 
 import { Chart as ChartJS, registerables } from "chart.js";
 import { Doughnut, Bar } from "react-chartjs-2";
@@ -22,10 +33,17 @@ export default class Dashboard2 extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      activeTab1: "5",
       role: null,
       timeNow: new Date(),
     };
   }
+
+  toggle1 = (tab) => {
+    if (this.state.activeTab1 !== tab) {
+      this.setState({ activeTab1: tab });
+    }
+  };
 
   checkRole = () => {
     const getStorage = localStorage.getItem("authUser");
@@ -55,7 +73,7 @@ export default class Dashboard2 extends Component {
   };
 
   render() {
-    const { role, timeNow } = this.state;
+    const { role, timeNow, activeTab1 } = this.state;
 
     if (role === "admin") {
       return (
@@ -140,135 +158,425 @@ export default class Dashboard2 extends Component {
             <Row>
               <Col lg={12}>
                 <Row>
-                  <Col sm={6} md={6} lg={3} xl={3}>
-                    <Card>
+                  <Col sm={6} md={6} lg={6} xl={6} xxl={3}>
+                    <Card className="mini-stats-wid">
                       <CardBody>
-                        <Button
-                          onClick={this.handleRedirect}
-                          style={{ width: "100%" }}
-                        >
-                          Link1
-                        </Button>
+                        <Row style={{ display: "flex", alignItems: "center" }}>
+                          <Col
+                            lg={4}
+                            style={{
+                              display: "flex",
+                              justifyContent: "center",
+                            }}
+                          >
+                            <div className="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
+                              <span
+                                style={{ background: "#ff9825" }}
+                                className="avatar-title rounded-circle"
+                              >
+                                {/* <span className="avatar-title rounded-circle bg-primary"> */}
+                                <i
+                                  className={"fa-solid fa-users font-size-24"}
+                                ></i>
+                              </span>
+                            </div>
+                          </Col>
+                          <Col>
+                            <Row>
+                              <Col>
+                                <h6 className="card-title font-size-12">
+                                  เจ้าหน้าที่สำนักงาน ก.พ.ร.
+                                </h6>
+                              </Col>
+                            </Row>
+                            <Row>
+                              <Col>
+                                <h3>333</h3>
+                              </Col>
+                            </Row>
+                            <Row>
+                              <Col>
+                                <Progress
+                                  animated
+                                  style={{ height: "6px" }}
+                                  value={25}
+                                />
+                              </Col>
+                            </Row>
+                            <Row>
+                              <Col>
+                                <p
+                                  className="mb-0 mt-2"
+                                  style={{ fontSize: "10px" }}
+                                >
+                                  เพิ่มขึ้น 5% เมื่อเทียบกับปีที่แล้ว
+                                </p>
+                              </Col>
+                            </Row>
+                          </Col>
+                        </Row>
                       </CardBody>
                     </Card>
                   </Col>
-                  <Col sm={6} md={6} lg={3} xl={3}>
-                    <Card>
+                  <Col sm={6} md={6} lg={6} xl={6} xxl={3}>
+                    <Card className="mini-stats-wid">
                       <CardBody>
-                        <Button
-                          onClick={this.handleClick}
-                          style={{ width: "100%" }}
-                        >
-                          Link1
-                        </Button>
+                        <Row style={{ display: "flex", alignItems: "center" }}>
+                          <Col
+                            lg={4}
+                            style={{
+                              display: "flex",
+                              justifyContent: "center",
+                            }}
+                          >
+                            <div className="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
+                              {/* <span className="avatar-title rounded-circle bg-primary"> */}
+                              <span
+                                style={{ background: "#0061ff" }}
+                                className="avatar-title rounded-circle "
+                              >
+                                <i class="fa-solid fa-user-group-crown font-size-24"></i>
+                              </span>
+                            </div>
+                          </Col>
+                          <Col>
+                            <Row>
+                              <Col>
+                                <h6 className="card-title font-size-14">
+                                  ผู้บังคับบัญชา
+                                </h6>
+                              </Col>
+                            </Row>
+                            <Row>
+                              <Col>
+                                <h3>172</h3>
+                              </Col>
+                            </Row>
+                            <Row>
+                              <Col>
+                                <Progress
+                                  animated
+                                  style={{ height: "6px" }}
+                                  value={40}
+                                />
+                              </Col>
+                            </Row>
+                            <Row>
+                              <Col>
+                                <p
+                                  className="mb-0 mt-2"
+                                  style={{ fontSize: "10px" }}
+                                >
+                                  เพิ่มขึ้น 2% เมื่อเทียบกับปีที่แล้ว
+                                </p>
+                              </Col>
+                            </Row>
+                          </Col>
+                        </Row>
                       </CardBody>
                     </Card>
                   </Col>
-                  <Col sm={6} md={6} lg={3} xl={3}>
-                    <Card>
+                  <Col sm={6} md={6} lg={6} xl={6} xxl={3}>
+                    <Card className="mini-stats-wid">
                       <CardBody>
-                        <Button style={{ width: "100%" }}>Link1</Button>
+                        <Row style={{ display: "flex", alignItems: "center" }}>
+                          <Col
+                            lg={4}
+                            style={{
+                              display: "flex",
+                              justifyContent: "center",
+                            }}
+                          >
+                            <div className="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
+                              {/* <span className="avatar-title rounded-circle bg-primary"> */}
+                              <span
+                                style={{ background: "#ff378f" }}
+                                className="avatar-title rounded-circle"
+                              >
+                                <i class="fa-solid fa-building-shield font-size-24"></i>
+                              </span>
+                            </div>
+                          </Col>
+                          <Col>
+                            <Row>
+                              <Col>
+                                <h6 className="card-title font-size-14">
+                                  หน่วยงาน
+                                </h6>
+                              </Col>
+                            </Row>
+                            <Row>
+                              <Col>
+                                <h3>25</h3>
+                              </Col>
+                            </Row>
+                            <Row>
+                              <Col>
+                                <Progress
+                                  animated
+                                  style={{ height: "6px" }}
+                                  value={15}
+                                />
+                              </Col>
+                            </Row>
+                            <Row>
+                              <Col>
+                                <p
+                                  className="mb-0 mt-2"
+                                  style={{ fontSize: "10px" }}
+                                >
+                                  เพิ่มขึ้น 1% เมื่อเทียบกับปีที่แล้ว
+                                </p>
+                              </Col>
+                            </Row>
+                          </Col>
+                        </Row>
                       </CardBody>
                     </Card>
                   </Col>
-                  <Col sm={6} md={6} lg={3} xl={3}>
-                    <Card>
+                  <Col sm={6} md={6} lg={6} xl={6} xxl={3}>
+                    <Card className="mini-stats-wid">
                       <CardBody>
-                        <Button style={{ width: "100%" }}>Link1</Button>
+                        <Row style={{ display: "flex", alignItems: "center" }}>
+                          <Col
+                            lg={4}
+                            style={{
+                              display: "flex",
+                              justifyContent: "center",
+                            }}
+                          >
+                            <div className="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
+                              {/* <span className="avatar-title rounded-circle bg-primary"> */}
+                              <span
+                                style={{ background: "#58bd81" }}
+                                className="avatar-title rounded-circle"
+                              >
+                                <i class="fa-regular fa-user-astronaut font-size-24"></i>
+                              </span>
+                            </div>
+                          </Col>
+                          <Col>
+                            <Row>
+                              <Col>
+                                <h6 className="card-title font-size-14">
+                                  ผู้ดูแลระบบ
+                                </h6>
+                              </Col>
+                            </Row>
+                            <Row>
+                              <Col>
+                                <h3>17</h3>
+                              </Col>
+                            </Row>
+                            <Row>
+                              <Col>
+                                <Progress
+                                  animated
+                                  style={{ height: "6px" }}
+                                  value={10}
+                                />
+                              </Col>
+                            </Row>
+                            <Row>
+                              <Col>
+                                <p
+                                  className="mb-0 mt-2"
+                                  style={{ fontSize: "10px" }}
+                                >
+                                  เพิ่มขึ้น 1% เมื่อเทียบกับปีที่แล้ว
+                                </p>
+                              </Col>
+                            </Row>
+                          </Col>
+                        </Row>
                       </CardBody>
                     </Card>
                   </Col>
                 </Row>
                 <Row>
-                  <Col lg={9}>
+                  <Col lg={8} xl={9} xxl={9}>
                     <Card className="pb-0">
                       <CardBody className="pb-0">
-                        <CardTitle>ภาพรวมการลาปฏิบัติงาน</CardTitle>
-                        <Row>
-                          <Col lg={4}>
+                        <CardTitle>
+                          <i class="fa-solid fa-briefcase font-size-18 me-2"></i>
+                          ภาพรวมการลาปฏิบัติงาน
+                        </CardTitle>
+                        <Row className="mb-0">
+                          <Col lg={12} xl={12}>
                             <Card>
                               <CardBody>
-                                <CardTitle className="mb-3">
-                                  ข้อมูลการลา
-                                </CardTitle>
-                                <Row className="mb-3">
-                                  <Col lg={2}></Col>
-                                  <Col>
-                                    <DonutChart />
-                                  </Col>
-                                  <Col lg={2}></Col>
-                                </Row>
-                                <Row>
-                                  <Col className="text-start">
-                                    คำขอลาเวลาปฏิบัติงาน
-                                  </Col>
-                                  <Col lg={2} className="text-end">
-                                    33
-                                  </Col>
-                                </Row>
-                                <Row>
-                                  <Col className="text-start">อนุญาตใบลา</Col>
-                                  <Col lg={2} className="text-end">
-                                    15
-                                  </Col>
-                                </Row>
-                                <Row>
-                                  <Col className="text-start">อนุมัติใบลา</Col>
-                                  <Col lg={2} className="text-end">
-                                    10
-                                  </Col>
-                                </Row>
-                                <Row>
-                                  <Col className="text-start">ยกเลิกใบลา</Col>
-                                  <Col lg={2} className="text-end">
-                                    8
-                                  </Col>
-                                </Row>
+                                <Nav
+                                  tabs
+                                  pills
+                                  className="navtab-bg nav-justified mt-3"
+                                >
+                                  <NavItem>
+                                    <NavLink
+                                      style={{ cursor: "pointer" }}
+                                      className={classnames({
+                                        active: activeTab1 === "5",
+                                      })}
+                                      onClick={() => {
+                                        this.toggle1("5");
+                                      }}
+                                    >
+                                      ข้อมูลการลา
+                                    </NavLink>
+                                  </NavItem>
+                                  <NavItem>
+                                    <NavLink
+                                      style={{ cursor: "pointer" }}
+                                      className={classnames({
+                                        active: activeTab1 === "6",
+                                      })}
+                                      onClick={() => {
+                                        this.toggle1("6");
+                                      }}
+                                    >
+                                      ประเภทการลา
+                                    </NavLink>
+                                  </NavItem>
+                                  <NavItem></NavItem>
+                                </Nav>
+                                <TabContent
+                                  activeTab={activeTab1}
+                                  className="p-3 text-muted"
+                                >
+                                  <TabPane tabId="5" style={{ color: "white" }}>
+                                    <CardTitle className="mb-3">
+                                      <i class="fa-solid fa-memo-circle-info font-size-16 me-1"></i>
+                                      ข้อมูลการลา
+                                    </CardTitle>
+                                    <Row
+                                      className="mb-0"
+                                      style={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                      }}
+                                    >
+                                      <Col
+                                        lg={12}
+                                        xl={12}
+                                        style={{
+                                          display: "flex",
+                                          justifyContent: "center",
+                                          height: "270px",
+                                        }}
+                                      >
+                                        <DonutChart />
+                                      </Col>
+                                      <Col>
+                                        <Row className="mb-2">
+                                          <Col className="text-start">
+                                            คำขอลาเวลาปฏิบัติงาน
+                                          </Col>
+                                          <Col
+                                            lg={2}
+                                            xl={2}
+                                            className="text-end"
+                                          >
+                                            33
+                                          </Col>
+                                        </Row>
+                                        <Row className="mb-1">
+                                          <Col className="text-start">
+                                            <i
+                                              style={{ color: "#7180ff" }}
+                                              class="fa-solid fa-square me-2"
+                                            ></i>
+                                            อนุญาตใบลา
+                                          </Col>
+                                          <Col lg={2} className="text-end">
+                                            15
+                                          </Col>
+                                        </Row>
+                                        <Row className="mb-1">
+                                          <Col className="text-start">
+                                            <i
+                                              style={{ color: "#4dff62" }}
+                                              class="fa-solid fa-square me-2"
+                                            ></i>
+                                            อนุมัติใบลา
+                                          </Col>
+                                          <Col lg={2} className="text-end">
+                                            10
+                                          </Col>
+                                        </Row>
+                                        <Row>
+                                          <Col className="text-start">
+                                            <i
+                                              style={{ color: "#ff6868" }}
+                                              class="fa-solid fa-square me-2"
+                                            ></i>
+                                            ยกเลิกใบลา
+                                          </Col>
+                                          <Col lg={2} className="text-end">
+                                            8
+                                          </Col>
+                                        </Row>
+                                      </Col>
+                                    </Row>
+                                  </TabPane>
+                                  <TabPane tabId="6" style={{ color: "white" }}>
+                                    <CardTitle>
+                                      <i className="fa-solid fa-house-person-leave font-size-18 me-1"></i>
+                                      ประเภทการลา
+                                    </CardTitle>
+                                    <Row>
+                                      <Col lg={12}>
+                                        <HorizonBarChart />
+                                      </Col>
+                                    </Row>
+                                  </TabPane>
+                                </TabContent>
                               </CardBody>
                             </Card>
-                          </Col>
-                          <Col lg={8}>
-                            <CardTitle>ประเภทการลา</CardTitle>
-                            <HorizonBarChart />
                           </Col>
                         </Row>
                       </CardBody>
                     </Card>
                   </Col>
-                  <Col lg={3}>
+                  <Col sm={12} lg={4} xl={3} xxl={3}>
                     <Card>
                       <CardHeader style={{ fontSize: "1.1em" }}>
-                        <i class="fa-solid fa-sun-cloud"></i> ลงเวลาปฏิบัติงาน
+                        <i class="fa-solid fa-sun-cloud font-size-18 me-1"></i>
+                        ลงเวลาปฏิบัติงาน
                       </CardHeader>
-                      <CardBody className="pt-2">
-                        <Row className="mb-2">
-                          <Col lg={1}></Col>
+                      <CardBody className="pt-3">
+                        <Row className="mb-3">
+                          {/* <Col sm={1} lg={1}></Col> */}
                           <Col
-                            lg={5}
+                            xs={6}
+                            sm={6}
+                            lg={6}
                             style={{ display: "flex", justifyContent: "end" }}
                           >
-                            <h5>เวลาเข้างาน</h5>
+                            <h5 style={{ fontSize: "15px" }}>เวลาเข้างาน</h5>
                           </Col>
-                          <Col lg={5}>
-                            <h5>เวลาออกงาน</h5>
+                          <Col xs={6} sm={6} lg={6}>
+                            <h5 style={{ fontSize: "15px" }}>เวลาออกงาน</h5>
                           </Col>
                         </Row>
-                        <Row className="mb-2">
-                          <Col lg={1}></Col>
+                        <Row className="mb-3">
+                          {/* <Col sm={1} lg={1}></Col> */}
                           <Col
-                            lg={5}
+                            xs={6}
+                            sm={6}
+                            lg={6}
                             style={{ display: "flex", justifyContent: "end" }}
                           >
                             <h5>{timeNow.toLocaleTimeString()}</h5>
                           </Col>
-                          <Col lg={5}>
+                          <Col xs={6} sm={6} lg={6}>
                             <h5>-</h5>
                           </Col>
                         </Row>
                         <Row className="mb-3">
-                          <Col lg={1}></Col>
+                          {/* <Col sm={1} lg={1}></Col> */}
                           <Col
-                            lg={5}
+                            xs={6}
+                            sm={6}
+                            lg={6}
                             style={{ display: "flex", justifyContent: "end" }}
                           >
                             <Button color="success">
@@ -276,7 +584,12 @@ export default class Dashboard2 extends Component {
                               เข้างาน
                             </Button>
                           </Col>
-                          <Col lg={5}>
+                          <Col
+                            xs={6}
+                            sm={6}
+                            lg={6}
+                            style={{ display: "flex", justifyContent: "start" }}
+                          >
                             <Button color="danger" outline>
                               ออกงาน{" "}
                               <i class="fa-solid fa-right-from-bracket"></i>
@@ -308,13 +621,17 @@ export default class Dashboard2 extends Component {
                         className="mt-0"
                         style={{ fontSize: "1.1em" }}
                       >
-                        <Row className="d-flex align-items-center">
-                          <Col lg={8}>
-                            <i class="fa-regular fa-newspaper"></i> Popular
-                            Topic
+                        <Row style={{ display: "flex", alignItems: "center" }}>
+                          <Col xs={6} sm={6} md={6} lg={8} xl={8}>
+                            <i class="fa-regular fa-newspaper font-size-17 me-1"></i>
+                            Popular Topic
                           </Col>
                           <Col
+                            xs={6}
+                            sm={6}
+                            md={6}
                             lg={4}
+                            xl={4}
                             style={{ display: "flex", justifyContent: "end" }}
                           >
                             <Button
@@ -326,7 +643,7 @@ export default class Dashboard2 extends Component {
                           </Col>
                         </Row>
                       </CardHeader>
-                      <CardBody>
+                      <CardBody className="mt-3">
                         <Row>
                           <Col lg={2}>
                             <h5>
@@ -350,7 +667,7 @@ export default class Dashboard2 extends Component {
                                   <h4>
                                     <Badge color="info">HR</Badge>
                                   </h4>{" "}
-                                  8 ตุลาคม 2562
+                                  &nbsp;8 ตุลาคม 2562
                                 </span>
                               </Col>
                             </Row>
@@ -365,50 +682,66 @@ export default class Dashboard2 extends Component {
                           <Col>
                             <Row>
                               <Col lg={10}>
-                                <h6>รายชื่อข้าราชการตามมอบหมาย ณ 1 กุมภาพันธ์ 2565</h6>
+                                <h6>
+                                  รายชื่อข้าราชการตามมอบหมาย ณ 1 กุมภาพันธ์ 2565
+                                </h6>
                               </Col>
                             </Row>
-                            
                           </Col>
                         </Row>
                       </CardBody>
                     </Card>
                   </Col>
                 </Row>
+
                 <Row>
-                  <Col lg={9}>
+                  <Col sm={12} md={12} lg={12} xl={9}>
                     <Card>
-                      <CardBody>
-                        <MixChart />
-                      </CardBody>
-                      <Row className="mt-4">
+                        <CardBody>
+                          <Col style={{}}>
+                            <MixChart />
+                          </Col>
+                        </CardBody>
+                      <Row className="mt-0 mb-3">
                         <Col
+                          xs={3}
+                          sm={3}
+                          md={2}
                           lg={2}
-                          style={{ display: "flex", justifyContent: "end" }}
+                          style={{ display: "flex", justifyContent: "center" }}
                         >
                           625
                           <br />
                           ใบลา
                         </Col>
                         <Col
+                        xs={3}
+                          sm={3}
+                          md={3}
                           lg={3}
-                          style={{ display: "flex", justifyContent: "end" }}
+                          style={{ display: "flex", justifyContent: "center" }}
                         >
                           567
                           <br />
                           อนุมัติ
                         </Col>
                         <Col
+                        xs={3}
+                          sm={3}
+                          md={3}
                           lg={3}
-                          style={{ display: "flex", justifyContent: "end" }}
+                          style={{ display: "flex", justifyContent: "center" }}
                         >
                           58
                           <br />
                           ยกเลิก
                         </Col>
                         <Col
+                        xs={3}
+                          sm={3}
+                          md={3}
                           lg={3}
-                          style={{ display: "flex", justifyContent: "end" }}
+                          style={{ display: "flex", justifyContent: "center" }}
                         >
                           4,536 ชม.
                           <br />
@@ -417,14 +750,14 @@ export default class Dashboard2 extends Component {
                       </Row>
                     </Card>
                   </Col>
-                  <Col lg={3}>
+                  <Col xl={3}>
                     <Row>
                       <Col>
                         <Card>
                           <CardBody>
                             <CardTitle>INTRANET</CardTitle>
                             <Row>
-                              <Col lg={8}>
+                              <Col lg={9}>
                                 <Row>
                                   <Col>รายการ ณ วันที่ปัจจุบัน</Col>
                                 </Row>
@@ -433,7 +766,7 @@ export default class Dashboard2 extends Component {
                                 </Row>
                               </Col>
                               <Col
-                                lg={4}
+                                lg={3}
                                 className="d-flex justify-content-end align-items-center"
                               >
                                 <i className="fa-solid fa-database fa-3x"></i>
@@ -449,7 +782,7 @@ export default class Dashboard2 extends Component {
                           <CardBody>
                             <CardTitle>ระบบสารบรรณ</CardTitle>
                             <Row>
-                              <Col lg={8}>
+                              <Col lg={9}>
                                 <Row>
                                   <Col>รายการ ณ วันที่ปัจจุบัน</Col>
                                 </Row>
@@ -458,7 +791,7 @@ export default class Dashboard2 extends Component {
                                 </Row>
                               </Col>
                               <Col
-                                lg={4}
+                                lg={3}
                                 className="d-flex justify-content-end align-items-center"
                               >
                                 <i className="fa-solid fa-paper-plane fa-3x"></i>
@@ -474,7 +807,7 @@ export default class Dashboard2 extends Component {
                           <CardBody className="">
                             <CardTitle>ระบบจองห้องประชุม</CardTitle>
                             <Row>
-                              <Col lg={8}>
+                              <Col lg={9} xl={9}>
                                 <Row>
                                   <Col>รายการ ณ วันที่ปัจจุบัน</Col>
                                 </Row>
@@ -483,7 +816,7 @@ export default class Dashboard2 extends Component {
                                 </Row>
                               </Col>
                               <Col
-                                lg={4}
+                                lg={3}
                                 className="d-flex justify-content-end align-items-center"
                               >
                                 <i className="fa-solid fa-screen-users fa-3x"></i>
@@ -497,9 +830,9 @@ export default class Dashboard2 extends Component {
                       <Col>
                         <Card>
                           <CardBody>
-                            <CardTitle>ระบบสารบรรณ</CardTitle>
+                            <CardTitle>ระบบจองยานพาหนะ</CardTitle>
                             <Row>
-                              <Col lg={8}>
+                              <Col lg={9} xl={9}>
                                 <Row>
                                   <Col>รายการ ณ วันที่ปัจจุบัน</Col>
                                 </Row>
@@ -508,7 +841,7 @@ export default class Dashboard2 extends Component {
                                 </Row>
                               </Col>
                               <Col
-                                lg={4}
+                                lg={3}
                                 className="d-flex justify-content-end align-items-center"
                               >
                                 <i className="fa-solid fa-cars fa-3x"></i>
@@ -545,7 +878,8 @@ export const DonutChart = () => {
   };
 
   const option = {
-    // responsive: true,
+    // cutout: 250,
+    responsive: true,
     plugins: {
       legend: false,
     },
@@ -580,7 +914,7 @@ export const HorizonBarChart = () => {
   };
 
   const option = {
-    // responsive: true,
+    responsive: true,
     indexAxis: "y",
     plugins: {
       legend: false,
@@ -651,6 +985,7 @@ export const MixChart = () => {
   };
 
   const option = {
+    responsive: true,
     plugins: {
       legend: {
         display: true,

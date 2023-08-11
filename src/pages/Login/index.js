@@ -41,7 +41,7 @@ function Login() {
     initialValues: {
       username: '',
       password: '',
-      role: ''
+      role: 'user'
     },
     validationSchema: Yup.object({
       username: Yup.string().required("Please Enter Your Username"),
@@ -136,10 +136,10 @@ function Login() {
                         ) : null}
                       </FormGroup>
                       
-                      <select name="role" onChange={validation.handleChange} className="form-control">
-                        <option value="">กรุณาระบุ Role</option>
+                      <select name="role" disabled onChange={validation.handleChange} className="form-control">
+                        {/* <option value="">กรุณาระบุ Role</option> */}
                         <option value="user">User</option>
-                        <option value="admin">Admin</option>
+                        {/* <option value="admin">Admin</option> */}
                       </select>
 
                       <div className="mt-4 d-grid">

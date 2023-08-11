@@ -41,7 +41,7 @@ function SetData() {
       <Container fluid>
         <Breadcrumb title="กำหนดข้อมูล" breadcrumbItem="กำหนดข้อมูล" />
         <Row>
-          <Col xs={12} sm={12} md={12} lg={3} xl={3}>
+          <Col xs={12} sm={12} md={12} lg={4} xl={3} xxl={3}>
             <Card>
               <CardBody className="p-2">
                 <Row className="mb-3">
@@ -58,7 +58,7 @@ function SetData() {
                         pill
                         color="info"
                       >
-                        <h6 className="m-auto">333</h6>
+                        <h6 style={{fontSize:"10px"}} className="m-auto">333</h6>
                       </Badge>
                     </Button>
                   </Col>
@@ -78,7 +78,7 @@ function SetData() {
                         pill
                         color="info"
                       >
-                        <h6 className="m-auto">25</h6>
+                        <h6 style={{fontSize:"10px"}} className="m-auto">25</h6>
                       </Badge>
                     </Button>
                   </Col>
@@ -97,7 +97,7 @@ function SetData() {
                         pill
                         color="info"
                       >
-                        <h6 className="m-auto">172</h6>
+                        <h6 style={{fontSize:"10px"}} className="m-auto">172</h6>
                       </Badge>
                     </Button>
                   </Col>
@@ -116,7 +116,7 @@ function SetData() {
                         pill
                         color="info"
                       >
-                        <h6 className="m-auto">4</h6>
+                        <h6 style={{fontSize:"10px"}} className="m-auto">4</h6>
                       </Badge>
                     </Button>
                   </Col>
@@ -135,7 +135,7 @@ function SetData() {
                         pill
                         color="info"
                       >
-                        <h6 className="m-auto">4</h6>
+                        <h6 style={{fontSize:"10px"}} className="m-auto">4</h6>
                       </Badge>
                     </Button>
                   </Col>
@@ -155,7 +155,7 @@ function SetData() {
                         pill
                         color="info"
                       >
-                        <h6 className="m-auto">77</h6>
+                        <h6 style={{fontSize:"10px"}} className="m-auto">77</h6>
                       </Badge>
                     </Button>
                   </Col>
@@ -174,7 +174,7 @@ function SetData() {
                         pill
                         color="info"
                       >
-                        <h6 className="m-auto">422</h6>
+                        <h6 style={{fontSize:"10px"}} className="m-auto">422</h6>
                       </Badge>
                     </Button>
                   </Col>
@@ -193,7 +193,7 @@ function SetData() {
                         pill
                         color="info"
                       >
-                        <h6 className="m-auto">5</h6>
+                        <h6 style={{fontSize:"10px"}} className="m-auto">5</h6>
                       </Badge>
                     </Button>
                   </Col>
@@ -201,7 +201,7 @@ function SetData() {
               </CardBody>
             </Card>
           </Col>
-          <Col md={12} lg={9} xl={9}>
+          <Col md={12} lg={8} xl={9} xxl={9}>
             <Row className="mb-3">
               <Col lg={5}>
                 <InputGroup>

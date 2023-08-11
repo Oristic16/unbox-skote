@@ -127,7 +127,7 @@ const Header = props => {
               </div>
             </form>
 
-            <Dropdown
+            {/* <Dropdown
               className="dropdown-mega d-none d-lg-block ms-2"
               isOpen={megaMenu}
               toggle={() => {
@@ -275,7 +275,7 @@ const Header = props => {
                   </Col>
                 </Row>
               </DropdownMenu>
-            </Dropdown>
+            </Dropdown> */}
           </div>
           <div className="d-flex">
             <div className="dropdown d-inline-block d-lg-none ms-2">
@@ -407,15 +407,17 @@ const Header = props => {
               >
                 <i className="bx bx-cog bx-spin" />
               </button>
-              <Button
-              onClick={handleLogout}
-              color="primary"
-              className="btn btn-primary waves-effect waves-light"
-            >ออกจากระบบ</Button>
+              
             </div>
             {/* d-none d-lg-inline-block ms-1 */}
             {/* <Button className='my-3' onClick={handleLogout}>ออกจากระบบ</Button> */}
-            
+
+            <Button
+              style={{background:"NONE",border:"none",whiteSpace:"nowrap"}}
+              onClick={handleLogout}
+              color="primary"
+              // className="btn btn-primary waves-effect waves-light"
+            >ออกจากระบบ</Button>
           </div>
         </div>
       </header>
