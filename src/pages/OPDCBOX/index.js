@@ -22,7 +22,7 @@ import Breadcrumb from "../../components/Common/Breadcrumb";
 
 import classnames from "classnames";
 
-function OPDCBox({ isDragging, text}) {
+function OPDCBox({ isDragging, text }) {
   const [activeTab1, setactiveTab1] = useState("5");
 
   const toggle1 = (tab) => {
@@ -33,10 +33,10 @@ function OPDCBox({ isDragging, text}) {
 
   return (
     <div className="page-content">
-      <Container fluid>
+      <Container fluid style={{ whiteSpace: "nowrap" }}>
         <Breadcrumb title="OPDC BOX" breadcrumbItem="OPDC BOX" />
         <Row>
-          <Col lg={9}>
+          <Col lg={10}>
             <Card className="border border-red">
               <CardBody>
                 <Row className="mb-3">
@@ -47,82 +47,122 @@ function OPDCBox({ isDragging, text}) {
                   </Col>
                 </Row>
                 <Row style={{ display: "flex", alignItems: "center" }}>
-                  <Col lg={3}>
-                    <Card style={{ border: "2px solid #6f8db7" }}>
-                      <CardBody>
-                        <span className="d-flex">
-                          <i className="fa-solid fa-folder-open"></i>&nbsp;
-                          <h6>IMPORT ระบบสินทรัพย์</h6>
-                        </span>
+                  <Col md={6} lg={4} xl={3}>
+                    <Card
+                      style={{ border: "3px solid #3E6CAD",backgroundColor: "#566B89" }}
+                    >
+                      <CardBody >
+                        <Row>
+                          <Col style={{ overflow: "hidden",textOverflow:"ellipsis" }}>
+                            <h6>
+                              <i className="fa-solid fa-folder-open"></i>&nbsp;
+                              IMPORT ระบบสินทรัพย์
+                            </h6>
+                          </Col>
+                        </Row>
                       </CardBody>
                     </Card>
                   </Col>
-                  <Col lg={3}>
-                    <Card style={{ border: "2px solid #6f8db7" }}>
-                      <CardBody>
-                        <span className="d-flex">
-                          <i className="fa-solid fa-folder-open"></i>&nbsp;
-                          <h6>internet-explorer</h6>
-                        </span>
+                  <Col md={6} lg={4} xl={3}>
+                    <Card
+                      style={{ border: "3px solid #3E6CAD",backgroundColor: "#566B89" }}
+                    >
+                      <CardBody style={{ width: "100%" }}>
+                        <Row>
+                          <Col lg={12} style={{ overflow: "hidden" }}>
+                            <h6>
+                              <i className="fa-solid fa-folder-open"></i>&nbsp;
+                              internet-explorer
+                            </h6>
+                          </Col>
+                        </Row>
                       </CardBody>
                     </Card>
                   </Col>
-                  <Col lg={3}>
-                    <Card style={{ border: "2px solid #6f8db7" }}>
-                      <CardBody>
-                        <span className="d-flex">
-                          <i className="fa-solid fa-folder-open"></i>&nbsp;
-                          <h6>OPDC OLD DOC</h6>
-                        </span>
+                  <Col md={6} lg={4} xl={3}>
+                    <Card
+                      style={{ border: "3px solid #3E6CAD",backgroundColor: "#566B89" }}
+                    >
+                      <CardBody style={{ width: "100%" }}>
+                        <Row>
+                          <Col lg={12} style={{ overflow: "hidden" }}>
+                            <h6>
+                              <i className="fa-solid fa-folder-open"></i>&nbsp;
+                              OPDC OLD DOC
+                            </h6>
+                          </Col>
+                        </Row>
                       </CardBody>
                     </Card>
                   </Col>
-                  <Col lg={3}>
-                    <Card style={{ border: "2px solid #6f8db7" }}>
-                      <CardBody>
-                        <span className="d-flex">
-                          <i className="fa-solid fa-folder-open"></i>&nbsp;
-                          <h6>ก.พ.ร.</h6>
-                        </span>
+                  <Col md={6} lg={4} xl={3}>
+                    <Card
+                      style={{ border: "3px solid #3E6CAD",backgroundColor: "#566B89" }}
+                    >
+                      <CardBody style={{ width: "100%" }}>
+                        <Row>
+                          <Col style={{ overflow: "hidden" }}>
+                            <h6>
+                              <i className="fa-solid fa-folder-open"></i>&nbsp;
+                              ก.พ.ร.
+                            </h6>
+                          </Col>
+                        </Row>
                       </CardBody>
                     </Card>
                   </Col>
-                </Row>
-                <Row style={{ display: "flex", alignItems: "center" }}>
-                  <Col lg={3}>
-                    <Card style={{ border: "2px solid #6f8db7" }}>
-                      <CardBody>
-                        <span className="d-flex">
-                          <i className="fa-solid fa-folder-open"></i>&nbsp;
-                          <h6>ข้อมูลสินทรัพย์ 60</h6>
-                        </span>
+                  <Col md={6} lg={4} xl={3}>
+                    <Card
+                      style={{ border: "3px solid #3E6CAD",backgroundColor: "#566B89" }}
+                    >
+                      <CardBody style={{ width: "100%" }}>
+                        <Row>
+                          <Col style={{ overflow: "hidden" }}>
+                            <h6>
+                              <i className="fa-solid fa-folder-open"></i>&nbsp;
+                              ข้อมูลสินทรัพย์ 60
+                            </h6>
+                          </Col>
+                        </Row>
                       </CardBody>
                     </Card>
                   </Col>
-                  <Col lg={3}>
-                    <Card style={{ border: "2px solid #6f8db7" }}>
-                      <CardBody>
-                        <span className="d-flex">
-                          <i className="fa-solid fa-folder-open"></i>&nbsp;
-                          <h6>นำเข้าเพิ่ม 5 พ.ค.</h6>
-                        </span>
+                  <Col md={6} lg={4} xl={3}>
+                    <Card
+                      style={{ border: "3px solid #3E6CAD",backgroundColor: "#566B89" }}
+                    >
+                      <CardBody style={{ width: "100%" }}>
+                        <Row>
+                          <Col style={{ overflow: "hidden" }}>
+                            <h6>
+                              <i className="fa-solid fa-folder-open"></i>&nbsp;
+                              นำเข้าเพิ่ม 5 พ.ค.
+                            </h6>
+                          </Col>
+                        </Row>
                       </CardBody>
                     </Card>
                   </Col>
-                  <Col lg={3}>
-                    <Card style={{ border: "2px solid #6f8db7" }}>
-                      <CardBody>
-                        <span className="d-flex align-items-center">
-                          <i className="fa-solid fa-folder-open fa-lg"></i>
-                          &nbsp;<h6>ปัญหา โอน ทรัพย์</h6>
-                        </span>
+                  <Col md={6} lg={4} xl={3}>
+                    <Card
+                      style={{ border: "3px solid #3E6CAD",backgroundColor: "#566B89" }}
+                    >
+                      <CardBody style={{ width: "100%" }}>
+                        <Row>
+                          <Col style={{ overflow: "hidden" }}>
+                            <h6>
+                              <i className="fa-solid fa-folder-open"></i>&nbsp;
+                              ปัญหา โอน ทรัพย์
+                            </h6>
+                          </Col>
+                        </Row>
                       </CardBody>
                     </Card>
                   </Col>
-                  <Col lg={3}></Col>
                 </Row>
               </CardBody>
             </Card>
+            
             <Card className="border border-red">
               <CardBody>
                 <Row className="mb-3">
@@ -133,70 +173,102 @@ function OPDCBox({ isDragging, text}) {
                   </Col>
                 </Row>
                 <Row style={{ display: "flex", alignItems: "center" }}>
-                  <Col lg={3}>
-                    <Card style={{ border: "2px solid #6f8db7" }}>
-                      <CardBody>
-                        <span className="d-flex">
-                          <i className="fa-solid fa-file-word"></i>&nbsp;
-                          <h6>1-ปก2.docx</h6>
-                        </span>
+                  <Col md={6} lg={4} xl={3}>
+                    <Card
+                      style={{ border: "3px solid #3E6CAD",backgroundColor: "#566B89" }}
+                    >
+                      <CardBody style={{ width: "100%" }}>
+                        <Row>
+                          <Col style={{ overflow: "hidden" }}>
+                            <h6>
+                              <i className="fa-solid fa-file-word"></i>&nbsp;
+                       1-ปก2.docx
+                            </h6>
+                          </Col>
+                        </Row>
                       </CardBody>
                     </Card>
                   </Col>
-                  <Col lg={3}>
-                    <Card style={{ border: "2px solid #6f8db7" }}>
-                      <CardBody>
-                        <span className="d-flex">
-                          <i className="fa-solid fa-file-pdf"></i>&nbsp;
-                          <h6>2 สารบัญเล่ม 2.pdf</h6>
-                        </span>
+                  <Col md={6} lg={4} xl={3}>
+                    <Card
+                      style={{ border: "3px solid #3E6CAD",backgroundColor: "#566B89" }}
+                    >
+                      <CardBody style={{ width: "100%" }}>
+                        <Row>
+                          <Col style={{ overflow: "hidden" }}>
+                            <h6>
+                              <i className="fa-solid fa-file-word"></i>&nbsp;
+                              2 สารบัญเล่ม 2.pdf
+                            </h6>
+                          </Col>
+                        </Row>
                       </CardBody>
                     </Card>
                   </Col>
-                  <Col lg={3}>
-                    <Card style={{ border: "2px solid #6f8db7" }}>
-                      <CardBody>
-                        <span className="d-flex">
-                          <i className="fa-solid fa-file-pdf"></i>&nbsp;
-                          <h6>2-เล่ม 2 คตป-1.pdf</h6>
-                        </span>
+                  <Col md={6} lg={4} xl={3}>
+                    <Card
+                      style={{ border: "3px solid #3E6CAD",backgroundColor: "#566B89" }}
+                    >
+                      <CardBody style={{ width: "100%" }}>
+                        <Row>
+                          <Col style={{ overflow: "hidden" }}>
+                            <h6>
+                              <i className="fa-solid fa-file-word"></i>&nbsp;
+                              2-เล่ม 2 คตป-1.pdf
+                            </h6>
+                          </Col>
+                        </Row>
                       </CardBody>
                     </Card>
                   </Col>
-                  <Col lg={3}>
-                    <Card style={{ border: "2px solid #6f8db7" }}>
-                      <CardBody>
-                        <span className="d-flex">
-                          <i className="fa-solid fa-file-excel"></i>&nbsp;
-                          <h6>ศูนย์ความปลอดภัย.xlsx</h6>
-                        </span>
+                  <Col md={6} lg={4} xl={3}>
+                    <Card
+                      style={{ border: "3px solid #3E6CAD",backgroundColor: "#566B89" }}
+                    >
+                      <CardBody style={{ width: "100%" }}>
+                        <Row>
+                          <Col style={{ overflow: "hidden" }}>
+                            <h6>
+                              <i className="fa-solid fa-file-word"></i>&nbsp;
+                              ศูนย์ความปลอดภัย.xlsx
+                            </h6>
+                          </Col>
+                        </Row>
                       </CardBody>
                     </Card>
                   </Col>
-                </Row>
-                <Row style={{ display: "flex", alignItems: "center" }}>
-                  <Col lg={3}>
-                    <Card style={{ border: "2px solid #6f8db7" }}>
-                      <CardBody>
-                        <span className="d-flex">
-                          <i className="fa-solid fa-file-pdf"></i>&nbsp;
-                          <h6>5 WorkFlow.pdf</h6>
-                        </span>
+                  <Col md={6} lg={4} xl={3}>
+                    <Card
+                      style={{ border: "3px solid #3E6CAD",backgroundColor: "#566B89" }}
+                    >
+                      <CardBody style={{ width: "100%" }}>
+                        <Row>
+                          <Col style={{ overflow: "hidden" }}>
+                            <h6>
+                              <i className="fa-solid fa-file-word"></i>&nbsp;
+                              5 WorkFlow.pdf
+                            </h6>
+                          </Col>
+                        </Row>
                       </CardBody>
                     </Card>
                   </Col>
-                  <Col lg={3}>
-                    <Card style={{ border: "2px solid #6f8db7" }}>
-                      <CardBody>
-                        <span className="d-flex">
-                          <i className="fa-solid fa-file-powerpoint"></i>&nbsp;
-                          <h6>Training_PPT.ppt</h6>
-                        </span>
+                  <Col md={6} lg={4} xl={3}>
+                    <Card
+                      style={{ border: "3px solid #3E6CAD",backgroundColor: "#566B89" }}
+                    >
+                      <CardBody style={{ width: "100%" }}>
+                        <Row>
+                          <Col style={{ overflow: "hidden" }}>
+                            <h6>
+                              <i className="fa-solid fa-file-word"></i>&nbsp;
+                              Training_PPT.ppt
+                            </h6>
+                          </Col>
+                        </Row>
                       </CardBody>
                     </Card>
                   </Col>
-                  <Col lg={3}></Col>
-                  <Col lg={3}></Col>
                 </Row>
               </CardBody>
             </Card>
@@ -240,10 +312,10 @@ function OPDCBox({ isDragging, text}) {
                 <TabContent activeTab={activeTab1} className="p-3 text-muted">
                   <TabPane tabId="5" style={{ color: "white" }}>
                     <Row className=" mt-3 d-flex align-items-center">
-                      <Col lg={3} className="d-flex justify-content-center">
+                      <Col xs={3} sm={3} md={3} lg={3} className="d-flex justify-content-center">
                         <Label>ชื่อโฟลเดอร์</Label>
                       </Col>
-                      <Col lg={9}>
+                      <Col xs={9} sm={9} md={9} lg={9}>
                         <Input
                           type="text"
                           placeholder="....กรุณาใส่ชื่อโฟล์เดอร์ที่ต้องการสร้าง"
@@ -251,10 +323,10 @@ function OPDCBox({ isDragging, text}) {
                       </Col>
                     </Row>
                     <Row className=" mt-3 d-flex align-items-center">
-                      <Col lg={3} className="d-flex justify-content-center">
+                      <Col xs={3} sm={3} md={3} lg={3} className="d-flex justify-content-center">
                         <Label>คีย์เวิร์ด</Label>
                       </Col>
-                      <Col lg={9}>
+                      <Col xs={9} sm={9} md={9} lg={9}>
                         <Input
                           type="text"
                           placeholder="....กรุณาใส่คีย์เวิร์ด"
@@ -284,21 +356,22 @@ function OPDCBox({ isDragging, text}) {
                         <Col
                           lg={6}
                           style={{ display: "flex", justifyContent: "end" }}
-                        >
-                          
-                        </Col>
+                        ></Col>
                       </Row>
-                      <Row className="my-2" style={{display:"flex", alignItems:"center"}}>
+                      <Row
+                        className="my-2"
+                        style={{ display: "flex", alignItems: "center" }}
+                      >
                         <Col>
-                            <div className="d-flex">
+                          <div className="d-flex">
                             <h1 className="card-title">
-                                <i className="fa-solid fa-cloud-arrow-up"></i>{" "}
-                                อัพโหลดไฟล์
-                                </h1>
-                        </div>
+                              <i className="fa-solid fa-cloud-arrow-up"></i>{" "}
+                              อัพโหลดไฟล์
+                            </h1>
+                          </div>
                         </Col>
                         <Col lg={3}>
-                        <Input type="select">
+                          <Input type="select">
                             <option>กรุณาเลือกโฟลเดอร์</option>
                             <option>IMPORT ระบบสินทรัพย์</option>
                             <option>internet-explorer</option>
@@ -315,38 +388,44 @@ function OPDCBox({ isDragging, text}) {
                           lg={12}
                           style={{ display: "flex", justifyContent: "start" }}
                         >
-                            <div className="p-4 d-block text-center" style={{width:"100%", height:"100%", border:"2px dashed #6f8db7"}}>
-                                <p style={{color:"red", cursor:"pointer"}}><u>Click here</u></p>
-                                <p>or</p>
-                                <p>Drag files in here</p>
-                            </div>
+                          <div
+                            className="p-4 d-block text-center"
+                            style={{
+                              width: "100%",
+                              height: "100%",
+                              border: "2px dashed #6f8db7",
+                            }}
+                          >
+                            <p style={{ color: "red", cursor: "pointer" }}>
+                              <u>คลิกที่นี่</u>
+                            </p>
+                            <p>หรือ</p>
+                            <p>ลากไฟล์มาใส่ที่นี่</p>
+                          </div>
                           {/* <Input style={{width:"100%", height:"100px"}} type="file" multiple={true} /> */}
                         </Col>
                       </Row>
                       <Row>
-                      <Col className="d-flex justify-content-end">
-                        <div className="mt-3">
-                          <Button color="primary">
-                            <i className="fa-solid fa-plus fa-lg"></i>{" "}
-                            อัพโหลดไฟล์ไฟล์เข้าโฟล์เดอร์
-                          </Button>
-                          <Button className="ms-2" color="danger">
-                            <i className="fa-solid fa-xmark fa-xl"></i> ล้างค่า
-                          </Button>
-                        </div>
-                      </Col>
-                    </Row>
+                        <Col className="d-flex justify-content-end">
+                          <div className="mt-3">
+                            <Button color="primary">
+                              <i className="fa-solid fa-plus fa-lg"></i>{" "}
+                              อัพโหลดไฟล์ไฟล์เข้าโฟล์เดอร์
+                            </Button>
+                            <Button className="ms-2" color="danger">
+                              <i className="fa-solid fa-xmark fa-xl"></i>{" "}
+                              ล้างค่า
+                            </Button>
+                          </div>
+                        </Col>
+                      </Row>
                     </Form>
                   </TabPane>
                 </TabContent>
               </CardBody>
             </Card>
           </Col>
-          <Col lg={3}>
-            <Card>
-              <CardBody></CardBody>
-            </Card>
-          </Col>
+          
         </Row>
       </Container>
     </div>
