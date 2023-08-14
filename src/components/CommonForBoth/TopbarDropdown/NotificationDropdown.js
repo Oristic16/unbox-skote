@@ -60,12 +60,12 @@ const NotificationDropdown = props => {
                     {props.t("Your order is placed")}
                   </h6>
                   <div className="font-size-12 text-muted">
-                    <p className="mb-1">
+                    <p style={{color:"#B8CDEA"}} className="mb-1">
                       {props.t(
                         "If several languages coalesce the grammar"
                       )}
                     </p>
-                    <p className="mb-0">
+                    <p style={{color:"#2870FF"}} className="mb-0">
                       <i className="mdi mdi-clock-outline" />{" "}
                       {props.t("3 min ago")}{" "}
                     </p>
@@ -83,11 +83,11 @@ const NotificationDropdown = props => {
                 <div className="flex-grow-1">
                   <h6 className="mt-0 mb-1">James Lemire</h6>
                   <div className="font-size-12 text-muted">
-                    <p className="mb-1">
+                    <p style={{color:"#B8CDEA"}} className="mb-1">
                       {props.t("It will seem like simplified English") +
                         "."}
                     </p>
-                    <p className="mb-0">
+                    <p style={{color:"#2870FF"}} className="mb-0">
                       <i className="mdi mdi-clock-outline" />
                       {props.t("1 hours ago")}{" "}
                     </p>
@@ -107,12 +107,12 @@ const NotificationDropdown = props => {
                     {props.t("Your item is shipped")}
                   </h6>
                   <div className="font-size-12 text-muted">
-                    <p className="mb-1">
+                    <p style={{color:"#B8CDEA"}} className="mb-1">
                       {props.t(
                         "If several languages coalesce the grammar"
                       )}
                     </p>
-                    <p className="mb-0">
+                    <p style={{color:"#2870FF"}} className="mb-0">
                       <i className="mdi mdi-clock-outline" />{" "}
                       {props.t("3 min ago")}
                     </p>
@@ -131,12 +131,12 @@ const NotificationDropdown = props => {
                 <div className="flex-grow-1">
                   <h6 className="mt-0 mb-1">Salena Layfield</h6>
                   <div className="font-size-12 text-muted">
-                    <p className="mb-1">
+                    <p style={{color:"#B8CDEA"}} className="mb-1">
                       {props.t(
                         "As a skeptical Cambridge friend of mine occidental"
                       ) + "."}
                     </p>
-                    <p className="mb-0">
+                    <p style={{color:"#2870FF"}} className="mb-0">
                       <i className="mdi mdi-clock-outline" />
                       {props.t("1 hours ago")}{" "}
                     </p>

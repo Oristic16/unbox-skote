@@ -45,7 +45,7 @@ function OPDCBox({ isDragging, text }) {
   return (
     <div className="page-content">
       <Container fluid style={{ whiteSpace: "nowrap" }}>
-        <Breadcrumb title="OPDC BOX" breadcrumbItem="OPDC BOX" />
+        <Breadcrumb title="Home" breadcrumbItem="OPDC BOX" />
         <Row>
           <Col lg={10}>
             <Card className="border border-red">

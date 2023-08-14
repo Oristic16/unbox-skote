@@ -39,7 +39,7 @@ function SetData() {
   return (
     <div className="page-content">
       <Container fluid>
-        <Breadcrumb title="กำหนดข้อมูล" breadcrumbItem="กำหนดข้อมูล" />
+        <Breadcrumb title="Home" breadcrumbItem="กำหนดข้อมูล" />
         <Row>
           <Col xs={12} sm={12} md={12} lg={4} xl={3} xxl={3}>
             <Card>

@@ -18,6 +18,7 @@ import {
 import axios from 'axios';
 
 import { withTranslation } from 'react-i18next';
+import Breadcrumb from '../../components/Common/Breadcrumb';
 
 class Page1 extends Component {
   constructor(props) {
@@ -68,6 +69,7 @@ class Page1 extends Component {
       <React.Fragment>
         <div className="page-content ">
           <Container fluid>
+            <Breadcrumb title="Home" breadcrumbItem="การประเมินผลการปฏิบัติราชการ" />
             <Card>
               <CardBody className="justify-content-center">
                 <ListGroup>

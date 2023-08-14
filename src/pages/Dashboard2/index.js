@@ -164,7 +164,7 @@ export default class Dashboard2 extends Component {
       return (
         <div className="page-content">
           <Container fluid>
-            <Breadcrumbs title="Dashboard" breadcrumbItem="Dashboard" />
+            <Breadcrumbs title="Home" breadcrumbItem="Dashboard" />
             <Row>
               <Col lg={12}>
                 <Row>

@@ -30,6 +30,7 @@ import {
 } from 'reactstrap';
 import { Chart as ChartJS, registerables } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
+import Breadcrumb from '../../components/Common/Breadcrumb';
 
 ChartJS.register(...registerables);
 
@@ -136,6 +137,7 @@ const Page2 = () => {
   return (
     <div className="page-content">
       <Container fluid={true}>
+      <Breadcrumb title="Home" breadcrumbItem="การลาออนไลน์" />
         <Row>
           <Col xl={4} lg={12} md={12} sm={12} xs={12}>
             <ListGroup>
