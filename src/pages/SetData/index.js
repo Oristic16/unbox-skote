@@ -252,7 +252,11 @@ function SetData() {
                     <tr>
                       <td scope="row" style={{ fontSize: "16px" }}>1</td>
                       <td>กนกพร</td>
-                      <td>ข้าราชการ</td>
+                      <td><Badge
+                                      color="success"
+                                      className="p-2 bg-opacity-10"
+                                    >
+                                      <span className="text-success fs-6">ข้าราชการ</span></Badge></td>
                       <td>kanokporn_xx@email.com</td>
                       <td>310200146xxxx</td>
                       <td>098765xxxx</td>
@@ -260,7 +264,11 @@ function SetData() {
                     <tr>
                       <td style={{ fontSize: "16px" }}>2</td>
                       <td>กมลา</td>
-                      <td>ข้าราชการ</td>
+                      <td><Badge
+                                      color="success"
+                                      className="p-2 bg-opacity-10"
+                                    >
+                                      <span className="text-success fs-6">ข้าราชการ</span></Badge></td>
                       <td>kammala_xx@email.com</td>
                       <td>310200146xxxx</td>
                       <td>098765xxxx</td>
@@ -268,7 +276,11 @@ function SetData() {
                     <tr>
                       <td style={{ fontSize: "16px" }}>3</td>
                       <td>กฤตพน</td>
-                      <td>ลูกจ้างชั่วคราว</td>
+                      <td><Badge
+                                      color="primary"
+                                      className="p-2 bg-opacity-10"
+                                    >
+                                      <span className="text-primary fs-6">ลูกจ้างชั่วคราว</span></Badge></td>
                       <td>kanokporn_xx@email.com</td>
                       <td>310200146xxxx</td>
                       <td>098765xxxx</td>
@@ -276,7 +288,11 @@ function SetData() {
                     <tr>
                       <td style={{ fontSize: "16px" }}>4</td>
                       <td>กฤตวิทย์</td>
-                      <td>นปร.</td>
+                      <td><Badge
+                                      color="warning"
+                                      className="p-2 bg-opacity-10"
+                                    >
+                                      <span className="text-warning fs-6">นปร.</span></Badge></td>
                       <td>krittawit_xx@email.com</td>
                       <td>310200146xxxx</td>
                       <td>098765xxxx</td>
@@ -284,7 +300,11 @@ function SetData() {
                     <tr>
                       <td style={{ fontSize: "16px" }}>5</td>
                       <td>กฤษณา</td>
-                      <td>นปร.</td>
+                      <td><Badge
+                                      color="warning"
+                                      className="p-2 bg-opacity-10"
+                                    >
+                                      <span className="text-warning fs-6">นปร.</span></Badge></td>
                       <td>kritsana_xx@email.com</td>
                       <td>310200146xxxx</td>
                       <td>098765xxxx</td>
@@ -292,7 +312,11 @@ function SetData() {
                     <tr>
                       <td style={{ fontSize: "16px" }}>6</td>
                       <td>กาญจนา</td>
-                      <td>ลูกจ้างชั่วคราว</td>
+                      <td><Badge
+                                      color="primary"
+                                      className="p-2 bg-opacity-10"
+                                    >
+                                      <span className="text-primary fs-6">ลูกจ้างชั่วคราว</span></Badge></td>
                       <td>kanjana_xx@email.com</td>
                       <td>310200146xxxx</td>
                       <td>098765xxxx</td>
@@ -443,6 +467,15 @@ function SetData() {
                 </Col>
               </Row>
             </Form>
+            <Row>
+                <Col md={4} lg={6} xl={6}></Col>
+                <Col xs={12} sm={12} md={4} lg={3} xl={3} style={{display:"flex", justifyContent:"end"}}>
+                  <Button color="success" style={{width:"100%"}}>บันทึก</Button>
+                </Col>
+                <Col xs={12} sm={12} md={4} lg={3} xl={3} style={{display:"flex", justifyContent:"end"}}>
+                  <Button color="danger" style={{width:"100%"}}>ล้างค่า</Button>
+                </Col>
+              </Row>
           </OffcanvasBody>
         </Offcanvas>
       </Container>

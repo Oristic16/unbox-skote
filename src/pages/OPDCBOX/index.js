@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   Button,
   Card,
@@ -23,12 +23,23 @@ import Breadcrumb from "../../components/Common/Breadcrumb";
 import classnames from "classnames";
 
 function OPDCBox({ isDragging, text }) {
+
   const [activeTab1, setactiveTab1] = useState("5");
 
   const toggle1 = (tab) => {
     if (activeTab1 !== tab) {
       setactiveTab1(tab);
     }
+  };
+
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const openPopup = () => {
+    setIsPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setIsPopupOpen(false);
   };
 
   return (
@@ -396,9 +407,17 @@ function OPDCBox({ isDragging, text }) {
                               border: "2px dashed #6f8db7",
                             }}
                           >
-                            <p style={{ color: "red", cursor: "pointer" }}>
+                            <p onClick={openPopup} style={{ color: "red", cursor: "pointer" }}>
                               <u>คลิกที่นี่</u>
                             </p>
+                            {isPopupOpen && (
+                              <div className="popup">
+                                <div className="popup-content">
+                                  <input multiple type="file" />
+                                  {/* <button onClick={closePopup}>ปิด</button> */}
+                                </div>
+                              </div>
+                            )}
                             <p>หรือ</p>
                             <p>ลากไฟล์มาใส่ที่นี่</p>
                           </div>

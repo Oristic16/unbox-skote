@@ -177,13 +177,13 @@ const SidebarContent = props => {
                 </Link>
               </li>
               <li>
-                <Link to="/rateservice">
+                <Link to="/page1">
                 <i className="fa-solid fa-user-shield"></i>
                   <span>{props.t("การประเมินผลการปฏิบัติราชการ")}</span>
                 </Link>
               </li>
               <li>
-                <Link to="/page1">
+                <Link to="/page2">
                   <i className="bx bxs-bell"></i>
                   <span>{props.t("การลาออนไลน์")}</span>
                 </Link>

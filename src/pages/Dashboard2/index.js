@@ -31,6 +31,12 @@ import { DonutChart } from "./DonutChart";
 import { HorizonBarChart } from "./HorizonBarChart";
 import { MixChart } from "./MixChart";
 
+import Calendar from './Calendar';
+import TextCard from './TextCard';
+import TextCard2 from './TextCard2';
+import TableA from './TableA';
+import ChartA from './ChartA';
+
 ChartJS.register(...registerables);
 
 export default class Dashboard2 extends Component {
@@ -857,6 +863,68 @@ export default class Dashboard2 extends Component {
                     </Row>
                   </Col>
                 </Row>
+              </Col>
+            </Row>
+            <Row>
+              <Col xl={3} lg={12} md={12} sm={12} xs={12}>
+                <Calendar />
+              </Col>
+              <Col xl={6} lg={12} md={12} sm={12} xs={12}>
+                <TextCard
+                  day="2"
+                  month="เม ย."
+                  date="2 เมษา 2561"
+                  detail="นักบริหารการเปลี่ยนแปลงคนรุ่นใหม่ รุ่นที่10 รับฟังหลักเกณฑ์และขั้นตอนการจัดสรรไปปฏิบัติราชการ ณ สำนักงาน ก.พ.ร."
+                />
+                <TextCard
+                  day="3"
+                  month="เม ย."
+                  date="3 เมษา 2561"
+                  detail="คลีนิกให้คำปรึกษาการประเมินสถานะการเป็นระบบราชการ 4.0 (ส่วนราชการในสังกัดกระทรวงยุติธรรม)"
+                />
+                <TextCard
+                  day="3"
+                  month="เม ย."
+                  date="3 เมษา 2561"
+                  detail="การประชุมฝ่ายบริหาร สำนักงาน ก.พ.ร. ครั้งที่ 7/2561"
+                />
+                <TextCard
+                  day="3"
+                  month="เม ย."
+                  date="3 เมษา 2561"
+                  detail="การประชุมคณะกรรมการสวัสดิการสำนักงงาน ก.พ.ร. ครั้งที่1/2561"
+                />
+                <TextCard
+                  day="4"
+                  month="เม ย."
+                  date="4 เมษา 2561"
+                  detail="การประชุม เรื่อง การรายงานผลการดำเนินการตามแนวทางปรับปรุงสภาพแวดล้อม สำหรับประกอบธุรกิจในประเทศไทย"
+                />
+                <TextCard
+                  day="5"
+                  month="เม ย."
+                  date="5 เมษา 2561"
+                  detail="พิธีลงนามบันทึกข้อตกลงว่าด้วยความร่วมมือด้านการเชื่อมโยงข้อมูลหลักประกันทางอิเล็กทรอนิกส์"
+                />
+                <TextCard
+                  day="5"
+                  month="เม ย."
+                  date="5 เมษา 2561"
+                  detail="การรายงานตัวเข้าร่วมโครงการพัฒนานักบริหารการเปลี่ยนแปลงรุ่นใหม่ รุ่นที่ 12"
+                />
+              </Col>
+              <Col xl={3} lg={12} md={12} sm={12} xs={12}>
+                <TextCard2 />
+              </Col>
+            </Row>
+            <Row>
+              <Col lg={12} md={12} sm={12} xs={12}>
+                <TableA />
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <ChartA />
               </Col>
             </Row>
           </Container>

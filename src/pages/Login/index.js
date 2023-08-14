@@ -61,8 +61,8 @@ function Login() {
           alt="background-login"
           style={{
             backgroundSize: "cover",
-            width: "1536px",
-            height: "731px",
+            width: "100%",
+            height: "100%",
             position: "absolute",
             zIndex: "-1",
             opacity: "0.7",
@@ -191,11 +191,11 @@ function Login() {
                         </p>
                       </div>
                     </Form>
-                  <Row className="mt-3">
+                  {/* <Row className="mt-3">
                     <Col style={{display:"flex", justifyContent:"center"}}>
                       <Link to="/register">Don't have an account? Sign up Here</Link>
                     </Col>
-                  </Row>
+                  </Row> */}
                   
                 </CardBody>
               </Card>
