@@ -397,7 +397,7 @@ function OPDCBox({ isDragging, text }) {
                               border: "2px dashed #6f8db7",
                             }}
                           >
-                            <p onClick={openPopup} style={{ color: "red", cursor: "pointer" }}>
+                            <p style={{ color: "red", cursor: "pointer" }}>
                               <u>คลิกที่นี่</u>
                             </p>
                             <p>หรือ</p>
