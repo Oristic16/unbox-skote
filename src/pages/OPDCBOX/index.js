@@ -32,16 +32,6 @@ function OPDCBox({ isDragging, text }) {
     }
   };
 
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-
-  const openPopup = () => {
-    setIsPopupOpen(true);
-  };
-
-  const closePopup = () => {
-    setIsPopupOpen(false);
-  };
-
   return (
     <div className="page-content">
       <Container fluid style={{ whiteSpace: "nowrap" }}>
@@ -410,14 +400,6 @@ function OPDCBox({ isDragging, text }) {
                             <p onClick={openPopup} style={{ color: "red", cursor: "pointer" }}>
                               <u>คลิกที่นี่</u>
                             </p>
-                            {isPopupOpen && (
-                              <div className="popup">
-                                <div className="popup-content">
-                                  <input multiple type="file" />
-                                  {/* <button onClick={closePopup}>ปิด</button> */}
-                                </div>
-                              </div>
-                            )}
                             <p>หรือ</p>
                             <p>ลากไฟล์มาใส่ที่นี่</p>
                           </div>
