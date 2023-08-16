@@ -23,9 +23,11 @@ export const HorizonBarChart = () => {
       labels: labels,
       datasets: [
         {
+          label: "กำลังไป",
           data: [25, 10, 2, 2, 1, 2, 5, 4, 12, 15],
           backgroundColor: ["#7180ff"],
-          hoverOffset: 8,
+          // hoverOffset: 10,
+          barThickness: 13,
         },
       ],
     };
@@ -34,7 +36,13 @@ export const HorizonBarChart = () => {
       responsive: true,
       indexAxis: "y",
       plugins: {
-        legend: false,
+        legend: {
+          // position: "right",
+          labels: {
+            usePointStyle: true,
+          },
+          display: false
+        },
       },
       scales: {
         y: {
@@ -46,6 +54,7 @@ export const HorizonBarChart = () => {
           },
         },
         x: {
+          
           ticks: {},
         },
       },

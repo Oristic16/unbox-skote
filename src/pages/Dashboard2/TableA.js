@@ -21,7 +21,7 @@ function TableA() {
   return (
     <Fragment>
       <Card>
-        <CardTitle>
+        <CardTitle style={{color:"#483fd3"}}>
           <div className="ps-4 pt-3">
             <i className="fa-solid fa-circle-check"></i> การจองออนไลน์
           </div>

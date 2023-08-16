@@ -56,19 +56,8 @@ const getLayout = (layoutType) => {
   return Layout;
 };
 
-export const createThemeLocalStore = () => {
-  if(!localStorage.getItem('theme')) {
-    localStorage.setItem('theme', 'light')
-
-
-  } else {
-
-  }
-}
 
 const App = () => {
-
-  createThemeLocalStore()
 
   const { layoutType } = useSelector((state) => ({
     layoutType: state.Layout.layoutType,

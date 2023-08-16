@@ -2,6 +2,7 @@ import React from "react";
 
 import { Chart as ChartJS, registerables } from "chart.js";
 import { Bar } from "react-chartjs-2";
+import { fabClasses } from "@mui/material";
 ChartJS.register(...registerables);
 
 export const MixChart = () => {
@@ -37,7 +38,7 @@ export const MixChart = () => {
           backgroundColor: "rgb(92, 255, 92, 0.1)",
           borderColor: "#5ff160",
           pointBackgroundColor: "#94ff95",
-          data: [25, 15, 30, 47, 7, 23, 29, 11, 31, 28, 53, 68],
+          data: [21, 12, 26, 45, 5, 21, 27, 9, 29, 26, 50, 68],
         },
         {
           type: "line",
@@ -46,7 +47,7 @@ export const MixChart = () => {
           label: "ยกเลิก",
           borderColor: "#ff775f",
           borderDash: [6, 6],
-          data: [4, 2, 10, 8, 6, 2, 5, 3, 14, 7, 15, 17],
+          data: [4, 2, 10, 8, 4, 2, 5, 3, 14, 7, 15, 17],
         },
       ],
     };
@@ -55,6 +56,9 @@ export const MixChart = () => {
       responsive: true,
       plugins: {
         legend: {
+          labels: {
+            usePointStyle: true,
+          },
           display: true,
           position: "bottom",
           // labels: { borderRadius }
@@ -63,7 +67,7 @@ export const MixChart = () => {
       scales: {
         x: {
             ticks: {
-                color: "white"
+                // color: "white"
             },
           grid: {
             display: false,
@@ -71,7 +75,7 @@ export const MixChart = () => {
         },
         y: {
             ticks: {
-                color: "white"
+                // color: "white"
             },
           grid: {
             display: false,

@@ -8,6 +8,10 @@ import SimpleBar from "simplebar-react";
 import avatar3 from "../../../assets/images/users/avatar-3.jpg";
 import avatar4 from "../../../assets/images/users/avatar-4.jpg";
 
+import user1 from '../../../assets/images/profile_3135715.png'
+import user2 from '../../../assets/images/man_2202112.png'
+import noti from '../../../assets/images/megaphone_630757.png'
+
 //i18n
 import { withTranslation } from "react-i18next";
 
@@ -52,7 +56,8 @@ const NotificationDropdown = props => {
               <div className="d-flex">
                 <div className="avatar-xs me-3">
                   <span className="avatar-title bg-primary rounded-circle font-size-16">
-                    <i className="bx bx-cart" />
+                    {/* <i className="bx bx-cart" /> */}
+                    <i class="fa-sharp fa-solid fa-bullhorn"></i>
                   </span>
                 </div>
                 <div className="flex-grow-1">
@@ -60,12 +65,12 @@ const NotificationDropdown = props => {
                     {props.t("Your order is placed")}
                   </h6>
                   <div className="font-size-12 text-muted">
-                    <p style={{color:"#B8CDEA"}} className="mb-1">
+                    <p className="mb-1">
                       {props.t(
                         "If several languages coalesce the grammar"
                       )}
                     </p>
-                    <p style={{color:"#2870FF"}} className="mb-0">
+                    <p className="mb-0">
                       <i className="mdi mdi-clock-outline" />{" "}
                       {props.t("3 min ago")}{" "}
                     </p>
@@ -76,18 +81,18 @@ const NotificationDropdown = props => {
             <Link to="" className="text-reset notification-item">
               <div className="d-flex">
                 <img
-                  src={avatar3}
+                  src={user1}
                   className="me-3 rounded-circle avatar-xs"
                   alt="user-pic"
                 />
                 <div className="flex-grow-1">
                   <h6 className="mt-0 mb-1">James Lemire</h6>
                   <div className="font-size-12 text-muted">
-                    <p style={{color:"#B8CDEA"}} className="mb-1">
+                    <p className="mb-1">
                       {props.t("It will seem like simplified English") +
                         "."}
                     </p>
-                    <p style={{color:"#2870FF"}} className="mb-0">
+                    <p className="mb-0">
                       <i className="mdi mdi-clock-outline" />
                       {props.t("1 hours ago")}{" "}
                     </p>
@@ -107,12 +112,12 @@ const NotificationDropdown = props => {
                     {props.t("Your item is shipped")}
                   </h6>
                   <div className="font-size-12 text-muted">
-                    <p style={{color:"#B8CDEA"}} className="mb-1">
+                    <p className="mb-1">
                       {props.t(
                         "If several languages coalesce the grammar"
                       )}
                     </p>
-                    <p style={{color:"#2870FF"}} className="mb-0">
+                    <p className="mb-0">
                       <i className="mdi mdi-clock-outline" />{" "}
                       {props.t("3 min ago")}
                     </p>
@@ -124,19 +129,19 @@ const NotificationDropdown = props => {
             <Link to="" className="text-reset notification-item">
               <div className="d-flex">
                 <img
-                  src={avatar4}
+                  src={user2}
                   className="me-3 rounded-circle avatar-xs"
                   alt="user-pic"
                 />
                 <div className="flex-grow-1">
                   <h6 className="mt-0 mb-1">Salena Layfield</h6>
                   <div className="font-size-12 text-muted">
-                    <p style={{color:"#B8CDEA"}} className="mb-1">
+                    <p className="mb-1">
                       {props.t(
                         "As a skeptical Cambridge friend of mine occidental"
                       ) + "."}
                     </p>
-                    <p style={{color:"#2870FF"}} className="mb-0">
+                    <p className="mb-0">
                       <i className="mdi mdi-clock-outline" />
                       {props.t("1 hours ago")}{" "}
                     </p>

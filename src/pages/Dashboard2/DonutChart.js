@@ -20,7 +20,7 @@ export const DonutChart = () => {
   };
 
   const option = {
-    // cutout: 250,
+    cutout: 60,
     responsive: true,
     plugins: {
       legend: false,

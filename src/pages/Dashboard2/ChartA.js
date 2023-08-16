@@ -85,7 +85,7 @@ function ChartA() {
   return (
     <Fragment>
       <Card>
-        <CardTitle>
+        <CardTitle style={{color:"#483fd3"}}>
           <div className="ps-4 pt-3">
             <i className="fa-sharp fa-solid fa-signal-strong"></i>{' '}
             สถิติการเข้าใช้งานระบบ
@@ -103,7 +103,7 @@ function ChartA() {
                 </CardBody>
               </Card>
             </Col>
-            <Col xl={4} lg={12} md={12} sm={12} xs={12}>
+            <Col xl={4} lg={12} md={12} sm={12} xs={12} style={{height:"400px"}}>
               <ChartB />
             </Col>
           </Row>

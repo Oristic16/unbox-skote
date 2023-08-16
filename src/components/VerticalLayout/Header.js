@@ -25,6 +25,8 @@ import slack from "../../assets/images/brands/slack.png";
 import logo from "../../assets/images/logo.svg";
 import logoLightSvg from "../../assets/images/logo-light.svg";
 
+import logogorporor from '../../assets/images/draft-Logo-กพร-White.png'
+
 //i18n
 import { withTranslation } from "react-i18next";
 
@@ -94,13 +96,15 @@ const Header = props => {
             <div className="navbar-brand-box d-lg-none d-md-block">
               <Link to="/" className="logo logo-dark">
                 <span className="logo-sm">
-                  <img src={logo} alt="" height="22" />
+                  {/* <img src={logo} alt="" height="22" /> */}
+                  <img src={logogorporor} alt="" height="22" />
                 </span>
               </Link>
 
               <Link to="/" className="logo logo-light">
                 <span className="logo-sm">
-                  <img src={logoLightSvg} alt="" height="22" />
+                  {/* <img src={logoLightSvg} alt="" height="22" /> */}
+                  <img src={logogorporor} alt="" height="22" />
                 </span>
               </Link>
             </div>
@@ -393,7 +397,7 @@ const Header = props => {
             </div>
 
             <NotificationDropdown />
-            {/* <ProfileMenu /> */}
+            <ProfileMenu />
 
             <div
                onClick={() => {
@@ -401,23 +405,31 @@ const Header = props => {
               }}
               className="dropdown d-inline-block"
             >
-              {/* <button
+              <button
                 type="button"
                 className="btn header-item noti-icon right-bar-toggle "
               >
                 <i className="bx bx-cog bx-spin" />
-              </button> */}
+              </button>
               
             </div>
             {/* d-none d-lg-inline-block ms-1 */}
             {/* <Button className='my-3' onClick={handleLogout}>ออกจากระบบ</Button> */}
-
-            <Button
+            
+             <button
+             style={{}}
+             onClick={handleLogout}
+                      color="primary"
+                      className="btn header-item noti-icon right-bar-toggle"
+                    >
+                      ออกจากระบบ
+                    </button>
+            {/* <Button
               style={{background:"NONE",border:"none",whiteSpace:"nowrap"}}
               onClick={handleLogout}
               color="primary"
-              // className="btn btn-primary waves-effect waves-light"
-            >ออกจากระบบ</Button>
+              className="btn btn-primary waves-effect waves-light"
+            >ออกจากระบบ</Button> */}
           </div>
         </div>
       </header>

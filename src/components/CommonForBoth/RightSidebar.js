@@ -123,12 +123,29 @@ const RightSidebar = props => {
                   if (e.target.checked) {
                     props.changeLayoutMode(e.target.value);
                     if(e.target.value !== 'dark') {
-                      localStorage.setItem('theme', 'light')
+                      localStorage.setItem('theme', 'colorful')
                     }
                   }
                 }}
               />
-              <label htmlFor="radioDark">Dark</label>
+              <label className="me-1" htmlFor="radioDark">Dark</label>
+              <input
+                type="radio"
+                id="radioColorful"
+                name="radioColorful"
+                value={layoutModeTypes.COLORFUL}
+                checked={props.layoutModeType === layoutModeTypes.COLORFUL}
+                onChange={e => {
+                  if (e.target.checked) {
+                    props.changeLayoutMode(e.target.value);
+
+                    if(e.target.value === 'colorful') {
+                      localStorage.setItem('theme', 'colorful')
+                    }
+                  }
+                }}
+              />
+              <label className="me-1" htmlFor="radioColorful">Colorful</label>
             </div>
 
             <hr className="mt-1" />

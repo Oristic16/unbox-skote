@@ -9,7 +9,7 @@ function TextCard2() {
         <CardTitle className="p-2">
           <br />
           <Row className="px-2">
-            <Col>
+            <Col style={{color:"#483fd3"}}>
               <i className="fa-solid fa-database"></i> INTRANET
             </Col>
             <Col className="text-end">

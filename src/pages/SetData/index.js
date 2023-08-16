@@ -41,14 +41,14 @@ function SetData() {
       <Container fluid>
         <Breadcrumb title="Home" breadcrumbItem="กำหนดข้อมูล" />
         <Row>
-          <Col xs={12} sm={12} md={12} lg={4} xl={3} xxl={3}>
+          <Col xs={12} sm={12} md={12} lg={3} xl={3} xxl={2}>
             <Card>
               <CardBody className="p-2">
                 <Row className="mb-3">
                   <Col>
                     <Button
                       color="light"
-                      className="w-100"
+                      className="w-100 font-size-12"
                       style={{ textAlign: "center" }}
                     >
                       <i class="fa-solid fa-users"></i> เจ้าหน้าที่
@@ -67,7 +67,7 @@ function SetData() {
                   <Col>
                     <Button
                       color="light"
-                      className="w-100"
+                      className="w-100 font-size-12"
                       style={{ textAlign: "center" }}
                     >
                       <i class="fa-solid fa-place-of-worship"></i> หน่วยงาน
@@ -87,7 +87,7 @@ function SetData() {
                   <Col>
                     <Button
                       color="light"
-                      className="w-100"
+                      className="w-100 font-size-12"
                       style={{ textAlign: "center" }}
                     >
                       <i class="fa-solid fa-user-crown"></i> ผู้บังคับบัญชา
@@ -106,7 +106,7 @@ function SetData() {
                   <Col>
                     <Button
                       color="light"
-                      className="w-100"
+                      className="w-100 font-size-12"
                       style={{ textAlign: "center" }}
                     >
                       <i class="fa-solid fa-percent"></i> ลดหย่อนในภาษี
@@ -125,7 +125,7 @@ function SetData() {
                   <Col>
                     <Button
                       color="light"
-                      className="w-100"
+                      className="w-100 font-size-12"
                       style={{ textAlign: "center" }}
                     >
                       <i class="fa-solid fa-file-import"></i> นำเข้าใบภาษี
@@ -144,7 +144,7 @@ function SetData() {
                   <Col>
                     <Button
                       color="light"
-                      className="w-100"
+                      className="w-100 font-size-12"
                       style={{ textAlign: "center" }}
                     >
                       <i class="fa-sharp fa-regular fa-location-dot"></i>{" "}
@@ -164,7 +164,7 @@ function SetData() {
                   <Col>
                     <Button
                       color="light"
-                      className="w-100"
+                      className="w-100 font-size-12"
                       style={{ textAlign: "center" }}
                     >
                       <i class="fa-solid fa-hashtag"></i> เลขที่ตำแหน่ง
@@ -183,7 +183,7 @@ function SetData() {
                   <Col>
                     <Button
                       color="light"
-                      className="w-100"
+                      className="w-100 font-size-12"
                       style={{ textAlign: "center" }}
                     >
                       <i class="fa-solid fa-users-gear"></i> ประเภทเจ้าหน้าที่
@@ -201,7 +201,7 @@ function SetData() {
               </CardBody>
             </Card>
           </Col>
-          <Col md={12} lg={8} xl={9} xxl={9}>
+          <Col md={12} lg={9} xl={9} xxl={10}>
             <Row className="mb-3">
               <Col lg={5}>
                 <InputGroup>
@@ -224,16 +224,17 @@ function SetData() {
             <Row>
               <Col>
                 <Table
+                className="align-middle"
                 striped
                 style={{ 
-                  textAlign: "center",
+                  // textAlign: "center",
                   overflow:"scroll" 
                 }} 
                 responsive>
                   <thead 
                   className="table-light"
                   style={{whiteSpace:"nowrap"}}>
-                    <tr>
+                    <tr >
                       <th>ลำดับ</th>
                       <th>ชื่อ-นามสกุล</th>
                       <th>ประเภทเจ้าหน้าที่</th>
@@ -248,7 +249,7 @@ function SetData() {
                       </th>
                     </tr>
                   </thead>
-                  <tbody style={{ verticalAlign: "middle" }}>
+                  <tbody>
                     <tr>
                       <td scope="row" style={{ fontSize: "16px" }}>1</td>
                       <td>กนกพร</td>

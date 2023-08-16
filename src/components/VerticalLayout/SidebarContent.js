@@ -164,12 +164,12 @@ const SidebarContent = props => {
                 </Link>
               </li>
 
-              <li>
+              {/* <li>
                 <Link to="/managesorce">
                 <i className="fa-regular fa-people-roof"></i>
                   <span>{props.t("บริหารทรัพยากรออนไลน์")}</span>
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link to="/setdata">
                 <i className="fa-solid fa-file-shield"></i>

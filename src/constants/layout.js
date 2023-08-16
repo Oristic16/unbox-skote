@@ -12,6 +12,7 @@ const layoutWidthTypes = {
 const layoutModeTypes = {
   DARK: "dark",
   LIGHT: "light",
+  COLORFUL: "colorful",
 }
 
 const topBarThemeTypes = {
