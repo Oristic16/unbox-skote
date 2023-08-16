@@ -72,7 +72,7 @@ const FileList = () => {
                     <div className="float-end ms-2">
                       <UncontrolledDropdown className="mb-2">
                         <DropdownToggle
-                          className="font-size-16 text-muted"
+                          className="font-size-16  "
                           tag="a"
                         >
                           <i className="mdi mdi-dots-horizontal"></i>
@@ -107,12 +107,12 @@ const FileList = () => {
                             {myfiles.name}
                           </Link>
                         </h5>
-                        <p className="text-muted text-truncate mb-0">
+                        <h5 className="text-truncate mb-0">
                           {myfiles.file} Files
-                        </p>
+                        </h5>
                       </div>
                       <div className="align-self-end ms-2">
-                        <p className="text-muted mb-0">{myfiles.Gb}GB</p>
+                        <p className="mb-0">{myfiles.Gb}GB</p>
                       </div>
                     </div>
                   </div>

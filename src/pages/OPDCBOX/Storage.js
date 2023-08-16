@@ -22,7 +22,7 @@ const Storage = (props) => {
               />
             </div>
 
-            <p className="text-muted mt-4">48.02 GB (76%) of 64 GB used</p>
+            <p className="mt-4">48.02 GB (76%) of 64 GB used</p>
           </div>
 
           <div className="mt-4">
@@ -40,11 +40,11 @@ const Storage = (props) => {
                       <h5 className="font-size-13 text-truncate mb-1">
                         Images
                       </h5>
-                      <p className="text-muted text-truncate mb-0">176 Files</p>
+                      <p className=" text-truncate mb-0">176 Files</p>
                     </div>
 
                     <div className="ml-2">
-                      <p className="text-muted">6 GB</p>
+                      <p className="">6 GB</p>
                     </div>
                   </div>
                 </div>
@@ -63,11 +63,11 @@ const Storage = (props) => {
 
                     <div className="overflow-hidden me-auto">
                       <h5 className="font-size-13 text-truncate mb-1">Video</h5>
-                      <p className="text-muted text-truncate mb-0">45 Files</p>
+                      <p className="text-truncate mb-0">45 Files</p>
                     </div>
 
                     <div className="ml-2">
-                      <p className="text-muted">4.1 GB</p>
+                      <p className="">4.1 GB</p>
                     </div>
                   </div>
                 </div>
@@ -86,11 +86,11 @@ const Storage = (props) => {
 
                     <div className="overflow-hidden me-auto">
                       <h5 className="font-size-13 text-truncate mb-1">Music</h5>
-                      <p className="text-muted text-truncate mb-0">21 Files</p>
+                      <p className="text-truncate mb-0">21 Files</p>
                     </div>
 
                     <div className="ml-2">
-                      <p className="text-muted">3.2 GB</p>
+                      <p className="">3.2 GB</p>
                     </div>
                   </div>
                 </div>
@@ -111,11 +111,11 @@ const Storage = (props) => {
                       <h5 className="font-size-13 text-truncate mb-1">
                         Document
                       </h5>
-                      <p className="text-muted text-truncate mb-0">21 Files</p>
+                      <p className=" text-truncate mb-0">21 Files</p>
                     </div>
 
                     <div className="ml-2">
-                      <p className="text-muted">2 GB</p>
+                      <p className=" ">2 GB</p>
                     </div>
                   </div>
                 </div>
@@ -136,11 +136,11 @@ const Storage = (props) => {
                       <h5 className="font-size-13 text-truncate mb-1">
                         Others
                       </h5>
-                      <p className="text-muted text-truncate mb-0">20 Files</p>
+                      <p className="  text-truncate mb-0">20 Files</p>
                     </div>
 
                     <div className="ml-2">
-                      <p className="text-muted">1.4 GB</p>
+                      <p className=" ">1.4 GB</p>
                     </div>
                   </div>
                 </div>

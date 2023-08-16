@@ -180,7 +180,7 @@ export default class Dashboard2 extends Component {
                           >
                             <div className="avatar-sm rounded-circle align-self-center mini-stat-icon">
                               <span
-                                style={{ background: "#ff9825" }}
+                                style={{ background: "#fff" }}
                                 className="avatar-title rounded-circle"
                                 id="iconCard"
                               >
@@ -197,7 +197,7 @@ export default class Dashboard2 extends Component {
                           <Col>
                             <Row>
                               <Col>
-                                <h6 className="card-title font-size-12">
+                                <h6 style={{color:"#fff"}} className="card-title font-size-12">
                                   <b>เจ้าหน้าที่สำนักงาน ก.พ.ร.</b>
                                 </h6>
                               </Col>
@@ -215,6 +215,7 @@ export default class Dashboard2 extends Component {
                                   style={{
                                     height: "10px",
                                     background: "#e5e5e5",
+                                    border:"2px solid #d5d5d5"
                                   }}
                                   value={90}
                                 />
@@ -229,7 +230,7 @@ export default class Dashboard2 extends Component {
                                 >
                                   <span
                                     className={
-                                      "badge badge-soft-" +
+                                      "badge bg-" +
                                       "success" +
                                       " font-size-12"
                                     }
@@ -259,7 +260,7 @@ export default class Dashboard2 extends Component {
                               {/* <span className="avatar-title rounded-circle bg-primary"> */}
                               <span
                                 id="iconCard"
-                                style={{ background: "#0061ff" }}
+                                style={{ background: "#fff" }}
                                 className="avatar-title rounded-circle "
                               >
                                 <i
@@ -272,7 +273,7 @@ export default class Dashboard2 extends Component {
                           <Col>
                             <Row>
                               <Col>
-                                <h5 className="card-title font-size-14">
+                                <h5 style={{color:"white"}} className="card-title font-size-14">
                                   ผู้บังคับบัญชา
                                 </h5>
                               </Col>
@@ -290,6 +291,7 @@ export default class Dashboard2 extends Component {
                                   style={{
                                     height: "10px",
                                     background: "#e5e5e5",
+                                    border:"2px solid #d5d5d5"
                                   }}
                                   value={70}
                                 />
@@ -304,7 +306,7 @@ export default class Dashboard2 extends Component {
                                 >
                                   <span
                                     className={
-                                      "badge badge-soft-" +
+                                      "badge bg-" +
                                       "danger" +
                                       " font-size-12"
                                     }
@@ -333,7 +335,7 @@ export default class Dashboard2 extends Component {
                             <div className="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
                               {/* <span className="avatar-title rounded-circle bg-primary"> */}
                               <span
-                                style={{ background: "#ff378f" }}
+                                style={{ background: "#fff" }}
                                 className="avatar-title rounded-circle"
                                 id="iconCard"
                               >
@@ -347,7 +349,7 @@ export default class Dashboard2 extends Component {
                           <Col>
                             <Row>
                               <Col>
-                                <h6 className="card-title font-size-14">
+                                <h6 style={{color:"white"}} className="card-title font-size-14">
                                   <b>หน่วยงาน</b>
                                 </h6>
                               </Col>
@@ -365,6 +367,7 @@ export default class Dashboard2 extends Component {
                                   style={{
                                     height: "10px",
                                     background: "#e5e5e5",
+                                    border:"2px solid #d5d5d5"
                                   }}
                                   value={40}
                                 />
@@ -379,7 +382,7 @@ export default class Dashboard2 extends Component {
                                 >
                                   <span
                                     className={
-                                      "badge badge-soft-" +
+                                      "badge bg-" +
                                       "success" +
                                       " font-size-12"
                                     }
@@ -409,7 +412,7 @@ export default class Dashboard2 extends Component {
                             <div className="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
                               {/* <span className="avatar-title rounded-circle bg-primary"> */}
                               <span
-                                style={{ background: "#58bd81" }}
+                                style={{ background: "#fff" }}
                                 className="avatar-title rounded-circle"
                                 id="iconCard"
                               >
@@ -423,7 +426,7 @@ export default class Dashboard2 extends Component {
                           <Col>
                             <Row>
                               <Col>
-                                <h6 className="font-size-14">
+                                <h6 style={{color:"white"}} className="font-size-14">
                                   <b>ผู้ดูแลระบบ</b>
                                 </h6>
                               </Col>
@@ -441,6 +444,7 @@ export default class Dashboard2 extends Component {
                                   style={{
                                     height: "10px",
                                     background: "#e5e5e5",
+                                    border:"2px solid #d5d5d5"
                                   }}
                                   value={80}
                                 />
@@ -455,7 +459,7 @@ export default class Dashboard2 extends Component {
                                 >
                                   <span
                                     className={
-                                      "badge badge-soft-" +
+                                      "badge bg-" +
                                       "success" +
                                       " font-size-12"
                                     }
@@ -861,7 +865,7 @@ export default class Dashboard2 extends Component {
                       <Col>
                         <Card style={{ backgroundColor: "#ffc74f" }}>
                           <CardBody>
-                            <CardTitle >INTRANET</CardTitle>
+                            <CardTitle style={{color:"#"}} >INTRANET</CardTitle>
                             <Row>
                               <Col lg={9}>
                                 <Row>
