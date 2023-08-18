@@ -13,6 +13,7 @@ import OPDCBox from "../pages/OPDCBOX";
 import SetData from "../pages/SetData";
 import RateService from '../pages/การประเมิน/index'
 import ManageSorce from "../pages/ManageSorce";
+import TestAPI from "../pages/TestAPI";
 
 const authProtectedRoutes = [
 
@@ -24,6 +25,7 @@ const authProtectedRoutes = [
   { path: "/setdata", component: <SetData /> },
   { path: "/rateservice", component: <RateService /> },
   { path: "/managesorce", component: <ManageSorce /> },
+  { path: "/testapi", component: <TestAPI /> },
   // { path: "*", component: <NotFound404 /> },
   {
     path: "/",

@@ -57,7 +57,7 @@ const NotificationDropdown = props => {
                 <div className="avatar-xs me-3">
                   <span className="avatar-title bg-primary rounded-circle font-size-16">
                     {/* <i className="bx bx-cart" /> */}
-                    <i class="fa-sharp fa-solid fa-bullhorn"></i>
+                    <i className="fa-sharp fa-solid fa-bullhorn"></i>
                   </span>
                 </div>
                 <div className="flex-grow-1">

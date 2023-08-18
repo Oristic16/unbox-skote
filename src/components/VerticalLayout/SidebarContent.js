@@ -143,7 +143,7 @@ const SidebarContent = props => {
   }
   
   const checkRole = JSON.parse(localStorage.getItem('authUser')) 
-  console.log("Role = " + checkRole.role)
+  // console.log("Role = " + checkRole.role)
 
   const checkLocalRole = () => {
     if(checkRole.role === 'user') {
@@ -170,6 +170,12 @@ const SidebarContent = props => {
                   <span>{props.t("บริหารทรัพยากรออนไลน์")}</span>
                 </Link>
               </li> */}
+              <li>
+                <Link to="/testapi">
+                <i className="fa-regular fa-people-roof"></i>
+                  <span>{props.t("test api")}</span>
+                </Link>
+              </li>
               <li>
                 <Link to="/setdata">
                 <i className="fa-solid fa-file-shield"></i>

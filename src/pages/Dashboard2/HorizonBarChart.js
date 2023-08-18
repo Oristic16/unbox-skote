@@ -6,6 +6,7 @@ import { Bar } from "react-chartjs-2";
 ChartJS.register(...registerables);
 
 export const HorizonBarChart = () => {
+
     const labels = [
       "ลาป่วย ลากิจ ลาคลอดบุตร",
       "ลาพักผ่อน",
@@ -48,7 +49,7 @@ export const HorizonBarChart = () => {
         y: {
           ticks: {
             font: {
-              size: 13,
+              size: 11,
               // family: 'angasnaNew'
             },
           },
