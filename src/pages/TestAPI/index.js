@@ -1,33 +1,20 @@
 import React, { useEffect, useState } from "react";
 
 import Breadcrumb from "../../components/Common/Breadcrumb";
-import { Button, Card, CardBody, Col, Container, FormGroup, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader, Row, Table } from "reactstrap";
+import { Button, Card, CardBody, Col, Container, Row, Table } from "reactstrap";
 import axios from "axios";
+import ModalUpdate from "./ModalUpdate";
+import ModalAdd from "./ModalAdd";
 
 function TestAPI() {
+
   const [timeNow, setTimeNow] = useState(new Date());
   const [data, setData] = useState([]);
   const [userData, setUserData] = useState({
-    user: null,
-    role: null,
-    time: null,
+    user: '',
+    role: '',
+    time: '',
   });
-  const [open, setOpen] = useState(false)
-  const [openAdd, setOpenAdd] = useState(false)
-  const [modalData, setModalData] = useState({
-    id:null,
-    username:null,
-    password:null,
-  })
-
-  function getLocalSorage() {
-    setUserData((prevData) => ({
-        ...prevData,
-        user: JSON.parse(localStorage.getItem("authUser")).username,
-        role: JSON.parse(localStorage.getItem("authUser")).role,
-        time: timeNow.toLocaleString()
-    }));
-  }
 
   const getData = () => {
     axios
@@ -53,71 +40,46 @@ function TestAPI() {
     }
   };
 
-  const setTimeAuto = () => {
-    var timer = setInterval(() => setTimeNow(new Date()), 1000);
-
-    return function cleanup() {
-      clearInterval(timer);
-    };
-  };
+  
 
   function deleteRow(id) {
     setData(prev => prev.filter(item => item.id !== id))
   }
 
-  function openModal() {
-    setOpen(false)
-  }
-  function openAddModal() {
-    setOpenAdd(false)
-  }
-
-  function updateButton(id) {
-    setOpen(true)
-    const itemToUpdate = data.find(item => item.id === id)
-    setModalData({ id: id, ...itemToUpdate})
-    console.log(modalData)
-  }
-
-  function updateDataBase(id, updatedData) {
-    try { 
-        axios.put("http://localhost:8000/update/id")
-    } catch (err) {
-        console.error(err);
-    }
-  }
-
-  function saveChange() {
-    const indexToUpdate = data.findIndex(item => item.id === modalData.id);
-    
-    const updatedItem = {
-        id : modalData.id,
-        username: modalData.username,
-        password: modalData.password
-    }
-
-    const updatedData = [...data]
-    updatedData[indexToUpdate] = updatedItem
-
-    setData(updatedData)
-
-    // updateDataBase(modalData.id, updatedData);
-    setOpen(false)
-  }
-
-  function addRow() {
-    setOpenAdd(true)
-  }
-
   useEffect(() => {
     getData();
-    getLocalSorage();
     // checkUser();
   }, []);
 
   useEffect(() => {
+
+    const getLocalSorage = () => {
+      const authUser = JSON.parse(localStorage.getItem("authUser"));
+      if (authUser) {
+        setUserData((prevData) => ({
+          ...prevData,
+          user: authUser.username,
+          role: authUser.role,
+          time: new Date().toLocaleString()
+        }));
+      }
+    }
+  
+    getLocalSorage();
+  },[timeNow])
+
+  useEffect(() => {
+
+    const setTimeAuto = () => {
+      var timer = setInterval(() => setTimeNow(new Date()), 1000);
+  
+      return function cleanup() {
+        clearInterval(timer);
+      };
+    };
+  
     setTimeAuto();
-  },[])
+  },[timeNow])
 
   return (
     <div className="page-content">
@@ -135,7 +97,7 @@ function TestAPI() {
                         <h1>Test API</h1>
                     </Col>
                     <Col xl={6} className="d-flex justify-content-end">
-                        <Button onClick={addRow}>Add Data</Button>
+                      <ModalAdd />
                     </Col>
                 </Row>
             </div>
@@ -158,7 +120,8 @@ function TestAPI() {
                       <td>{item.id}</td>
                       <td>{item.username}</td>
                       <td>{item.password}</td>
-                      <td><Button color="warning" onClick={() => updateButton(item.id,)}>Update</Button></td>
+                      {/* <td><Button color="warning" onClick={() => updateButton(item.id,)}>Update</Button></td> */}
+                      <td><ModalUpdate data={data} /></td>
                       <td><Button color="danger" onClick={() => deleteRow(item.id)}>Delete</Button></td>
                     </tr>
                   );

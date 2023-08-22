@@ -14,6 +14,8 @@ import SetData from "../pages/SetData";
 import RateService from '../pages/การประเมิน/index'
 import ManageSorce from "../pages/ManageSorce";
 import TestAPI from "../pages/TestAPI";
+import RegisterTest from "../pages/Authentication/RegisterTest";
+import LaOnline from '../pages/LaOnline/index'
 
 const authProtectedRoutes = [
 
@@ -26,6 +28,8 @@ const authProtectedRoutes = [
   { path: "/rateservice", component: <RateService /> },
   { path: "/managesorce", component: <ManageSorce /> },
   { path: "/testapi", component: <TestAPI /> },
+  { path: "/registertest", component: <RegisterTest /> },
+  { path: "/laonline", component: <LaOnline /> },
   // { path: "*", component: <NotFound404 /> },
   {
     path: "/",

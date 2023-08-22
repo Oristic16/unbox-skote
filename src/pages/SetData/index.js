@@ -37,6 +37,7 @@ function SetData() {
   };
 
   return (
+    <React.Fragment>
     <div className="page-content">
       <Container fluid>
         <Breadcrumb title="Home" breadcrumbItem="กำหนดข้อมูล" />
@@ -51,7 +52,7 @@ function SetData() {
                       className="w-100 font-size-12"
                       style={{ textAlign: "center" }}
                     >
-                      <i class="fa-solid fa-users"></i> เจ้าหน้าที่
+                      <i className="fa-solid fa-users"></i> เจ้าหน้าที่
                       <Badge
                         className="ms-1"
                         style={{ verticalAlign: "middle" }}
@@ -70,7 +71,7 @@ function SetData() {
                       className="w-100 font-size-12"
                       style={{ textAlign: "center" }}
                     >
-                      <i class="fa-solid fa-place-of-worship"></i> หน่วยงาน
+                      <i className="fa-solid fa-place-of-worship"></i> หน่วยงาน
                       ก.พ.ร.
                       <Badge
                         className="ms-1"
@@ -90,7 +91,7 @@ function SetData() {
                       className="w-100 font-size-12"
                       style={{ textAlign: "center" }}
                     >
-                      <i class="fa-solid fa-user-crown"></i> ผู้บังคับบัญชา
+                      <i className="fa-solid fa-user-crown"></i> ผู้บังคับบัญชา
                       <Badge
                         className="ms-1"
                         style={{ verticalAlign: "middle" }}
@@ -109,7 +110,7 @@ function SetData() {
                       className="w-100 font-size-12"
                       style={{ textAlign: "center" }}
                     >
-                      <i class="fa-solid fa-percent"></i> ลดหย่อนในภาษี
+                      <i className="fa-solid fa-percent"></i> ลดหย่อนในภาษี
                       <Badge
                         className="ms-1"
                         style={{ verticalAlign: "middle" }}
@@ -128,7 +129,7 @@ function SetData() {
                       className="w-100 font-size-12"
                       style={{ textAlign: "center" }}
                     >
-                      <i class="fa-solid fa-file-import"></i> นำเข้าใบภาษี
+                      <i className="fa-solid fa-file-import"></i> นำเข้าใบภาษี
                       <Badge
                         className="ms-1"
                         style={{ verticalAlign: "middle" }}
@@ -147,7 +148,7 @@ function SetData() {
                       className="w-100 font-size-12"
                       style={{ textAlign: "center" }}
                     >
-                      <i class="fa-sharp fa-regular fa-location-dot"></i>{" "}
+                      <i className="fa-sharp fa-regular fa-location-dot"></i>{" "}
                       จังหวัด
                       <Badge
                         className="ms-1"
@@ -167,7 +168,7 @@ function SetData() {
                       className="w-100 font-size-12"
                       style={{ textAlign: "center" }}
                     >
-                      <i class="fa-solid fa-hashtag"></i> เลขที่ตำแหน่ง
+                      <i className="fa-solid fa-hashtag"></i> เลขที่ตำแหน่ง
                       <Badge
                         className="ms-1"
                         style={{ verticalAlign: "middle" }}
@@ -186,7 +187,7 @@ function SetData() {
                       className="w-100 font-size-12"
                       style={{ textAlign: "center" }}
                     >
-                      <i class="fa-solid fa-users-gear"></i> ประเภทเจ้าหน้าที่
+                      <i className="fa-solid fa-users-gear"></i> ประเภทเจ้าหน้าที่
                       <Badge
                         className="ms-1"
                         style={{ verticalAlign: "middle" }}
@@ -239,13 +240,13 @@ function SetData() {
                       <th>ชื่อ-นามสกุล</th>
                       <th>ประเภทเจ้าหน้าที่</th>
                       <th>
-                        <i class="fa-solid fa-envelope"></i> อีเมลล์
+                        <i className="fa-solid fa-envelope"></i> อีเมลล์
                       </th>
                       <th>
-                        <i class="fa-solid fa-id-card"></i> เลขประจำตัวประชาชน
+                        <i className="fa-solid fa-id-card"></i> เลขประจำตัวประชาชน
                       </th>
                       <th>
-                        <i class="fa-solid fa-phone-volume"></i> เบอร์โทรศัพท์
+                        <i className="fa-solid fa-phone-volume"></i> เบอร์โทรศัพท์
                       </th>
                     </tr>
                   </thead>
@@ -481,6 +482,7 @@ function SetData() {
         </Offcanvas>
       </Container>
     </div>
+    </React.Fragment>
   );
 }
 

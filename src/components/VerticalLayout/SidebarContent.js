@@ -194,6 +194,24 @@ const SidebarContent = props => {
                   <span>{props.t("การลาออนไลน์")}</span>
                 </Link>
               </li>
+              <li>
+                <Link to="/logintest">
+                  <i className="bx bxs-bell"></i>
+                  <span>{props.t("Login")}</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/registertest">
+                  <i className="bx bxs-bell"></i>
+                  <span>{props.t("Register")}</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/laonline">
+                  <i className="bx bxs-bell"></i>
+                  <span>{props.t("การลาออนไลน์Mock")}</span>
+                </Link>
+              </li>
               {/* <li>
                 <Button color="primary" className="mt-3 ms-4">
                 <i className="fa-solid fa-handshake-angle"></i>
