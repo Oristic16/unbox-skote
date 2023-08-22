@@ -891,11 +891,11 @@ const SelectForm = ({ idForm }) => {
                 เขียนที่
               </Label>
               <Col xl={4}>
-                <Input type="text" value="สำนักงาน ก.พ.ร." />
+                <Input disabled type="text" value="สำนักงาน ก.พ.ร." />
               </Col>
               <Label xl={2}>วันที่</Label>
               <Col xl={4}>
-                <Input type="text" value={formattedDate} />
+                <Input disabled type="text" value={formattedDate} />
               </Col>
             </FormGroup>
             <FormGroup row>
