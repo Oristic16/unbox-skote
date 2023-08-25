@@ -16,17 +16,17 @@ function TestAPI() {
     time: '',
   });
 
-  const getData = () => {
-    axios
-      .get("http://localhost:8000/select")
-      .then((res) => {
-        setData(res.data);
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
+  // const getData = () => {
+  //   axios
+  //     .get("http://localhost:8000/select")
+  //     .then((res) => {
+  //       setData(res.data);
+  //       console.log(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //     });
+  // };
 
   const checkUser = () => {
     try {
@@ -47,7 +47,7 @@ function TestAPI() {
   }
 
   useEffect(() => {
-    getData();
+    // getData();
     // checkUser();
   }, []);
 
@@ -80,6 +80,28 @@ function TestAPI() {
   
     setTimeAuto();
   },[timeNow])
+
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleSubmit = async(event) => {
+    event.preventDefault()
+    const formData = new FormData();
+    formData.append("selectedFile", selectedFile);
+    try {
+      const response = await axios({
+        method: "post",
+        url: "http://localhost:8000/testupload",
+        data: formData,
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+    } catch(error) {
+      console.log(error)
+    }
+  }
+
+  const handleFileSelect = (event) => {
+    setSelectedFile(event.target.files[0])
+  }
 
   return (
     <div className="page-content">
@@ -135,6 +157,15 @@ function TestAPI() {
                 <h5>Time = {userData.time}</h5>
               </div>
             ) : null}
+          </CardBody>
+        </Card>
+
+        <Card>
+          <CardBody>
+            <form onSubmit={handleSubmit}>
+              <input type="file" onChange={handleFileSelect}/>
+              <input type="submit" value="Upload File" />
+            </form>
           </CardBody>
         </Card>
         

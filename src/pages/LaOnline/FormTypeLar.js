@@ -22,7 +22,7 @@ const FormTypeLar = () => {
             <OffcanvasBody>
             <Container fluid>
                     <Row style={{display:"flex",alignItems:"center",justifyContent:"end"}}>
-                        <Label xl={2}>ประเภทการลา</Label>
+                        <Label className='text-end' xl={2}>ประเภทการลา</Label>
                     <Col xl={4}>
                     <Input className='my-3' type='select' onChange={(e) => setFormNum(e.target.value)}>
                             <option value="">กรุณาระบุ</option>

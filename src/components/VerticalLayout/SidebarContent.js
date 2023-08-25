@@ -209,7 +209,7 @@ const SidebarContent = props => {
               <li>
                 <Link to="/laonline">
                   <i className="bx bxs-bell"></i>
-                  <span>{props.t("การลาออนไลน์Mock")}</span>
+                  <span>{props.t("การลาออนไลน์2")}</span>
                 </Link>
               </li>
               {/* <li>
