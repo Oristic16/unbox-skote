@@ -7,13 +7,16 @@ import { Provider } from "react-redux";
 import reportWebVitals from './reportWebVitals'
 
 import store from "./store";
+import { FontSizeProvider } from "./pages/Context/FontSizeContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <Provider store={store}>
       <React.Fragment>
         <BrowserRouter>
-          <App />
+          <FontSizeProvider>
+            <App />
+          </FontSizeProvider>
         </BrowserRouter>
       </React.Fragment>
     </Provider>
