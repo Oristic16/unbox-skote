@@ -1,14 +1,6 @@
 import React, { Fragment } from 'react';
 import {
   Card,
-  CardBody,
-  CardHeader,
-  CardSubtitle,
-  CardTitle,
-  Col,
-  ListGroup,
-  ListGroupItem,
-  Row,
   Table,
 } from 'reactstrap';
 

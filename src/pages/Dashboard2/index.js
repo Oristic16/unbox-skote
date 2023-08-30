@@ -4,56 +4,36 @@ import {
   Button,
   Card,
   CardBody,
-  CardHeader,
   CardTitle,
   Col,
   Container,
-  Form,
-  Input,
-  Label,
-  Nav,
-  NavItem,
-  NavLink,
   Progress,
   Row,
-  TabContent,
-  TabPane,
 } from "reactstrap";
-
-import classnames from "classnames";
-
 import { Chart as ChartJS, registerables } from "chart.js";
 
 import Breadcrumbs from "../../components/Common/Breadcrumb";
-
-import { DonutChart } from "./DonutChart";
-import { HorizonBarChart } from "./HorizonBarChart";
 import { MixChart } from "./MixChart";
+import { WaterballChart } from "./WaterballChart";
 
 import Calendar from "./Calendar";
 import TextCard from "./TextCard";
 import TextCard2 from "./TextCard2";
 import TableA from "./TableA";
 import ChartA from "./ChartA";
-import axios from "axios";
+import Karnlar from "./KarnLar/Karnlar";
 
 ChartJS.register(...registerables);
 
 export default class Dashboard2 extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
-      activeTab1: "5",
       role: null,
       timeNow: new Date(),
     };
   }
-
-  toggle1 = (tab) => {
-    if (this.state.activeTab1 !== tab) {
-      this.setState({ activeTab1: tab });
-    }
-  };
 
   checkRole = () => {
     const getStorage = localStorage.getItem("authUser");
@@ -83,7 +63,10 @@ export default class Dashboard2 extends Component {
   };
 
   render() {
-    const { role, timeNow, activeTab1 } = this.state;
+
+    document.title = "Dashboard | Skote - React Admin & Dashboard Template";
+
+    const { role, timeNow, } = this.state;
 
     if (role === "admin") {
       return (
@@ -167,6 +150,18 @@ export default class Dashboard2 extends Component {
             <Breadcrumbs title="Home" breadcrumbItem="Dashboard" />
             <Row>
               <Col lg={12}>
+                <Row className="mb-3">
+                  <Col  xl={3}>
+                    <div style={{height:"500px", width:"500px", border:"2px solid black",background:"#fff", display:"flex", alignItems:"center", justifyContent:"center"}}>
+                    {/* <WaterballChart /> */}
+                      <div style={{height:"450px", width:"450px", border:"2px solid red", borderRadius:"100%", padding:"10px", background:"transparent"}}>
+                        <div style={{height:"400px", width:"400px", border:"2px solid blue", position:"absolute", zIndex:"0", background:"blue"}}>
+
+                        </div>
+                      </div>
+                    </div>
+                  </Col>
+                </Row>
                 <Row>
                   <Col sm={6} md={6} lg={6} xl={6} xxl={3}>
                     <Card className="card mini-stats-wid" id="card1">
@@ -477,168 +472,8 @@ export default class Dashboard2 extends Component {
                   </Col>
                 </Row>
                 <Row>
-                  <Col lg={8} xl={9} xxl={9}>
-                    <Card className="pb-0">
-                      <CardBody className="pb-0">
-                        <CardTitle style={{color:"#483fd3"}}>
-                          <i className="fa-solid fa-briefcase font-size-18 me-2"></i>
-                          ภาพรวมการลาปฏิบัติงาน
-                        </CardTitle>
-                        <Row className="mb-0">
-                          <Col lg={12} xl={12}>
-                            <Card>
-                              <CardBody>
-                                <Nav
-                                  fill
-                                  // tabs
-                                  pills
-                                  className="navtab-bg mt-0"
-                                >
-                                  <NavItem>
-                                    <NavLink
-                                      style={{ cursor: "pointer" }}
-                                      className={classnames({
-                                        active: activeTab1 === "5",
-                                      })}
-                                      onClick={() => {
-                                        this.toggle1("5");
-                                      }}
-                                    >
-                                      ข้อมูลการลา
-                                    </NavLink>
-                                  </NavItem>
-                                  <NavItem>
-                                    <NavLink
-                                      style={{ cursor: "pointer" }}
-                                      className={classnames({
-                                        active: activeTab1 === "6",
-                                      })}
-                                      onClick={() => {
-                                        this.toggle1("6");
-                                      }}
-                                    >
-                                      ประเภทการลา
-                                    </NavLink>
-                                  </NavItem>
-                                  <NavItem></NavItem>
-                                  <NavItem></NavItem>
-                                </Nav>
-                                <div
-                                  className="my-4"
-                                  style={{ border: "2.5px solid #3a40cd" }}
-                                ></div>
-                                <TabContent
-                                  activeTab={activeTab1}
-                                  className="p-3 text-muted"
-                                >
-                                  <TabPane tabId="5">
-                                    <CardTitle style={{color:"#483fd3"}} className="mb-2">
-                                      <h5>
-                                        <i className="fa-solid fa-memo-circle-info font-size-16 me-1"></i>
-                                        ข้อมูลการลา
-                                      </h5>
-                                    </CardTitle>
-                                    <Row
-                                      className="mb-0 mt-3"
-                                      style={{
-                                        display: "flex",
-                                        alignItems: "center",
-                                      }}
-                                    >
-                                      <Col
-                                        lg={6}
-                                        xl={6}
-                                        style={{
-                                          display: "flex",
-                                          justifyContent: "center",
-                                          height: "200px",
-                                        }}
-                                      >
-                                        <DonutChart />
-                                      </Col>
-                                      <Col>
-                                        <Row className="mb-2 mt-3">
-                                          <Col className="text-start">
-                                            <h5>คำขอลาเวลาปฏิบัติงาน</h5>
-                                          </Col>
-                                          <Col
-                                            lg={2}
-                                            xl={2}
-                                            className="text-end"
-                                          >
-                                            <h5>33</h5>
-                                          </Col>
-                                        </Row>
-                                        <Row className="mb-1">
-                                          <Col className="text-start">
-                                            <h5>
-                                              <i
-                                                style={{ color: "#7180ff" }}
-                                                className="fa-solid fa-square me-2"
-                                              ></i>
-                                              อนุญาตใบลา
-                                            </h5>
-                                          </Col>
-                                          <Col lg={2} className="text-end">
-                                            <h5>15</h5>
-                                          </Col>
-                                        </Row>
-                                        <Row className="mb-1">
-                                          <Col className="text-start">
-                                            <h5>
-                                              <i
-                                                style={{ color: "#4dff62" }}
-                                                className="fa-solid fa-square me-2"
-                                              ></i>
-                                              อนุมัติใบลา
-                                            </h5>
-                                          </Col>
-                                          <Col lg={2} className="text-end">
-                                            <h5>10</h5>
-                                          </Col>
-                                        </Row>
-                                        <Row>
-                                          <Col className="text-start">
-                                            <h5>
-                                              <i
-                                                style={{ color: "#ff6868" }}
-                                                className="fa-solid fa-square me-2"
-                                              ></i>
-                                              ยกเลิกใบลา
-                                            </h5>
-                                          </Col>
-                                          <Col lg={2} className="text-end">
-                                            <h5>8</h5>
-                                          </Col>
-                                        </Row>
-                                      </Col>
-                                    </Row>
-                                  </TabPane>
-                                  <TabPane tabId="6">
-                                    <CardTitle style={{color:"#483fd3"}}>
-                                      <h5>
-                                        <i className="fa-solid fa-house-person-leave font-size-18 me-1"></i>
-                                        ประเภทการลา
-                                      </h5>
-                                    </CardTitle>
-                                    <Row>
-                                      <Col
-                                        lg={12}
-                                        style={{
-                                          height: "350px",
-                                        }}
-                                      >
-                                        <HorizonBarChart />
-                                      </Col>
-                                    </Row>
-                                  </TabPane>
-                                </TabContent>
-                              </CardBody>
-                            </Card>
-                          </Col>
-                        </Row>
-                      </CardBody>
-                    </Card>
+                  <Col lg={8} xl={6}>
+                    <Karnlar />
                   </Col>
                   <Col sm={12} lg={4} xl={3} xxl={3}>
                     <Card>

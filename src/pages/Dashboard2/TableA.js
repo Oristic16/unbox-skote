@@ -1,16 +1,12 @@
 import React, { Fragment, useState } from 'react';
 import {
   Badge,
-  Button,
   Card,
   CardBody,
-  CardText,
   CardTitle,
-  Col,
   Nav,
   NavItem,
   NavLink,
-  Row,
   TabContent,
   Table,
   TabPane,

@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { Badge, Card, CardBody, CardTitle, Col, Row, Table } from 'reactstrap';
+import { Badge, Card, CardBody, CardTitle, Col, Row } from 'reactstrap';
 
 function TextCard2() {
   return (

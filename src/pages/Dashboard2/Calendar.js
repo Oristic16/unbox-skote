@@ -2,12 +2,12 @@ import React, { Fragment } from 'react';
 import { Card, CardBody } from 'reactstrap';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
-import interactionPlugin, { Draggable } from '@fullcalendar/interaction';
+import interactionPlugin from '@fullcalendar/interaction';
 import BootstrapTheme from '@fullcalendar/bootstrap';
 // import '@fullcalendar/bootstrap/main.css';
 
 function Calendar() {
-  const events = [{ title: 'Meeting', start: new Date() }];
+  // const events = [{ title: 'Meeting', start: new Date() }];
   return (
     <Fragment>
       <Card>

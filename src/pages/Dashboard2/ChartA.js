@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Bar } from 'react-chartjs-2';
 import { Card, CardBody, CardTitle, Col, Row } from 'reactstrap';
-import { Chart, Chart as ChartJS, registerables } from 'chart.js';
+import { Chart as ChartJS, registerables } from 'chart.js';
 import ChartB from './ChartB';
 
 ChartJS.register(...registerables);
