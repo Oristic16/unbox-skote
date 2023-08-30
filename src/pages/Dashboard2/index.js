@@ -152,10 +152,10 @@ export default class Dashboard2 extends Component {
               <Col lg={12}>
                 <Row className="mb-3">
                   <Col  xl={3}>
-                    <div style={{height:"500px", width:"500px", border:"2px solid black",background:"#fff", display:"flex", alignItems:"center", justifyContent:"center"}}>
+                    <div style={{height:"500px", width:"500px", border:"2px solid black",background:"black", display:"flex", alignItems:"center", justifyContent:"center"}}>
                     {/* <WaterballChart /> */}
-                      <div style={{height:"450px", width:"450px", border:"2px solid red", borderRadius:"100%", padding:"10px", background:"transparent"}}>
-                        <div style={{height:"400px", width:"400px", border:"2px solid blue", position:"absolute", zIndex:"0", background:"blue"}}>
+                      <div style={{height:"450px", width:"450px", border:"2px solid red", borderRadius:"100%", background:"red", display:"flex", alignItems:"center", justifyContent:"center"}}>
+                        <div style={{height:"400px", width:"400px", border:"2px solid blue",borderRadius:"100%", position:"absolute", background:"blue"}}>
 
                         </div>
                       </div>
