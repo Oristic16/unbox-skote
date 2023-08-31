@@ -20,6 +20,7 @@ import RightSidebar from "../CommonForBoth/RightSidebar";
 
 //redux
 import { useSelector, useDispatch } from "react-redux";
+import { Container } from "reactstrap";
 
 const Layout = props => {
   const dispatch = useDispatch();
@@ -138,14 +139,16 @@ const Layout = props => {
       </div> */}
 
       <div id="layout-wrapper">
+        <Container fluid>
         <Header toggleMenuCallback={toggleMenuCallback} />
-        <Sidebar
+        {/* <Sidebar
           theme={leftSideBarTheme}
           type={leftSideBarType}
           isMobile={isMobile}
-        />
+        /> */}
         <div className="main-content">{props.children}</div>
         <Footer />
+        </Container>
       </div>
       {showRightSidebar ? <RightSidebar /> : null}
     </React.Fragment>

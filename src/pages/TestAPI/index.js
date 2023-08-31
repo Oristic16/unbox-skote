@@ -20,6 +20,7 @@ import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import 'dayjs/locale/th'
+import Wave from "react-wavify";
 
 function TestAPI() {
   const { fontSize } = useFontSizeContext();
@@ -266,6 +267,43 @@ function TestAPI() {
                 <DatePicker value={date} onChange={handleChange} />
               </DemoContainer>
             </LocalizationProvider>
+          </CardBody>
+        </Card>
+
+        <Card>
+          <CardBody>
+          <div
+                      style={{
+                        position: "relative",
+                        width: "200px",
+                        height: "200px",
+                        borderRadius: "50%",
+                        backgroundColor: "blue",
+                        overflow: "hidden",
+                        display: "flex",
+                        alignItems: "end",
+                        border: "2px solid black",
+                      }}
+                    >
+                      <Wave
+                        fill="red"
+                        paused={false}
+                        style={{
+                          position: "absolute",
+                          width: "200px",
+                          height: "100px",
+                          // backgroundColor: "#333",
+                          zIndex: "1",
+                          // bottom: 0
+                        }}
+                        options={{
+                          height: 20,
+                          amplitude: 9,
+                          speed: 0.5,
+                          points: 3,
+                        }}
+                      ></Wave>
+                    </div>
           </CardBody>
         </Card>
       </Container>

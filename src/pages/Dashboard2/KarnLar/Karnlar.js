@@ -14,6 +14,7 @@ import {
 } from "reactstrap";
 import { DonutChart } from "../DonutChart";
 import classnames from "classnames";
+import { Link } from "react-router-dom";
 
 const Karnlar = () => {
   const [activeTab1, setActiveTab1] = useState("5");
@@ -31,7 +32,7 @@ const Karnlar = () => {
             <i className="fa-solid fa-briefcase font-size-18 me-2"></i>
             ภาพรวมการลาปฏิบัติงาน
           </CardTitle>
-          <Row className="mb-0">
+          <Row className="">
             <Col lg={12} xl={12}>
               <Card>
                 <CardBody>
@@ -39,7 +40,7 @@ const Karnlar = () => {
                     fill
                     // tabs
                     pills
-                    className="navtab-bg mt-0"
+                    className="navtab-bg"
                   >
                     <NavItem>
                       <NavLink
@@ -76,7 +77,7 @@ const Karnlar = () => {
                   ></div>
                   <TabContent activeTab={activeTab1} className="p-3 text-muted">
                     <TabPane tabId="5">
-                      <CardTitle style={{ color: "#483fd3" }} className="mb-2">
+                      <CardTitle style={{ color: "#483fd3" }} className="mb-0">
                         <h5>
                           <i className="fa-solid fa-memo-circle-info font-size-16 me-1"></i>
                           ข้อมูลการลา
@@ -95,7 +96,7 @@ const Karnlar = () => {
                           style={{
                             display: "flex",
                             justifyContent: "center",
-                            height: "200px",
+                            maxHeight: "200px",
                           }}
                         >
                           <DonutChart />
@@ -162,17 +163,22 @@ const Karnlar = () => {
                         </h5>
                       </CardTitle>
                       <Row>
-                        <Col
-                          lg={12}
-                          style={{
-                            height: "350px",
-                          }}
-                        >
-                          <HorizonBarChart />
+                        <Col lg={12} style={{}}>
+                          {/* <HorizonBarChart /> */}
                         </Col>
                       </Row>
                     </TabPane>
                   </TabContent>
+                  <Row>
+                    <Col>
+                      <div className="mt-4" style={{ textAlign: "end" }}>
+                        <Link to="" className="btn btn-primary  btn-sm">
+                          View Profile{" "}
+                          <i className="mdi mdi-arrow-right ms-1"></i>
+                        </Link>
+                      </div>
+                    </Col>
+                  </Row>
                 </CardBody>
               </Card>
             </Col>
