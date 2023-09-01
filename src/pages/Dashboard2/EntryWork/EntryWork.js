@@ -19,7 +19,7 @@ const EntryWork = () => {
   }, []);
   return (
     <div>
-      <Card>
+      <Card className="mt-4">
         <CardBody>
           <CardTitle style={{ color: "#483fd3" }} className="mb-3">
             <i className="fa-solid fa-sun-cloud font-size-18 me-1"></i>

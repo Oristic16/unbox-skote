@@ -148,7 +148,7 @@ const SidebarContent = props => {
   const checkLocalRole = () => {
     if(checkRole.role === 'user') {
       return (
-        <ul className="metismenu list-unstyled" id="side-menu">
+        <ul className="metismenu list-unstyled" id="side-menu" style={{}}>
               <li className="menu-title">{props.t("Menu")} </li>
 
               <li>

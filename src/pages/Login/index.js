@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
-  Button,
   Card,
   CardBody,
   Col,
@@ -53,6 +52,11 @@ function Login() {
       return navigate("/");
     }
   })
+
+  const authHandler = (err, data) => {
+    console.log(err, data);
+  };
+
 
   return (
     <React.Fragment>
@@ -179,6 +183,14 @@ function Login() {
                               <i className="mdi mdi-google" />
                             </Link>
                           </li>
+                          <li className="list-inline-item">
+                            <Link
+                              to="#"
+                              className="social-list-item bg-success text-white border-success"
+                            >
+                              <i className="mdi mdi-microsoft" />
+                            </Link>
+                          </li>
                         </ul>
                       </div>
 
@@ -196,7 +208,6 @@ function Login() {
                       <Link to="/register">Don't have an account? Sign up Here</Link>
                     </Col>
                   </Row> */}
-                  
                 </CardBody>
               </Card>
             </Col>

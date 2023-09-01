@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Badge, Table } from 'reactstrap'
 
 const Vehicle = () => {
@@ -80,6 +81,12 @@ const Vehicle = () => {
           </tr>
         </tbody>
       </Table>
+      <div className="mt-4" style={{ textAlign: "end" }}>
+                        <Link to="" className="btn btn-primary  btn-md">
+                        ดูข้อมูลเพิ่มเติมได้ที่ระบบจองยานพาหนะ{" "}
+                          <i className="mdi mdi-arrow-right ms-1"></i>
+                        </Link>
+                      </div>
     </div>
   )
 }

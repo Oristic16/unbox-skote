@@ -16,6 +16,7 @@ import ManageSorce from "../pages/ManageSorce";
 import TestAPI from "../pages/TestAPI";
 import RegisterTest from "../pages/Authentication/RegisterTest";
 import LaOnline from '../pages/LaOnline/index'
+import ProfileUser from "../pages/Profile/ProfileUser";
 
 const authProtectedRoutes = [
 
@@ -30,6 +31,7 @@ const authProtectedRoutes = [
   { path: "/testapi", component: <TestAPI /> },
   { path: "/registertest", component: <RegisterTest /> },
   { path: "/laonline", component: <LaOnline /> },
+  { path: "/profile", component: <ProfileUser /> },
   // { path: "*", component: <NotFound404 /> },
   {
     path: "/",

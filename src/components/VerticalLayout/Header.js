@@ -94,23 +94,21 @@ const Header = props => {
     <React.Fragment>
       <header id="page-topbar">
         <div className="navbar-header">
-          <div className="d-flex align-items-center">
+          <div className="d-flex">
 
-            {/* <div className="navbar-brand-box d-lg-none d-md-block">
+            <div className="navbar-brand-box d-lg-none d-md-block">
               <Link to="/" className="logo logo-dark">
-                <span className="logo-sm"> */}
-                  {/* <img src={logo} alt="" height="22" /> */}
-                  {/* <img src={logogorporor} alt="" height="22" />
-                </span>
-              </Link> */}
-
-              {/* <Link to="/" className="logo logo-light">
-                <span className="logo-sm"> */}
-                  {/* <img src={logoLightSvg} alt="" height="22" /> */}
-                  {/* <img src={logogorporor} alt="" height="22" />
+                <span className="logo-sm">
+                  <img src={logo} alt="" height="22" />
                 </span>
               </Link>
-            </div> */}
+
+              <Link to="/" className="logo logo-light">
+                <span className="logo-sm">
+                  <img src={logoLightSvg} alt="" height="22" />
+                </span>
+              </Link>
+            </div>
 
             {/* <button
               type="button"
@@ -122,34 +120,8 @@ const Header = props => {
             >
               <i className="fa fa-fw fa-bars" />
             </button> */}
-            
 
-            <div className="navbar-brand-box">
-          <Link to="/" className="logo logo-dark">
-            <span className="logo-sm">
-              {/* <img src={logo} alt="" height="22" /> */}
-              <img src={logogorkoror} alt="" height="22" />
-            </span>
-            <span className="logo-lg">
-              {/* <img src={logoDark} alt="" height="17" /> */}
-              <img src={logogorkoror} alt="" height="17" />
-            </span>
-          </Link>
-
-          <Link to="/" className="logo logo-light">
-            <span className="logo-sm">
-              {/* <img src={logogorkoror} alt="" height="30" /> */}
-              <img src={whitelogo} alt="" height="30" />
-              {/* <img src={logoLightSvg} alt="" height="22" /> */}
-            </span>
-            <span className="logo-lg">
-              <img className="mt-3" src={whitelogo} alt="" height="80" />
-              {/* <img src={logoLightPng} alt="" height="19" /> */}
-            </span>
-          </Link>
-        </div>
-            
-            <form className="app-search d-none d-lg-block">
+            <form className="app-search d-none d-lg-block ms-5">
               <div className="position-relative">
                 <input
                   type="text"

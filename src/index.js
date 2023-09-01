@@ -9,6 +9,12 @@ import reportWebVitals from './reportWebVitals'
 import store from "./store";
 import { FontSizeProvider } from "./pages/Context/FontSizeContext";
 
+import { PublicClientApplication } from "@azure/msal-browser";
+import { MsalProvider } from "@azure/msal-react";
+import { msalConfig } from "./authConfig";
+
+const msalInstance = new PublicClientApplication(msalConfig)
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <Provider store={store}>

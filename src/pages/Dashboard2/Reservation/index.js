@@ -37,12 +37,7 @@ const Reservation = () => {
                 <Vehicle />
             </TabPane>
           </TabContent>
-          <div className="mt-4" style={{ textAlign: "end" }}>
-                        <Link to="" className="btn btn-primary  btn-sm">
-                          View Profile{" "}
-                          <i className="mdi mdi-arrow-right ms-1"></i>
-                        </Link>
-                      </div>
+          
         </CardBody>
       </Card>
     </div>
