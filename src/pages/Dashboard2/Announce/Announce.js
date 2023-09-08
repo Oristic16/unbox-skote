@@ -9,8 +9,8 @@ const Announce = () => {
         <CardTitle className="p-2">
           <br />
           <Row className="px-2">
-            <Col style={{color:"#483fd3"}}>
-              <i className="fa-solid fa-database"></i> INTRANET
+            <Col>
+              <i className="fa-solid fa-database me-2 "></i>INTRANET
             </Col>
             <Col className="text-end">
               <Badge className="p-2 bg-opacity-25">

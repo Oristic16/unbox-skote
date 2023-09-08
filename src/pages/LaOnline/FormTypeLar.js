@@ -24,8 +24,8 @@ const FormTypeLar = () => {
                         <Row style={{display:"flex",alignItems:"center",justifyContent:"end"}}>
                             <Label className='text-end' xl={2}>ประเภทการลา</Label>
                         <Col xl={4}>
-                        <Input className='my-3' type='select' onChange={(e) => setFormNum(e.target.value)}>
-                                <option value="">กรุณาระบุ</option>
+                            <Input className='my-3' type='select' onChange={(e) => setFormNum(e.target.value)}>
+                                <option value={null}>กรุณาระบุ</option>
                                 {LaType.map((item,idx) => {
                                     return (
                                         <option key={idx} value={item.no}>{item.name}</option>

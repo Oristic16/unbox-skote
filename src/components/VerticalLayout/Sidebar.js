@@ -14,7 +14,7 @@ import logoLightPng from "../../assets/images/logo-light.png";
 import logoLightSvg from "../../assets/images/logo-light.svg";
 import logoDark from "../../assets/images/logo-dark.png";
 
-import logogorkoror from '../../assets/images/1200px-Opdc_preview_rev_1.png'
+import logogorkoror from '../../assets/images/draft-Logo-กพร-White.png'
 import whitelogo from '../../assets/images/draft-Logo-กพร-White.png'
 
 const Sidebar = props => {
@@ -34,10 +34,10 @@ const Sidebar = props => {
 
           <Link to="/" className="logo logo-light">
             <span className="logo-sm">
-              <img src={logoLightSvg} alt="" height="22" />
+              <img src={logogorkoror} alt="" height="22" />
             </span>
             <span className="logo-lg">
-              <img src={logoLightPng} alt="" height="19" />
+              <img src={logogorkoror} alt="" height="19" />
             </span>
           </Link>
         </div>

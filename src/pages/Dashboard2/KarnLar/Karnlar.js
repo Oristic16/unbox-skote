@@ -26,71 +26,69 @@ const Karnlar = () => {
   };
   return (
     <div>
-      <Card className="pb-0">
-        <CardBody className="pb-0">
-          <CardTitle style={{ color: "#483fd3" }}>
+      <Card className="">
+        <CardBody className="">
+          <CardTitle>
             <i className="fa-solid fa-briefcase font-size-18 me-2"></i>
             ภาพรวมการลาปฏิบัติงาน
           </CardTitle>
-          <Row className="">
+          <Row className="mt-3">
             <Col lg={12} xl={12}>
-              <Card>
-                <CardBody>
-                  <Nav
-                    fill
-                    // tabs
-                    pills
-                    className="navtab-bg"
+              <Nav
+                fill
+                // tabs
+                pills
+                className="navtab-bg"
+              >
+                <NavItem>
+                  <NavLink
+                    style={{ cursor: "pointer" }}
+                    className={classnames({
+                      active: activeTab1 === "5",
+                    })}
+                    onClick={() => {
+                      toggle1("5");
+                    }}
                   >
-                    <NavItem>
-                      <NavLink
-                        style={{ cursor: "pointer" }}
-                        className={classnames({
-                          active: activeTab1 === "5",
-                        })}
-                        onClick={() => {
-                          toggle1("5");
-                        }}
-                      >
-                        ข้อมูลการลา
-                      </NavLink>
-                    </NavItem>
-                    <NavItem>
-                      <NavLink
-                        style={{ cursor: "pointer" }}
-                        className={classnames({
-                          active: activeTab1 === "6",
-                        })}
-                        onClick={() => {
-                          toggle1("6");
-                        }}
-                      >
-                        ประเภทการลา
-                      </NavLink>
-                    </NavItem>
-                    <NavItem></NavItem>
-                    <NavItem></NavItem>
-                  </Nav>
-                  <div
-                    className="my-4"
-                    style={{ border: "2.5px solid #3a40cd" }}
-                  ></div>
-                  <TabContent activeTab={activeTab1} className="p-3 text-muted">
-                    <TabPane tabId="5">
-                      <CardTitle style={{ color: "#483fd3" }} className="mb-0">
-                        <h5>
-                          <i className="fa-solid fa-memo-circle-info font-size-16 me-1"></i>
-                          ข้อมูลการลา
-                        </h5>
-                      </CardTitle>
-                      <Row
-                        className="mb-0 mt-3"
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                        }}
-                      >
-                        <Col
+                    จำนวนการลา
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink
+                    style={{ cursor: "pointer" }}
+                    className={classnames({
+                      active: activeTab1 === "6",
+                    })}
+                    onClick={() => {
+                      toggle1("6");
+                    }}
+                  >
+                    ประเภทการลา
+                  </NavLink>
+                </NavItem>
+                <NavItem></NavItem>
+                <NavItem></NavItem>
+              </Nav>
+              <div
+                className="my-4"
+                style={{ border: "2.5px solid #3a40cd" }}
+              ></div>
+              <TabContent activeTab={activeTab1} className="p-2 text-muted">
+                <TabPane tabId="5">
+                  <CardTitle style={{ color: "#483fd3" }} className="mb-0">
+                    <h5>
+                      <i className="fa-solid fa-memo-circle-info font-size-16 me-1"></i>
+                      ข้อมูลการลา
+                    </h5>
+                  </CardTitle>
+                  <Row
+                    className="mb-0 mt-3"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  >
+                    {/* <Col
                           lg={6}
                           xl={6}
                           style={{
@@ -100,87 +98,195 @@ const Karnlar = () => {
                           }}
                         >
                           <DonutChart />
-                        </Col>
-                        <Col>
-                          <Row className="mb-2 mt-3">
+                        </Col> */}
+                    <Col className="ms-4 mt-2">
+                      {/* <Row className="mb-2 mt-3">
                             <Col className="text-start">
-                              <h5>คำขอลาเวลาปฏิบัติงาน</h5>
+                              <h5>จำนวนวันลาทั้งหมด</h5>
                             </Col>
                             <Col lg={2} xl={2} className="text-end">
                               <h5>33</h5>
                             </Col>
-                          </Row>
-                          <Row className="mb-1">
-                            <Col className="text-start">
-                              <h5>
-                                <i
-                                  style={{ color: "#7180ff" }}
-                                  className="fa-solid fa-square me-2"
-                                ></i>
-                                อนุญาตใบลา
-                              </h5>
-                            </Col>
-                            <Col lg={2} className="text-end">
-                              <h5>15</h5>
-                            </Col>
-                          </Row>
-                          <Row className="mb-1">
-                            <Col className="text-start">
-                              <h5>
-                                <i
-                                  style={{ color: "#4dff62" }}
-                                  className="fa-solid fa-square me-2"
-                                ></i>
-                                อนุมัติใบลา
-                              </h5>
-                            </Col>
-                            <Col lg={2} className="text-end">
-                              <h5>10</h5>
-                            </Col>
-                          </Row>
-                          <Row>
-                            <Col className="text-start">
-                              <h5>
-                                <i
-                                  style={{ color: "#ff6868" }}
-                                  className="fa-solid fa-square me-2"
-                                ></i>
-                                ยกเลิกใบลา
-                              </h5>
-                            </Col>
-                            <Col lg={2} className="text-end">
-                              <h5>8</h5>
-                            </Col>
-                          </Row>
+                          </Row> */}
+                      <Row className="mb-1">
+                        <Col className="text-start">
+                          <h5>
+                            <i
+                              style={{ color: "#7180ff" }}
+                              className="fa-solid fa-square me-2"
+                            ></i>
+                            จำนวนวันลาทั้งหมด
+                          </h5>
+                        </Col>
+                        <Col lg={2} className="text-end">
+                          <h5>30</h5>
                         </Col>
                       </Row>
-                    </TabPane>
-                    <TabPane tabId="6">
-                      <CardTitle style={{ color: "#483fd3" }}>
-                        <h5>
-                          <i className="fa-solid fa-house-person-leave font-size-18 me-1"></i>
-                          ประเภทการลา
-                        </h5>
-                      </CardTitle>
                       <Row>
-                        <Col lg={12} style={{}}>
-                          {/* <HorizonBarChart /> */}
+                        <Col className="text-start">
+                          <h5>
+                            <i
+                              style={{ color: "#ff6868" }}
+                              className="fa-solid fa-square me-2"
+                            ></i>
+                            ใช้ไปแล้ว
+                          </h5>
+                        </Col>
+                        <Col lg={2} className="text-end">
+                          <h5>10</h5>
                         </Col>
                       </Row>
-                    </TabPane>
-                  </TabContent>
-                  <Row>
-                    <Col>
-                      <div className="mt-4" style={{ textAlign: "end" }}>
-                        <Link to="" className="btn btn-primary  btn-md">
-                          ดูข้อมูลเพิ่มเติมได้ที่ระบบลาออนไลน์{" "}
-                          <i className="mdi mdi-arrow-right ms-1"></i>
-                        </Link>
-                      </div>
+                      <Row className="">
+                        <Col className="text-start">
+                          <h5>
+                            <i
+                              style={{ color: "#4dff62" }}
+                              className="fa-solid fa-square me-2"
+                            ></i>
+                            คงเหลือ
+                          </h5>
+                        </Col>
+                        <Col lg={2} className="text-end">
+                          <h5>20</h5>
+                        </Col>
+                      </Row>
                     </Col>
                   </Row>
-                </CardBody>
-              </Card>
+                </TabPane>
+                <TabPane tabId="6">
+                  <CardTitle style={{ color: "#483fd3" }}>
+                    <h5>
+                      <i className="fa-solid fa-house-person-leave font-size-18 me-1"></i>
+                      ประเภทการลา
+                    </h5>
+                  </CardTitle>
+                  <Row className="mt-3">
+                    <Col lg={12}>
+                      <Row className="mb-1">
+                        <Col lg={7}>
+                          <Row>
+                            <Col lg={10}>
+                              <h5 className="font-size-13">
+                                ลาป่วย ลากิจ ลาคลอดบุตร
+                              </h5>
+                            </Col>
+                            <Col className="text-end">
+                              <h6>7</h6>
+                            </Col>
+                          </Row>
+                        </Col>
+                        <Col lg={5}>
+                          <Row>
+                            <Col>
+                              <h5 className="font-size-13">ลาพักผ่อน</h5>
+                            </Col>
+                            <Col lg={1} className="text-end">
+                              <h6>3</h6>
+                            </Col>
+                          </Row>
+                        </Col>
+                        <Col lg={7}>
+                          <Row>
+                            <Col lg={10}>
+                              <h5 className="font-size-13">
+                                ขออนุญาติไปต่างประเทศ
+                              </h5>
+                            </Col>
+                            <Col className="text-end">
+                              <h6>0</h6>
+                            </Col>
+                          </Row>
+                        </Col>
+                        <Col lg={5} className="text-start">
+                          <Row>
+                            <Col>
+                              <h5 className="font-size-13">ลาอุปสมบท</h5>
+                            </Col>
+                            <Col lg={1} className="text-end">
+                              <h6>0</h6>
+                            </Col>
+                          </Row>
+                        </Col>
+                        <Col lg={7}>
+                          <Row>
+                            <Col lg={10}>
+                              <h5 className="font-size-13">
+                                ลาประกอบพิธีฮัจญ์
+                              </h5>
+                            </Col>
+                            <Col className="text-end">
+                              <h6>0</h6>
+                            </Col>
+                          </Row>
+                        </Col>
+                        <Col lg={5}>
+                          <Row>
+                            <Col>
+                              <h5 className="font-size-13">ลาติดตามคู่สมรส</h5>
+                            </Col>
+                            <Col lg={1} className="text-end">
+                              <h6>0</h6>
+                            </Col>
+                          </Row>
+                        </Col>
+                        <Col lg={7}>
+                          <Row>
+                            <Col lg={10}>
+                              <h5 className="font-size-13">
+                                ปฏิบัติราชการนอกสำนักงาน
+                              </h5>
+                            </Col>
+                            <Col className="text-end">
+                              <h6>0</h6>
+                            </Col>
+                          </Row>
+                        </Col>
+                        <Col lg={5}>
+                          <Row>
+                            <Col>
+                              <h5 className="font-size-13">ลากรณีพิเศษ</h5>
+                            </Col>
+                            <Col lg={1} className="text-end">
+                              <h6>0</h6>
+                            </Col>
+                          </Row>
+                        </Col>
+                        <Col lg={7}>
+                          <Row>
+                            <Col lg={10}>
+                              <h5 className="font-size-13">
+                                ลาศึกษา/ฝึกอบรม ดูงาน
+                              </h5>
+                            </Col>
+                            <Col className="text-end">
+                              <h6>0</h6>
+                            </Col>
+                          </Row>
+                        </Col>
+                        <Col lg={7}>
+                          <Row>
+                            <Col lg={10}>
+                              <h5 className="font-size-13">
+                                เข้ารับการตรวจเลือก/เตรียมพล
+                              </h5>
+                            </Col>
+                            <Col className="text-end">
+                              <h6>0</h6>
+                            </Col>
+                          </Row>
+                        </Col>
+                      </Row>
+                      {/* <HorizonBarChart /> */}
+                    </Col>
+                  </Row>
+                </TabPane>
+              </TabContent>
+              <div className="mt-2" style={{ textAlign: "end" }}>
+                <Link to="/laonline" className="btn btn-primary  btn-md">
+                  ดูข้อมูลเพิ่มเติมได้ที่ระบบลาออนไลน์{" "}
+                  <i className="mdi mdi-arrow-right ms-1"></i>
+                </Link>
+              </div>
             </Col>
           </Row>
         </CardBody>

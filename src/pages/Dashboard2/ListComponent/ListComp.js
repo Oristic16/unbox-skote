@@ -1,75 +1,149 @@
-import React from 'react'
-import { Card, CardBody, FormGroup, Input, Label } from 'reactstrap'
+import React, { useState } from "react";
+import { Card, CardBody, FormGroup, Input, Label } from "reactstrap";
 
-const ListComp = () => {
+const ListComp = (props) => {
+  const [checkedMenu, setCheckedMenu] = useState({
+    checkedWel: false,
+    checkedKarnLar: false,
+    checkedReserve: false,
+    checkedCalendar: false,
+    checkedRecentFiles: false,
+    checledAnnounce: false,
+  });
+
   return (
-    <div>
+    <React.Fragment>
       <Card>
         <CardBody>
-        <FormGroup check>
-            <Input
-              id="checkbox2"
+          <div className="form-check form-check-primary mb-3">
+            <input
               type="checkbox"
+              className="form-check-input"
+              id="customCheckcolor1"
+              checked={checkedMenu.checkedWel}
+              onChange={(e) => {
+                setCheckedMenu((prev) => ({
+                  ...prev,
+                  checkedWel: e.target.checked,
+                }));
+              }}
             />
-            {' '}
-            <Label check>
+
+            <label className="form-check-label" htmlFor="customCheckcolor1">
               WelcomeComp
-            </Label>
-          </FormGroup>
-          <FormGroup check>
-            <Input
-              id="checkbox2"
+            </label>
+          </div>
+          <div className="form-check form-check-primary mb-3">
+            <input
               type="checkbox"
+              className="form-check-input"
+              id="customCheckcolor2"
+              checked={checkedMenu.checkedKarnLar}
+              onChange={(e) => {
+                setCheckedMenu((prev) => ({
+                  ...prev,
+                  checkedKarnLar: e.target.checked,
+                }));
+              }}
             />
-            {' '}
-            <Label check>
+
+            <label className="form-check-label" htmlFor="customCheckcolor2">
               ภาพรวมการลา
-            </Label>
-          </FormGroup>
-          <FormGroup check>
-            <Input
-              id="checkbox2"
+            </label>
+          </div>
+          <div className="form-check form-check-primary mb-3">
+            <input
               type="checkbox"
+              className="form-check-input"
+              id="reservation"
+              checked={checkedMenu.checkedReserve}
+              onChange={(e) => {
+                setCheckedMenu((prev) => ({
+                  ...prev,
+                  checkedReserve: e.target.checked,
+                }));
+              }}
             />
-            {' '}
-            <Label check>
+
+            <label className="form-check-label" htmlFor="reservation">
               การจองออนไลน์
-            </Label>
-          </FormGroup>
-          <FormGroup check>
-            <Input
-              id="checkbox2"
+            </label>
+          </div>
+          <div className="form-check form-check-primary mb-3">
+            <input
               type="checkbox"
+              className="form-check-input"
+              id="calendar"
+              checked={checkedMenu.checkedCalendar}
+              onChange={(e) => {
+                setCheckedMenu((prev) => ({
+                  ...prev,
+                  checkedCalendar: e.target.checked,
+                }));
+              }}
             />
-            {' '}
-            <Label check>
+
+            <label className="form-check-label" htmlFor="calendar">
               ปฏิทิน
-            </Label>
-          </FormGroup>
-          <FormGroup check>
-            <Input
-              id="checkbox2"
+            </label>
+          </div>
+          <div className="form-check form-check-primary mb-3">
+            <input
               type="checkbox"
+              className="form-check-input"
+              id="recentfiles"
+              checked={checkedMenu.checkedRecentFiles}
+              onChange={(e) => {
+                setCheckedMenu((prev) => ({
+                  ...prev,
+                  checkedRecentFiles: e.target.checked,
+                }));
+              }}
             />
-            {' '}
-            <Label check>
-            Recent Files
-            </Label>
-          </FormGroup>
-          <FormGroup check>
-            <Input
-              id="checkbox2"
+
+            <label className="form-check-label" htmlFor="recentfiles">
+              Recent Files
+            </label>
+          </div>
+          <div className="form-check form-check-primary mb-3">
+            <input
               type="checkbox"
+              className="form-check-input"
+              id="announce"
+              onChange={(e) => {
+                setCheckedMenu((prev) => ({
+                  ...prev,
+                  checkedAnnounce: e.target.checked,
+                }));
+              }}
             />
-            {' '}
-            <Label check>
+
+            <label className="form-check-label" htmlFor="announce">
               ประกาศ
-            </Label>
-          </FormGroup>
+            </label>
+          </div>
+          <div className="form-check form-check-primary mb-3">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              id="announce"
+              checked={checkedMenu.checkedCalendarList}
+              onChange={(e) => {
+                setCheckedMenu((prev) => ({
+                  ...prev,
+                  checkedCalendarList: e.target.checked,
+                }));
+              }}
+            />
+
+            <label className="form-check-label" htmlFor="announce">
+              CalendarList
+            </label>
+          </div>
         </CardBody>
       </Card>
-    </div>
-  )
-}
+    </React.Fragment>
+  );
+};
 
-export default ListComp
+export default ListComp;

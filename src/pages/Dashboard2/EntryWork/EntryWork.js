@@ -21,7 +21,7 @@ const EntryWork = () => {
     <div>
       <Card className="mt-4">
         <CardBody>
-          <CardTitle style={{ color: "#483fd3" }} className="mb-3">
+          <CardTitle className="mb-3">
             <i className="fa-solid fa-sun-cloud font-size-18 me-1"></i>
             ลงเวลาปฏิบัติงาน
           </CardTitle>

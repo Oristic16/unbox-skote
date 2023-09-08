@@ -19,7 +19,9 @@ const RecentFile = () => {
         <CardBody>
           <div className="mt-4">
             <div className="d-flex flex-wrap">
-              <h5 className="font-size-16 me-3 card-title" style={{ color: "#483fd3" }}><i class="fa-solid fa-file font-size-20 me-2"></i>Recent Files</h5>
+              <h5 className="font-size-16 me-3 card-title">
+                <i className="fa-solid fa-file font-size-20 me-2"></i>Recent Files
+              </h5>
 
               <div className="ms-auto">
                 <Link to="#" className="fw-medium text-reset">
@@ -49,6 +51,7 @@ const RecentFile = () => {
                         </Link>
                       </td>
                       <td>{item.date}</td>
+                      <td>{item.size} KB</td>
                       <td>
                         <UncontrolledDropdown>
                           <DropdownToggle
@@ -73,6 +76,12 @@ const RecentFile = () => {
                 </tbody>
               </Table>
             </div>
+          </div>
+          <div className="mt-4" style={{ textAlign: "end" }}>
+            <Link to="/opdcbox" className="btn btn-primary  btn-md">
+              ดูข้อมูลเพิ่มเติมได้ที่ระบบจัดเก็บและแชร์ไฟล์{" "}
+              <i className="mdi mdi-arrow-right ms-1"></i>
+            </Link>
           </div>
         </CardBody>
       </Card>

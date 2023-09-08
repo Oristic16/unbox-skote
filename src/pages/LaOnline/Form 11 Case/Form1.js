@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import {
   Button,
-  Card,
   Col,
   Form,
   FormGroup,
   Input,
   Label,
-  Row,
 } from "reactstrap";
 import { Thai } from "flatpickr/dist/l10n/th.js";
 import { differenceInDays } from "date-fns";
@@ -19,7 +17,7 @@ import Dropzone from "react-dropzone";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const Form1 = () => {
+const Form1 = ({ idForm }) => {
   //เก็บค่าของ วัน เดือน ปี
   const [Day, setDay] = useState(new Date().getDate());
   const [Month, setMonth] = useState(new Date().getMonth());
@@ -31,6 +29,7 @@ const Form1 = () => {
 
   //กำหนดข้อมูลที่ต้องการ Sumit
   const [data, setData] = useState({
+    formType: idForm,
     writeFrom: "สำนักงาน ก.พ.ร.",
     writeDate: formattedDate,
     title: "",
@@ -49,6 +48,8 @@ const Form1 = () => {
     note: "",
     file: "",
     sendTo: "หัวหน้า/ผู้บังคับบัญชา",
+    lastOrder: false,
+    status: "รออนุมัติ"
   });
 
   const handleSubmit = async () => {
@@ -72,19 +73,14 @@ const Form1 = () => {
     // formData.append('file', data.file);
     // formData.append('sendTo', data.sendTo);
     // console.log(formData)
-
+    
     try {
-      await axios.post("http://localhost:8000/uploadform1", data,
-      // {
-      //   headers: {
-      //   'Content-Type': 'multipart/form-data',
-      //   },
-      // }
-      )
+      await axios.post("http://localhost:8000/uploadform1", data)
     } catch (err) {
       console.error(err);
     }
   };
+  console.log(data)
 
   const handleInputChange = (e, field) => {
     setData((prev) => ({
@@ -95,8 +91,6 @@ const Form1 = () => {
     // setData({...data,[field]: e.target.value});
     // console.log(data);
   };
-
-  console.log(data)
 
   //Drag and Drop Files
   function handleAcceptedFiles(acceptedFiles) {
@@ -128,7 +122,7 @@ const Form1 = () => {
         handleSubmit();
       }}
     >
-      <FormGroup row>
+      <FormGroup row className="mt-3">
         <Label className="text-end" xl={2}>
           เขียนที่
         </Label>
@@ -141,8 +135,8 @@ const Form1 = () => {
             onChange={(e) => handleInputChange(e, "writeFrom")}
           />
         </Col>
-        <Label className="text-end" xl={1}>
-          วันที่
+        <Label className="text-end" xl={2}>
+          วันที่เขียน
         </Label>
         <Col xl={4}>
           <Input
@@ -253,7 +247,6 @@ const Form1 = () => {
                 }
                 setData((prev) => ({ ...prev, sinceD: e[0],}))
             }}
-            
           />
         </Col>
         <Label style={{ textAlign: "end" }} xl={1}>
@@ -430,6 +423,8 @@ const Form1 = () => {
             type="checkbox"
             className="form-check-input me-1"
             id="customCheckcolor1"
+            checked={data.lastOrder}
+            onChange={(e) => setData((prevData) => ({...prevData, lastOrder: e.target.checked}))}
           />
 
           <label className="form-check-label" htmlFor="customCheckcolor1">

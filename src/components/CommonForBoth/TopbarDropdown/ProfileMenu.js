@@ -16,7 +16,7 @@ import withRouter from "../../Common/withRouter";
 
 // users
 import user1 from "../../../assets/images/users/avatar-1.jpg";
-import user2 from "../../../assets/images/man_4140037.png";
+import user2 from "../../../assets/images/man_2202112.png";
 
 const ProfileMenu = props => {
   // Declare a new state variable, which we'll call "menu"

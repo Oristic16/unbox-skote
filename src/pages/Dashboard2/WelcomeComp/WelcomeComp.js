@@ -56,8 +56,8 @@ const WelcomeComp = () => {
                   </Col>
                 </Row>
                 <div className="mt-4" style={{textAlign:"end"}}>
-                  <Link to="" className="btn btn-primary  btn-sm">
-                    View Profile <i className="mdi mdi-arrow-right ms-1"></i>
+                  <Link to="/profile" className="btn btn-primary  btn-sm">
+                    ไปที่การตั้งค่าโปรไฟล์ <i className="mdi mdi-arrow-right ms-1"></i>
                   </Link>
                 </div>
               </div>

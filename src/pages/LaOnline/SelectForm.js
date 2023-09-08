@@ -11,7 +11,6 @@ import {
   Label,
   Row,
 } from "reactstrap";
-import Dropzone from "react-dropzone";
 import monthNames from "../../common/data/monthName";
 import Flatpickr from "react-flatpickr";
 import DropUpload from "./DropUpload";
@@ -121,7 +120,7 @@ const SelectForm = ({ idForm }) => {
 
     switch (idForm) {
       case "1":
-        return (<Form1 />);
+        return (<Form1 idForm={idForm} />);
       case "2":
         return (
           <Form>

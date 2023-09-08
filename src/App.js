@@ -25,6 +25,7 @@ import "./assets/scss/theme.scss";
 // import fakeBackend from "./helpers/AuthType/fakeBackend";
 
 // Activating fake backend
+// fakeBackend();
 
 // const firebaseConfig = {
 //   apiKey: process.env.REACT_APP_APIKEY,
@@ -55,7 +56,6 @@ const getLayout = (layoutType) => {
   }
   return Layout;
 };
-
 
 const App = () => {
 
