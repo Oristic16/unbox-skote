@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { isEmpty } from "lodash";
 
@@ -65,6 +65,7 @@ const Calendar = (props) => {
 
   const getData = () => {
     axios
+      // .get("http://localhost:8000/getevent")
       .get(baseURL + "/getevent")
       .then((res) => {
         setData(res.data);
@@ -429,7 +430,6 @@ const Calendar = (props) => {
             );
           })}
         </OffcanvasBody>
-        {}
       </Offcanvas>
     </React.Fragment>
     /* {categories &&
@@ -488,7 +488,7 @@ const Calendar = (props) => {
 Calendar.propTypes = {
   events: PropTypes.array,
   categories: PropTypes.array,
-  className: PropTypes.string,
+  // className: PropTypes.string,
   onGetEvents: PropTypes.func,
   onAddNewEvent: PropTypes.func,
   onUpdateEvent: PropTypes.func,

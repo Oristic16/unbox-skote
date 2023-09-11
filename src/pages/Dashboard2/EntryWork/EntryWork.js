@@ -1,21 +1,43 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Badge, Button, Card, CardBody, CardTitle, Col, Row } from "reactstrap";
 
 const EntryWork = () => {
   const [timeNow, setTimeNow] = useState(new Date());
 
-  const setTimeAuto = () => {
-    var timer = setInterval(() => {
-      setTimeNow(new Date());
-    }, 1000);
+  const [entry, setEntry] = useState(false)
 
-    return function cleanup() {
-      clearInterval(timer);
-    };
-  };
+  const intervalID = useRef(null)
+
+  const startTimer = useCallback(() => {
+    intervalID.current = setInterval(() => {
+      setTimeNow(new Date());
+    },1000)
+  },[])
+
+  const stopTimer = () => {
+    clearInterval(intervalID.current)
+    console.log(timeNow.toLocaleTimeString())
+    intervalID.current = null
+
+    setEntry(true)
+    setTimeNow()
+  }
+
+  // const setTimeAuto = () => {
+  //   var timer = setInterval(() => {
+  //     setTimeNow(new Date());
+  //   }, 1000);
+
+  //   return function cleanup() {
+  //     clearInterval(timer);
+  //   };
+  // };
 
   useEffect(() => {
-    setTimeAuto();
+    startTimer();
+
+    return () => clearInterval(intervalID.current)
+    // setTimeAuto();
   }, []);
   return (
     <div>
@@ -53,7 +75,7 @@ const EntryWork = () => {
               <h5>{timeNow.toLocaleTimeString()}</h5>
             </Col>
             <Col xs={6} sm={6} lg={6}>
-              <h5>-</h5>
+              <h5>{entry === true ? timeNow.getHours() + 8 : "-"}</h5>
             </Col>
           </Row>
           <Row className="mb-3">
@@ -63,7 +85,7 @@ const EntryWork = () => {
               lg={6}
               style={{ display: "flex", justifyContent: "end" }}
             >
-              <Button color="success">
+              <Button color="success" onClick={stopTimer}>
                 <i className="fa-solid fa-right-to-bracket"></i> เข้างาน
               </Button>
             </Col>

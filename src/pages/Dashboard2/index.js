@@ -23,7 +23,6 @@ const Dashboard2 = () => {
   document.title = "Dashboard | Skote - React Admin & Dashboard Template";
 
   const [role, setRole] = useState(null);
-  const [timeNow, setTimeNow] = useState(new Date());
   const [checkedMenu, setCheckedMenu] = useState({
     checkedWel: true,
     checkedKarnLar: true,
@@ -39,14 +38,6 @@ const Dashboard2 = () => {
     const roleJSON = JSON.parse(getStorage);
     setRole(roleJSON.role);
   };
-
-  // const handleClick = () => {
-  //   window.open("https://www.youtube.com");
-  // };
-
-  // const handleRedirect = () => {
-  //   return (window.location.href = "http://www.google.com");
-  // };
 
   useEffect(() => {
     checkRole();
