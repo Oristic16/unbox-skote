@@ -14,10 +14,10 @@ import Flatpickr from "react-flatpickr";
 import "react-datepicker/dist/react-datepicker.css";
 import "flatpickr/dist/themes/material_blue.css";
 import Dropzone from "react-dropzone";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Form1 = ({ idForm }) => {
+const Form1 = ({ idForm, closeCanvas, getData }) => {
   //เก็บค่าของ วัน เดือน ปี
   const [Day, setDay] = useState(new Date().getDate());
   const [Month, setMonth] = useState(new Date().getMonth());
@@ -75,7 +75,31 @@ const Form1 = ({ idForm }) => {
     // console.log(formData)
     
     try {
-      await axios.post("http://localhost:8000/uploadform1", data)
+      await axios.post("http://localhost:8000/uploadform1", {
+        formType: data.formType,
+        writeFrom: data.writeFrom,
+        writeDate: data.writeDate,
+        title: data.title,
+        writeTo: data.writeTo,
+        userName: data.userName,
+        position: data.position,
+        groupName: data.groupName,
+        askFor: data.askFor,
+        dueTo: data.dueTo,
+        sinceD: data.sinceD.toLocaleDateString(),
+        sinceT: data.sinceT,
+        toD: data.toD.toLocaleDateString(),
+        toT: data.toT,
+        amountD: data.amountD,
+        place: data.place,
+        note: data.note,
+        file: data.file,
+        sendTo: data.sendTo,
+        lastOrder: data.lastOrder,
+        status: data.status
+      })
+      // await getData();
+      await closeCanvas();
     } catch (err) {
       console.error(err);
     }
@@ -233,9 +257,8 @@ const Form1 = ({ idForm }) => {
             placeholder="วัน/เดือน/ปี"
             options={{
               altInput: true,
-              altFormat: "j F Y",
-              dateFormat: "d-m-Y",
-              locale: Thai,
+              altFormat: "F j, Y",
+              dateFormat: "Y-m-d"
             }}
             value={data.sinceD}
             onChange={(e) => {
@@ -245,7 +268,7 @@ const Form1 = ({ idForm }) => {
                     const difference = differenceInDays(newToD,newSinceD)+1;
                     setData((prev) => ({ ...prev, sinceD: e[0],amountD: difference}));
                 }
-                setData((prev) => ({ ...prev, sinceD: e[0],}))
+                setData((prev) => ({ ...prev, sinceD: e[0]}))
             }}
           />
         </Col>
@@ -279,9 +302,8 @@ const Form1 = ({ idForm }) => {
             placeholder="วัน/เดือน/ปี"
             options={{
               altInput: true,
-              altFormat: "j F Y",
-              dateFormat: "d-m-Y",
-              locale: Thai,
+              altFormat: "F j, Y",
+              dateFormat: "Y-m-d"
             }}
             value={data.toD}
             onChange={(e) => {
@@ -357,56 +379,7 @@ const Form1 = ({ idForm }) => {
           แนบเอกสาร{" "}
         </Label>
         <Col>
-          {/* <Dropzone
-            onDrop={(acceptedFiles) => {
-              handleAcceptedFiles(acceptedFiles);
-            }}
-          >
-            {({ getRootProps, getInputProps }) => (
-              <div className="dropzone">
-                <div className="dz-message needsclick mt-2" {...getRootProps()}>
-                  <input {...getInputProps()} />
-                  <div className="mb-3">
-                    <i className="display-4 text-muted bx bxs-cloud-upload" />
-                  </div>
-                  <h4>Drop files here or click to upload.</h4>
-                </div>
-              </div>
-            )}
-          </Dropzone>
-          <div className="dropzone-previews mt-3" id="file-previews">
-            {data.file.map((f, i) => {
-              return (
-                <Card
-                  className="mt-1 mb-0 shadow-none border dz-processing dz-image-preview dz-success dz-complete"
-                  key={i + "-file"}
-                >
-                  <div className="p-2">
-                    <Row className="align-items-center">
-                      <Col className="col-auto">
-                        <img
-                          data-dz-thumbnail=""
-                          height="80"
-                          className="avatar-sm rounded bg-light"
-                          alt={f.name}
-                          src={f.preview}
-                        />
-                      </Col>
-                      <Col>
-                        <Link to="#" className="text-muted font-weight-bold">
-                          {f.name}
-                        </Link>
-                        <p className="mb-0">
-                          <strong>{f.formattedSize}</strong>
-                        </p>
-                      </Col>
-                    </Row>
-                  </div>
-                </Card>
-              );
-            })}
-          </div> */}
-          {/* <Input type="file" multiple onChange={(e) => setData((prevData) => ({...prevData, file: e.target.files[0]}))} /> */}
+          
           <Input type="file" multiple onChange={(e) => setData((prevData) => ({...prevData, file: e.target.value}))} />
         </Col>
       </FormGroup>
@@ -426,7 +399,6 @@ const Form1 = ({ idForm }) => {
             checked={data.lastOrder}
             onChange={(e) => setData((prevData) => ({...prevData, lastOrder: e.target.checked}))}
           />
-
           <label className="form-check-label" htmlFor="customCheckcolor1">
             ผู้อนุมัตินี้เป็นลำดับสุดท้าย
           </label>
@@ -442,7 +414,7 @@ const Form1 = ({ idForm }) => {
         <Col xl={2}></Col>
         <Col xl={2}></Col>
         <Col xl={2}>
-          <Button color="success" type="submit" style={{ width: "100%" }}>
+        <Button color="success" type="submit" style={{ width: "100%" }}>
             บันทึกและส่ง
           </Button>
         </Col>
@@ -452,6 +424,7 @@ const Form1 = ({ idForm }) => {
           </Button>
         </Col>
       </FormGroup>
+      
     </Form>
   );
 };

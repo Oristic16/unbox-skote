@@ -20,7 +20,7 @@ import { Thai } from "flatpickr/dist/l10n/th.js";
 import { differenceInDays } from "date-fns";
 import Form1 from "./Form 11 Case/Form1";
 
-const SelectForm = ({ idForm }) => {
+const SelectForm = ({ idForm, closeCanvas }) => {
 
   //เก็บค่าของ วัน เดือน ปี
   const [Day, setDay] = useState(new Date().getDate());
@@ -120,7 +120,7 @@ const SelectForm = ({ idForm }) => {
 
     switch (idForm) {
       case "1":
-        return (<Form1 idForm={idForm} />);
+        return (<Form1 idForm={idForm} closeCanvas={closeCanvas} />);
       case "2":
         return (
           <Form>

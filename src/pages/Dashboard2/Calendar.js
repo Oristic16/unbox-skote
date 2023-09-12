@@ -56,7 +56,7 @@ const Calendar = (props) => {
   const baseURL = "http://localhost:8000";
 
   //meta title
-  document.title = "Calendar | Skote - React Admin & Dashboard Template";
+  // document.title = "Calendar | Skote - React Admin & Dashboard Template";
 
   const dispatch = useDispatch();
 

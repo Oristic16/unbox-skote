@@ -12,7 +12,7 @@ const TableHistory = () => {
         axios.get(baseURL + "/getform1")
         .then((res) => {
           setData(res.data)
-          console.log(res.data)
+          // console.log(res.data)
         }).catch((err) => {
           console.error(err);
         })

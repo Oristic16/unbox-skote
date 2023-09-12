@@ -59,7 +59,15 @@ const SelectReport = ({ idReport }) => {
                         <FormGroup row>
                             <Label xl={3}>เจ้าหน้าที่</Label>
                             <Col xl={5}>
-                                <Button color='info'>เลือกเจ้าหน้าที่</Button>
+                                <Button onClick={toggleModal} color='info'>เลือกเจ้าหน้าที่</Button>
+                            </Col>
+                        </FormGroup>
+                        <FormGroup row style={{display:"flex",justifyContent:"end"}}>
+                            <Col xl={4}>
+                                <Button color='success' className='w-100'>ค้นหา</Button>
+                            </Col>
+                            <Col xl={4}>
+                                <Button color='danger' className='w-100'>ยกเลิก</Button>
                             </Col>
                         </FormGroup>
                     </Form>
@@ -113,6 +121,11 @@ const SelectReport = ({ idReport }) => {
                                 <Button onClick={toggleModal} color='info'>เลือกเจ้าหน้าที่</Button>
                             </Col>
                         </FormGroup>
+                        <FormGroup row style={{display:"flex",justifyContent:"start"}}>
+                            <Col xl={4}>
+                                <Button color='success' className='w-100'>พิมพ์</Button>
+                            </Col>
+                        </FormGroup>
                     </Form>
                 )
             case "3":
@@ -144,7 +157,7 @@ const SelectReport = ({ idReport }) => {
                                     }}
                                 />
                             </Col>
-                            <Label xl={3}>ถึงวันที่</Label>
+                            <Label className='text-end' xl={3}>ถึงวันที่</Label>
                             <Col xl={3}>
                                 <Flatpickr
                                     className="form-control d-block"
@@ -179,6 +192,14 @@ const SelectReport = ({ idReport }) => {
                             <Label xl={3}>เจ้าหน้าที่</Label>
                             <Col xl={5}>
                                 <Button onClick={toggleModal} color='info'>เลือกเจ้าหน้าที่</Button>
+                            </Col>
+                        </FormGroup>
+                        <FormGroup row style={{display:"flex",justifyContent:"end"}}>
+                            <Col xl={4}>
+                                <Button color='success' className='w-100'>ค้นหา</Button>
+                            </Col>
+                            <Col xl={4}>
+                                <Button color='danger' className='w-100'>ยกเลิก</Button>
                             </Col>
                         </FormGroup>
                     </Form>
@@ -218,6 +239,14 @@ const SelectReport = ({ idReport }) => {
                             <Label xl={3}>เจ้าหน้าที่</Label>
                             <Col xl={5}>
                                 <Button onClick={toggleModal} color='info'>เลือกเจ้าหน้าที่</Button>
+                            </Col>
+                        </FormGroup>
+                        <FormGroup row style={{display:"flex",justifyContent:"end"}}>
+                            <Col xl={4}>
+                                <Button color='success' className='w-100'>ค้นหา</Button>
+                            </Col>
+                            <Col xl={4}>
+                                <Button color='danger' className='w-100'>ยกเลิก</Button>
                             </Col>
                         </FormGroup>
                     </Form>
@@ -265,6 +294,14 @@ const SelectReport = ({ idReport }) => {
                             <Label xl={3}>สำนัก/กอง/กลุ่ม</Label>
                             <Col xl={5}>
                                 <Button onClick={toggleModal2} color='info'>เลือกสำนัก/กอง/กลุ่ม</Button>
+                            </Col>
+                        </FormGroup>
+                        <FormGroup row style={{display:"flex",justifyContent:"end"}}>
+                            <Col xl={4}>
+                                <Button color='success' className='w-100'>ค้นหา</Button>
+                            </Col>
+                            <Col xl={4}>
+                                <Button color='danger' className='w-100'>ยกเลิก</Button>
                             </Col>
                         </FormGroup>
                     </Form>
