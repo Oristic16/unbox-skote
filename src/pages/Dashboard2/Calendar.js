@@ -8,6 +8,10 @@ import {
   CardBody,
   Col,
   Container,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
   Form,
   FormFeedback,
   Input,
@@ -20,6 +24,7 @@ import {
   OffcanvasBody,
   OffcanvasHeader,
   Row,
+  UncontrolledDropdown,
 } from "reactstrap";
 import * as Yup from "yup";
 import { useFormik } from "formik";
@@ -69,6 +74,7 @@ const Calendar = (props) => {
       .get(baseURL + "/getevent")
       .then((res) => {
         setData(res.data);
+        console.log(res.data)
       })
       .catch((err) => {
         console.error(err);
@@ -91,35 +97,6 @@ const Calendar = (props) => {
     day: "",
     month: "",
     detail: "",
-  });
-
-  // category validation
-  const categoryValidation = useFormik({
-    // enableReinitialize : use this flag when initial values needs to be changed
-    enableReinitialize: true,
-
-    initialValues: {
-      title: (event && event.title) || "",
-      category: (event && event.category) || "",
-    },
-    validationSchema: Yup.object({
-      title: Yup.string().required("Please Enter Your Event Name"),
-      category: Yup.string().required("Please Enter Your Billing Name"),
-    }),
-    onSubmit: (values) => {
-      const newEvent = {
-        id: Math.floor(Math.random() * 100),
-        title: values["title"],
-        start: selectedDay ? selectedDay.date : new Date(),
-        className: values.event_category
-          ? values.event_category + " text-white"
-          : "bg-danger text-white",
-      };
-      // save new event
-      console.log(newEvent);
-      dispatch(onAddNewEvent(newEvent));
-      toggleCategory();
-    },
   });
 
   const monthTh = [
@@ -146,10 +123,6 @@ const Calendar = (props) => {
   const [deleteModal, setDeleteModal] = useState(false);
   const [modalcategory, setModalcategory] = useState(false);
 
-  const [selectedDay, setSelectedDay] = useState({
-    day: null,
-    month: null,
-  });
   const [isEdit, setIsEdit] = useState(false);
 
   useEffect(() => {
@@ -173,10 +146,6 @@ const Calendar = (props) => {
 
     // }
     setModal(!modal);
-  };
-
-  const toggleCategory = () => {
-    setModalcategory(!modalcategory);
   };
 
   /**
@@ -264,27 +233,18 @@ const Calendar = (props) => {
       });
   };
 
-  const [deleteDetail, setDeleteDetail] = useState(false);
-
-  const toggleDeleteDetail = () => {
-    // window.confirm("คุณต้องการลบกิจกรรมนี้ใช่ไหม")
-    setDeleteDetail(!deleteDetail);
-  };
   const handleDelete = async (id) => {
     await axios.delete(baseURL + `/getevent/${id}`);
     // axios.delete ทำต่อพรุ่งนี้
     setData((prevData) => prevData.filter((item) => item.id !== id));
   };
 
+  const [modalDrops, setModalDrops] = useState(data.map(() => false));
+
   return (
     <React.Fragment>
       <Card>
         <CardBody>
-          <DeleteModal
-            show={deleteModal}
-            onDeleteClick={handleDeleteEvent}
-            onCloseClick={() => setDeleteModal(false)}
-          />
           <FullCalendar
             plugins={[BootstrapTheme, dayGridPlugin, interactionPlugin]}
             slotDuration={"00:15:00"}
@@ -406,8 +366,9 @@ const Calendar = (props) => {
             background: "#f3f3f3",
           }}
         >
-          {data.map((item) => {
+          {data.map((item,index) => {   
             return (
+              <>
               <Card
                 onClick={() => handleDelete(item.id)}
                 style={{ cursor: "pointer" }}
@@ -427,8 +388,11 @@ const Calendar = (props) => {
                   />
                 </CardBody>
               </Card>
+              
+              </>
             );
           })}
+          
         </OffcanvasBody>
       </Offcanvas>
     </React.Fragment>

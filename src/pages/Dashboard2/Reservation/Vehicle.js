@@ -9,76 +9,42 @@ const Vehicle = () => {
         // bordered
         // striped
         responsive
-        style={{whiteSpace:"nowrap"}}
+        style={{whiteSpace:"nowrap",textAlign:"center",verticalAlign:"middle"}}
         className="table table-hover"
       >
-        <thead style={{textAlign:"center"}}>
+        <thead style={{}}>
           <tr>
             <th>วันที่ เวลา</th>
-            {/* <th>ถึงวันที่ เวลา</th> */}
-            <th>ห้องประชุม</th>
-            {/* <th>ประเภทการประชุม</th> */}
-            <th>หัวข้อการประชุม</th>
-            {/* <th>ประธานการประชุม</th> */}
-            {/* <th>วันที่ เวลา บันทึก</th> */}
+            <th>สถานที่</th>
             <th>สถานะ</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>30/3/2566</td>
-            {/* <td>30/3/2566</td> */}
-            <td>ห้องประชุม 201</td>
-            {/* <td>อื่นๆ</td> */}
-            <td>การจัดตั้งศูนย์ข้อมูลฯ และการประเมินหน่วยงาน</td>
-            {/* <td>-</td> */}
-            {/* <td>28/03/2566</td> */}
-            <td>
+            <td>13/09/2566 07:45 น.</td>
+            <td>ม. หอการค้าไทย</td>
+            <td><h4>
               <Badge className="p-2" color="success">
                 อนุมัติ
-              </Badge>
+              </Badge></h4>
             </td>
           </tr>
           <tr>
-            <td>30/3/2566</td>
-            {/* <td>30/3/2566</td> */}
-            <td>ห้องประชุม 201</td>
-            {/* <td>อื่นๆ</td> */}
-            <td>ชี้แจงทีมกองกฎหมายสนับสนุนงานกอง PO</td>
-            {/* <td>-</td> */}
-            {/* <td>28/03/2566</td> */}
-            <td>
+            <td>13/09/2566 12:30 น.</td>
+            <td>โรงแรมโกลเด้นทิวลิป</td>
+            <td><h4>
               <Badge className="p-2" color="warning">
                 รอดำเนินการ
-              </Badge>
+              </Badge></h4>
             </td>
           </tr>
           <tr>
-            <td>30/3/2566</td>
-            {/* <td>30/3/2566</td> */}
-            <td>ห้องประชุม 201</td>
-            {/* <td>อื่นๆ</td> */}
-            <td>ชี้แจงทีมกองกฎหมายสนับสนุนงานกอง PO</td>
-            {/* <td>-</td> */}
-            {/* <td>28/03/2566</td> */}
-            <td>
+            <td>13/09/2566 08:30 น.</td>
+            <td>บริษัท บอยเดน แอสโซซิเอทส์ จำกัด</td>
+            <td><h4>
               <Badge className="p-2" color="warning">
                 รอดำเนินการ
-              </Badge>
-            </td>
-          </tr>
-          <tr>
-            <td>30/3/2566</td>
-            {/* <td>30/3/2566</td> */}
-            <td>ห้องประชุม 201</td>
-            {/* <td>อื่นๆ</td> */}
-            <td>ชี้แจงทีมกองกฎหมายสนับสนุนงานกอง PO</td>
-            {/* <td>-</td> */}
-            {/* <td>28/03/2566</td> */}
-            <td>
-              <Badge className="p-2" color="warning">
-                รอดำเนินการ
-              </Badge>
+              </Badge></h4>
             </td>
           </tr>
         </tbody>

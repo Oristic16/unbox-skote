@@ -111,7 +111,7 @@ const LarOnline = () => {
             </Row>
             <Row>
               <Col xl={12}>
-                <TableForm data={data} getData={getData} />
+                <TableForm data={data}  />
               </Col>
             </Row>
           </Col>

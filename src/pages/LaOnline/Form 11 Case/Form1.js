@@ -7,14 +7,11 @@ import {
   Input,
   Label,
 } from "reactstrap";
-import { Thai } from "flatpickr/dist/l10n/th.js";
 import { differenceInDays } from "date-fns";
 import monthNames from "../../../common/data/monthName";
 import Flatpickr from "react-flatpickr";
 import "react-datepicker/dist/react-datepicker.css";
 import "flatpickr/dist/themes/material_blue.css";
-import Dropzone from "react-dropzone";
-import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Form1 = ({ idForm, closeCanvas, getData }) => {
@@ -115,29 +112,6 @@ const Form1 = ({ idForm, closeCanvas, getData }) => {
     // setData({...data,[field]: e.target.value});
     // console.log(data);
   };
-
-  //Drag and Drop Files
-  function handleAcceptedFiles(acceptedFiles) {
-    setData(prev => ({
-      ...prev,
-      file: acceptedFiles.map(file => ({
-        ...file,
-        formattedSize: formatBytes(file.size), // ตัวอย่างเพิ่ม formattedSize
-      })),
-    }));
-  }
-  /**
-   * Formats the size
-   */
-  function formatBytes(bytes, decimals = 2) {
-    if (bytes === 0) return "0 Bytes";
-    const k = 1024;
-    const dm = decimals < 0 ? 0 : decimals;
-    const sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
-
-    const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
-  }
 
   return (
     <Form
@@ -252,13 +226,14 @@ const Form1 = ({ idForm, closeCanvas, getData }) => {
           ตั้งแต่วันที่
         </Label>
         <Col xl={3}>
-          <Flatpickr
+        <Flatpickr
             className="form-control d-block"
             placeholder="วัน/เดือน/ปี"
             options={{
-              altInput: true,
-              altFormat: "F j, Y",
-              dateFormat: "Y-m-d"
+              // altInput: true,
+              dateFormat: "d-m-Y",
+              ariaDateFormat: "F j, Y",
+              locale: "th"
             }}
             value={data.sinceD}
             onChange={(e) => {
@@ -283,7 +258,6 @@ const Form1 = ({ idForm, closeCanvas, getData }) => {
               enableTime: true,
               noCalendar: true,
               dateFormat: "H:i",
-              locale: Thai,
               time_24hr: true,
               // defaultDate: new Date().getTime(),
             }}
@@ -298,23 +272,24 @@ const Form1 = ({ idForm, closeCanvas, getData }) => {
         </Label>
         <Col xl={3}>
           <Flatpickr
-            className="form-control d-block"
-            placeholder="วัน/เดือน/ปี"
-            options={{
-              altInput: true,
-              altFormat: "F j, Y",
-              dateFormat: "Y-m-d"
-            }}
-            value={data.toD}
-            onChange={(e) => {
-                const newToD = e[0]
-                const newSinceD = data.sinceD
-              if(data.sinceD !== "") {
-                const difference = differenceInDays(newToD,newSinceD)+1;
-                setData((prev) => ({ ...prev, toD: e[0],amountD: difference}));
-              }
-              setData((prev) => ({ ...prev, toD: e[0],}))
-            }}
+              className="form-control d-block"
+              placeholder="วัน/เดือน/ปี"
+              options={{
+                // altInput: true,
+                dateFormat: "d-m-Y",
+                ariaDateFormat: "F j, Y",
+                locale: "th"
+              }}
+              value={data.toD}
+              onChange={(e) => {
+                  const newToD = e[0]
+                  const newSinceD = data.sinceD
+                if(data.sinceD !== "") {
+                  const difference = differenceInDays(newToD,newSinceD)+1;
+                  setData((prev) => ({ ...prev, toD: e[0],amountD: difference}));
+                }
+                setData((prev) => ({ ...prev, toD: e[0],}))
+              }}
           />
             {/* <Input type="number" onChange={(e) => {
                 const newToD = parseInt(e.target.value) || 0
@@ -335,7 +310,6 @@ const Form1 = ({ idForm, closeCanvas, getData }) => {
                 enableTime: true,
                 noCalendar: true,
                 dateFormat: "H:i",
-                locale: Thai,
                 time_24hr: true,
                 // defaultDate: new Date().getTime(),
               }}
