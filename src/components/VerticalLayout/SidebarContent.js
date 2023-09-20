@@ -197,18 +197,18 @@ const SidebarContent = props => {
               <li>
                 <Link to="/logintest">
                   <i className="bx bxs-bell"></i>
-                  <span>{props.t("Login")}</span>
+                  <span>{props.t("การลงเวลาออนไลน์")}</span>
                 </Link>
               </li>
               <li>
-                <Link to="/registertest">
-                  <i className="bx bxs-bell"></i>
-                  <span>{props.t("Register")}</span>
+                <Link to="/resorceonline">
+                  <i className="bx bx-data"></i>
+                  <span>{props.t("ทรัพยากรออนไลน์")}</span>
                 </Link>
               </li>
               <li>
                 <Link to="/laonline">
-                  <i className="bx bxs-bell"></i>
+                  <i className="fas fa-hand-peace"></i>
                   <span>{props.t("การลาออนไลน์2")}</span>
                 </Link>
               </li>

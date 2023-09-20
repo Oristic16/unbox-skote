@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { Badge, Button, Card, CardBody, CardTitle, Col, Row } from "reactstrap";
 
 const EntryWork = () => {
@@ -110,7 +111,7 @@ const EntryWork = () => {
               <h6 id="header-rightbar">เวลาประมาณการ</h6>
             </Col>
           </Row>
-          <Row className="mb-2">
+          <Row>
             <Col
               style={{
                 display: "flex",
@@ -120,78 +121,11 @@ const EntryWork = () => {
               <p style={{ color: "#8c8c8c" }}>ต้องออกงานหลังเวลา 15:30 น.</p>
             </Col>
           </Row>
-          {/* <CardTitle style={{ color: "#483fd3" }} className="mt-0 mb-3">
-            <Row style={{ display: "flex", alignItems: "center" }}>
-              <Col xs={6} sm={6} md={6} lg={8} xl={8}>
-                <i className="fa-regular fa-newspaper font-size-17 me-1"></i>
-                Popular Topic
-              </Col>
-              <Col
-                xs={6}
-                sm={6}
-                md={6}
-                lg={4}
-                xl={4}
-                style={{ display: "flex", justifyContent: "end" }}
-              >
-                <Button
-                  color="primary"
-                  style={{ fontSize: "10px", padding: "5px" }}
-                >
-                  อ่านทั้งหมด
-                </Button>
-              </Col>
-            </Row>
-          </CardTitle>
-          <Row>
-            <Col lg={2}>
-              <h5>
-                <Badge color="primary" pill>
-                  01
-                </Badge>
-              </h5>
-            </Col>
-            <Col>
-              <Row>
-                <Col>
-                  <h6 id="header-rightbar">แบบฟอร์ม HR</h6>
-                </Col>
-              </Row>
-              <Row className="d-flex align-items-center">
-                <Col>
-                  <span
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                    }}
-                  >
-                    <h4>
-                      <Badge color="info">HR</Badge>
-                    </h4>{" "}
-                    &nbsp;8 ตุลาคม 2562
-                  </span>
-                </Col>
-              </Row>
-            </Col>
-          </Row>
-          <Row className="mt-3">
-            <Col lg={2}>
-              <h5>
-                <Badge color="primary" pill>
-                  02
-                </Badge>
-              </h5>
-            </Col>
-            <Col>
-              <Row>
-                <Col lg={10}>
-                  <h6 id="header-rightbar">
-                    รายชื่อข้าราชการตามมอบหมาย ณ 1 กุมภาพันธ์ 2565
-                  </h6>
-                </Col>
-              </Row>
-            </Col>
-          </Row> */}
+          <div className="" style={{textAlign:"center"}}>
+                  <Link to="/profile" className="btn btn-primary  btn-md">
+                    ดูภาพรวม <i className="mdi mdi-arrow-right ms-1"></i>
+                  </Link>
+                </div>
         </CardBody>
       </Card>
     </div>

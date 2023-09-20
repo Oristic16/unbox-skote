@@ -28,28 +28,28 @@ const Form1 = ({ idForm, closeCanvas, getData }) => {
   const [data, setData] = useState({
     formType: idForm,
     writeFrom: "สำนักงาน ก.พ.ร.",
-    writeDate: formattedDate,
+    writeDate: new Date().toLocaleDateString(),
     title: "",
-    writeTo: "ชื่อผู้บังคับบัญชาของสังกัด",
-    userName: "ชื่อผู้ใช้",
-    position: "ตำแหน่งงานผู้ใช้",
+    writeTo: "ผู้อำนวยการสำนักงานเลขาธิการ",
+    userName: "นวสรณ์ สร้อยโพธิ์พันธุ์",
+    position: "นักวิชาการคอมพิวเตอร์ชำนาญการพิเศษ",
     groupName: "สังกัด/กองของผู้ใช้",
-    askFor: "",
-    dueTo: "",
-    sinceD: "",
-    sinceT: "",
-    toD: "",
-    toT: "",
-    amountD: "",
-    place: "",
+    sickType: "",
+    leaveReason: "",
+    leaveFromDate: "",
+    leaveFromTimetype: "",
+    leaveToDate: "",
+    leaveToTimetype: "",
+    leaveDays: "",
+    contactAddress: "",
     note: "",
     file: "",
-    sendTo: "หัวหน้า/ผู้บังคับบัญชา",
-    lastOrder: false,
+    approveUser: "นภนง ขวัญยืน",
+    sendFinal: false,
     status: "รออนุมัติ"
   });
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (idForm) => {
     // const formData = new FormData();
     // formData.append('writeFrom', data.writeFrom);
     // formData.append('writeDate', data.writeDate);
@@ -72,7 +72,7 @@ const Form1 = ({ idForm, closeCanvas, getData }) => {
     // console.log(formData)
     
     try {
-      await axios.post("http://localhost:8000/uploadform1", {
+      await axios.post(`http://localhost:8000/uploadform/`, {
         formType: data.formType,
         writeFrom: data.writeFrom,
         writeDate: data.writeDate,
@@ -81,18 +81,18 @@ const Form1 = ({ idForm, closeCanvas, getData }) => {
         userName: data.userName,
         position: data.position,
         groupName: data.groupName,
-        askFor: data.askFor,
-        dueTo: data.dueTo,
-        sinceD: data.sinceD.toLocaleDateString(),
-        sinceT: data.sinceT,
-        toD: data.toD.toLocaleDateString(),
-        toT: data.toT,
-        amountD: data.amountD,
-        place: data.place,
+        sickType: data.sickType,
+        leaveReason: data.leaveReason,
+        leaveFromDate: data.leaveFromDate.toLocaleDateString(),
+        leaveFromTimetype: data.leaveFromTimetype,
+        leaveToDate: data.leaveToDate.toLocaleDateString(),
+        leaveToTimetype: data.leaveToTimetype,
+        leaveDays: data.leaveDays,
+        contactAddress: data.contactAddress,
         note: data.note,
         file: data.file,
-        sendTo: data.sendTo,
-        lastOrder: data.lastOrder,
+        approveUser: data.approveUser,
+        sendFinal: data.sendFinal,
         status: data.status
       })
       // await getData();
@@ -117,7 +117,7 @@ const Form1 = ({ idForm, closeCanvas, getData }) => {
     <Form
       onSubmit={(e) => {
         e.preventDefault();
-        handleSubmit();
+        handleSubmit(idForm);
       }}
     >
       <FormGroup row className="mt-3">
@@ -140,7 +140,7 @@ const Form1 = ({ idForm, closeCanvas, getData }) => {
           <Input
             readOnly
             type="text"
-            value={formattedDate}
+            value={data.writeDate}
             disabled
             onChange={(e) => handleInputChange(e, "writeDate")}
           />
@@ -157,7 +157,7 @@ const Form1 = ({ idForm, closeCanvas, getData }) => {
             readOnly
             disabled
             onChange={(e) => handleInputChange(e, "title")}
-            value={data.title === "" ? "กรุณาระบุ" : data.title}
+            value={data.title === "" ? "" : `ขอลา${data.title}`}
           />
         </Col>
       </FormGroup>
@@ -201,12 +201,12 @@ const Form1 = ({ idForm, closeCanvas, getData }) => {
           <Input
             type="select"
             onChange={(e) => {
-              setData({...data, askFor: e.target.value, title: e.target.value });
+              setData({...data, sickType: e.target.value, title: e.target.value });
               // setData({...data, title: e.target.value });
             }}
-            value={data.askFor}
+            value={data.sickType}
           >
-            <option value="กรุณาระบุ">กรุณาระบุ</option>
+            <option value="">กรุณาระบุ</option>
             <option value="ลาป่วย">ลาป่วย</option>
             <option value="ลากิจส่วนตัว">ลากิจส่วนตัว</option>
             <option value="ลาคลอดบุตร">ลาคลอดบุตร</option>
@@ -218,7 +218,7 @@ const Form1 = ({ idForm, closeCanvas, getData }) => {
           เนื่องจาก
         </Label>
         <Col>
-          <Input onChange={(e) => handleInputChange(e, 'dueTo')} value={data.dueTo} style={{ height: "75px" }} type="textarea" />
+          <Input onChange={(e) => handleInputChange(e, 'leaveReason')} value={data.leaveReason} style={{ height: "75px" }} type="textarea" />
         </Col>
       </FormGroup>
       <FormGroup row>
@@ -235,15 +235,15 @@ const Form1 = ({ idForm, closeCanvas, getData }) => {
               ariaDateFormat: "F j, Y",
               locale: "th"
             }}
-            value={data.sinceD}
+            value={data.leaveFromDate}
             onChange={(e) => {
                 const newSinceD = e[0]
-                const newToD = data.toD
-                if(data.toD !== "") {
+                const newToD = data.leaveToDate
+                if(data.leaveToDate !== "") {
                     const difference = differenceInDays(newToD,newSinceD)+1;
-                    setData((prev) => ({ ...prev, sinceD: e[0],amountD: difference}));
+                    setData((prev) => ({ ...prev, leaveFromDate: e[0], leaveDays: difference}));
                 }
-                setData((prev) => ({ ...prev, sinceD: e[0]}))
+                setData((prev) => ({ ...prev, leaveFromDate: e[0]}))
             }}
           />
         </Col>
@@ -261,8 +261,8 @@ const Form1 = ({ idForm, closeCanvas, getData }) => {
               time_24hr: true,
               // defaultDate: new Date().getTime(),
             }}
-            value={data.sinceT}
-            onChange={(e) => setData(prev => ({...prev, sinceT: e[0].toLocaleTimeString()}))}
+            value={data.leaveFromTimetype}
+            onChange={(e) => setData(prev => ({...prev, leaveFromTimetype: e[0].toLocaleTimeString()}))}
           />
         </Col>
       </FormGroup>
@@ -280,15 +280,15 @@ const Form1 = ({ idForm, closeCanvas, getData }) => {
                 ariaDateFormat: "F j, Y",
                 locale: "th"
               }}
-              value={data.toD}
+              value={data.leaveToDate}
               onChange={(e) => {
                   const newToD = e[0]
-                  const newSinceD = data.sinceD
-                if(data.sinceD !== "") {
+                  const newSinceD = data.leaveFromDate
+                if(data.leaveFromDate !== "") {
                   const difference = differenceInDays(newToD,newSinceD)+1;
-                  setData((prev) => ({ ...prev, toD: e[0],amountD: difference}));
+                  setData((prev) => ({ ...prev, leaveToDate: e[0], leaveDays: difference}));
                 }
-                setData((prev) => ({ ...prev, toD: e[0],}))
+                setData((prev) => ({ ...prev, leaveToDate: e[0]}))
               }}
           />
             {/* <Input type="number" onChange={(e) => {
@@ -313,8 +313,8 @@ const Form1 = ({ idForm, closeCanvas, getData }) => {
                 time_24hr: true,
                 // defaultDate: new Date().getTime(),
               }}
-              value={data.toT}
-              onChange={(e) => setData(prev => ({...prev, toT: e[0].toLocaleTimeString()}))}
+              value={data.leaveToTimetype}
+              onChange={(e) => setData(prev => ({...prev, leaveToTimetype: e[0].toLocaleTimeString()}))}
           />
         </Col>
       </FormGroup>
@@ -326,9 +326,9 @@ const Form1 = ({ idForm, closeCanvas, getData }) => {
           <Input
             disabled
             type="text"
-            value={data.amountD}
+            value={data.leaveDays}
             readOnly
-            onChange={(e) => handleInputChange(e, 'amountD')}
+            onChange={(e) => handleInputChange(e, 'leaveDays')}
           />
         </Col>
       </FormGroup>
@@ -337,7 +337,7 @@ const Form1 = ({ idForm, closeCanvas, getData }) => {
           สถานที่ติดต่อ
         </Label>
         <Col>
-          <Input onChange={(e) => handleInputChange(e, 'place')} value={data.place} style={{ height: "75px" }} type="textarea" />
+          <Input onChange={(e) => handleInputChange(e, 'contactAddress')} value={data.contactAddress} style={{ height: "75px" }} type="textarea" />
         </Col>
       </FormGroup>
       <FormGroup row>
@@ -362,7 +362,7 @@ const Form1 = ({ idForm, closeCanvas, getData }) => {
           ส่งผู้อนุมัติ
         </Label>
         <Col xl={3}>
-          <Input readOnly disabled value={data.sendTo} type="text" onChange={(e) => handleInputChange(e, 'sendTo')} />
+          <Input readOnly disabled value={data.approveUser} type="text" onChange={(e) => handleInputChange(e, 'approveUser')} />
         </Col>
         <Col xl={3}>
           {/* <div className="form-check form-check-primary mb-3"> */}
@@ -370,8 +370,8 @@ const Form1 = ({ idForm, closeCanvas, getData }) => {
             type="checkbox"
             className="form-check-input me-1"
             id="customCheckcolor1"
-            checked={data.lastOrder}
-            onChange={(e) => setData((prevData) => ({...prevData, lastOrder: e.target.checked}))}
+            checked={data.sendFinal}
+            onChange={(e) => setData((prevData) => ({...prevData, sendFinal: e.target.checked}))}
           />
           <label className="form-check-label" htmlFor="customCheckcolor1">
             ผู้อนุมัตินี้เป็นลำดับสุดท้าย

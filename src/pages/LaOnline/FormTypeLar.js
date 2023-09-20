@@ -3,7 +3,7 @@ import { Button, Input, Label, Offcanvas, OffcanvasBody, OffcanvasHeader, Contai
 import LaType from './LaType'
 import SelectForm from './SelectForm'
 
-const FormTypeLar = ({ getData }) => {
+const FormTypeLar = () => {
 
     const [open, setOpen] = useState(false)
     const [formNum, setFormNum] = useState(null)

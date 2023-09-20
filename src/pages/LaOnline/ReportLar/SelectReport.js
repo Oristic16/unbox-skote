@@ -22,7 +22,7 @@ const SelectReport = ({ idReport }) => {
                 return (
                     <Form className='mt-3'>
                         <FormGroup className='' row>
-                            <Label xl={3}>ปีงบประมาณ</Label>
+                            <Label className='text-end' xl={3}>ปีงบประมาณ</Label>
                             <Col xl={5}>
                                 <Input type='select'>
                                     <option value={null}></option>
@@ -34,7 +34,7 @@ const SelectReport = ({ idReport }) => {
                             </Col>
                         </FormGroup>
                         <FormGroup className='' row>
-                            <Label xl={3}>เดือน</Label>
+                            <Label className='text-end' xl={3}>เดือน</Label>
                             <Col xl={5}>
                                 <Input type='select'>
                                     <option value={null}></option>
@@ -47,8 +47,8 @@ const SelectReport = ({ idReport }) => {
                             </Col>
                         </FormGroup>
                         <FormGroup className='d-flex align-items-start' row>
-                        <Label xl={3}>รูปแบบรายงาน</Label>
-                            <Col xl={5}>
+                        <Label className='text-end' xl={3}>รูปแบบรายงาน</Label>
+                            <Col xl={9}>
                                 <Input type='select'>
                                     <option value={null}></option>
                                     <option value={1}>1. ลาป่วย ลากิจ สาย ขาด ลาพักผ่อน </option>
@@ -57,7 +57,7 @@ const SelectReport = ({ idReport }) => {
                             </Col>
                         </FormGroup>
                         <FormGroup row>
-                            <Label xl={3}>เจ้าหน้าที่</Label>
+                            <Label className='text-end' xl={3}>เจ้าหน้าที่</Label>
                             <Col xl={5}>
                                 <Button onClick={toggleModal} color='info'>เลือกเจ้าหน้าที่</Button>
                             </Col>
@@ -76,7 +76,7 @@ const SelectReport = ({ idReport }) => {
                 return (
                     <Form className='mt-3'>
                         <FormGroup row>
-                            <Label xl={3}>ปีงบประมาณ</Label>
+                            <Label className='text-end' xl={2}>ปีงบประมาณ</Label>
                             <Col xl={5}>
                                 <Input type='select'>
                                     <option value={null}></option>
@@ -88,7 +88,7 @@ const SelectReport = ({ idReport }) => {
                             </Col>
                         </FormGroup>  
                         <FormGroup row>
-                            <Label xl={3}>ช่วงวันที่</Label>
+                            <Label className='text-end' xl={2}>ช่วงวันที่</Label>
                             <Col xl={3}>
                                 <Flatpickr
                                     className="form-control d-block"
@@ -101,8 +101,8 @@ const SelectReport = ({ idReport }) => {
                                     }}
                                 />
                             </Col>
-                            <Label xl={3}>ถึงวันที่</Label>
-                            <Col xl={3}>
+                            <Label className='text-end' xl={2}>ถึงวันที่</Label>
+                            <Col xl={3} >
                                 <Flatpickr
                                     className="form-control d-block"
                                     placeholder="วัน/เดือน/ปี"
@@ -116,7 +116,7 @@ const SelectReport = ({ idReport }) => {
                             </Col>
                         </FormGroup>
                         <FormGroup row>
-                            <Label xl={3}>เจ้าหน้าที่</Label>
+                            <Label className='text-end' xl={2}>เจ้าหน้าที่</Label>
                             <Col xl={5}>
                                 <Button onClick={toggleModal} color='info'>เลือกเจ้าหน้าที่</Button>
                             </Col>
@@ -132,7 +132,7 @@ const SelectReport = ({ idReport }) => {
                 return (
                     <Form className='mt-3'>
                         <FormGroup row>
-                            <Label xl={3}>ปีงบประมาณ</Label>
+                            <Label className='text-end' xl={3}>ปีงบประมาณ</Label>
                             <Col xl={5}>
                                 <Input type='select'>
                                     <option value={null}></option>
@@ -144,7 +144,7 @@ const SelectReport = ({ idReport }) => {
                             </Col>
                         </FormGroup>  
                         <FormGroup row>
-                            <Label xl={3}>ช่วงวันที่</Label>
+                            <Label className='text-end' xl={3}>ช่วงวันที่</Label>
                             <Col xl={3}>
                                 <Flatpickr
                                     className="form-control d-block"
@@ -157,7 +157,7 @@ const SelectReport = ({ idReport }) => {
                                     }}
                                 />
                             </Col>
-                            <Label className='text-end' xl={3}>ถึงวันที่</Label>
+                            <Label  className='text-end' xl={3}>ถึงวันที่</Label>
                             <Col xl={3}>
                                 <Flatpickr
                                     className="form-control d-block"
@@ -172,7 +172,7 @@ const SelectReport = ({ idReport }) => {
                             </Col>
                         </FormGroup>
                         <FormGroup row>
-                            <Label xl={3}>ประเภทเจ้าหน้าที่</Label>
+                            <Label className='text-end' xl={3}>ประเภทเจ้าหน้าที่</Label>
                             <Col xl={5}>
                                 <Input type='select'>
                                     <option value={null}></option>
@@ -183,13 +183,13 @@ const SelectReport = ({ idReport }) => {
                             </Col>
                         </FormGroup>
                         <FormGroup row>
-                            <Label xl={3}>สำนัก/กอง/กลุ่ม</Label>
+                            <Label className='text-end' xl={3}>สำนัก/กอง/กลุ่ม</Label>
                             <Col xl={5}>
                                 <Button onClick={toggleModal2} color='info'>เลือกสำนัก/กอง/กลุ่ม</Button>
                             </Col>
                         </FormGroup>
                         <FormGroup row>
-                            <Label xl={3}>เจ้าหน้าที่</Label>
+                            <Label className='text-end' xl={3}>เจ้าหน้าที่</Label>
                             <Col xl={5}>
                                 <Button onClick={toggleModal} color='info'>เลือกเจ้าหน้าที่</Button>
                             </Col>
@@ -208,7 +208,7 @@ const SelectReport = ({ idReport }) => {
                 return (
                     <Form className='mt-3'>
                         <FormGroup row>
-                            <Label xl={3}>ช่วงวันที่</Label>
+                            <Label className='text-end' xl={2}>ช่วงวันที่</Label>
                             <Col xl={3}>
                                 <Flatpickr
                                     className="form-control d-block"
@@ -221,7 +221,7 @@ const SelectReport = ({ idReport }) => {
                                     }}
                                 />
                             </Col>
-                            <Label xl={3}>ถึงวันที่</Label>
+                            <Label className='text-end' xl={2}>ถึงวันที่</Label>
                             <Col xl={3}>
                                 <Flatpickr
                                     className="form-control d-block"
@@ -236,7 +236,7 @@ const SelectReport = ({ idReport }) => {
                             </Col>
                         </FormGroup>
                         <FormGroup row>
-                            <Label xl={3}>เจ้าหน้าที่</Label>
+                            <Label className='text-end' xl={2}>เจ้าหน้าที่</Label>
                             <Col xl={5}>
                                 <Button onClick={toggleModal} color='info'>เลือกเจ้าหน้าที่</Button>
                             </Col>
@@ -255,7 +255,7 @@ const SelectReport = ({ idReport }) => {
                 return (
                     <Form className='mt-3'>
                         <FormGroup row>
-                            <Label xl={3}>ปีงบประมาณ</Label>
+                            <Label className='text-end' xl={3}>ปีงบประมาณ</Label>
                             <Col xl={5}>
                                 <Input type='select'>
                                     <option value={null}></option>
@@ -267,7 +267,7 @@ const SelectReport = ({ idReport }) => {
                             </Col>
                         </FormGroup>
                         <FormGroup className='' row>
-                            <Label xl={3}>เดือน</Label>
+                            <Label className='text-end' xl={3}>เดือน</Label>
                             <Col xl={5}>
                                 <Input type='select'>
                                     <option value={null}></option>
@@ -280,7 +280,7 @@ const SelectReport = ({ idReport }) => {
                             </Col>
                         </FormGroup>
                         <FormGroup row>
-                            <Label xl={3}>ประเภทเจ้าหน้าที่</Label>
+                            <Label className='text-end' xl={3}>ประเภทเจ้าหน้าที่</Label>
                             <Col xl={5}>
                                 <Input type='select'>
                                     <option value={null}></option>
@@ -291,7 +291,7 @@ const SelectReport = ({ idReport }) => {
                             </Col>
                         </FormGroup>
                         <FormGroup row>
-                            <Label xl={3}>สำนัก/กอง/กลุ่ม</Label>
+                            <Label className='text-end' xl={3}>สำนัก/กอง/กลุ่ม</Label>
                             <Col xl={5}>
                                 <Button onClick={toggleModal2} color='info'>เลือกสำนัก/กอง/กลุ่ม</Button>
                             </Col>

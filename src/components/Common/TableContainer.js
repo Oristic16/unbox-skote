@@ -131,7 +131,7 @@ const TableContainer = ({
   return (
     <Fragment>
       <Row className="mb-2">
-        <Col md={customPageSizeOptions ? 2 : 1}>
+        <Col md={customPageSizeOptions ? 2 : 2}>
           <select
             className="form-select"
             value={pageSize}
@@ -200,17 +200,17 @@ const TableContainer = ({
       </Row>
 
       <div className="table-responsive react-table">
-        <Table bordered hover {...getTableProps()} className={className}>
+        <Table bordered hover {...getTableProps()} className={className} style={{whiteSpace:"nowrap"}}>
           <thead className="table-light table-nowrap">
             {headerGroups.map(headerGroup => (
               <tr key={headerGroup.id} {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map(column => (
                   <th key={column.id}>
-                    <div className="mb-2" {...column.getSortByToggleProps()}>
-                      {column.render("Header")}
-                      {generateSortingIndicator(column)}
-                    </div>
-                    <Filter column={column} />
+                    <span className="mb-2" {...column.getSortByToggleProps()}>
+                      {column.render("Header")}{generateSortingIndicator(column)}
+                      
+                    </span>
+                    {/* <Filter column={column} /> */}
                   </th>
                 ))}
               </tr>

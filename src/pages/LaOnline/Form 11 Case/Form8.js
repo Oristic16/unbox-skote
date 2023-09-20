@@ -6,6 +6,7 @@ import {
   FormGroup,
   Input,
   Label,
+  Row,
 } from "reactstrap";
 import { differenceInDays } from "date-fns";
 import monthNames from "../../../common/data/monthName";
@@ -14,7 +15,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import "flatpickr/dist/themes/material_blue.css";
 import axios from "axios";
 
-const Form2 = ({ idForm, closeCanvas }) => {
+const Form8 = ({ idForm, closeCanvas }) => {
   //เก็บค่าของ วัน เดือน ปี
   const [Day, setDay] = useState(new Date().getDate());
   const [Month, setMonth] = useState(new Date().getMonth());
@@ -29,29 +30,31 @@ const Form2 = ({ idForm, closeCanvas }) => {
     formType: idForm,
     writeFrom: "สำนักงาน ก.พ.ร.",
     writeDate: formattedDate,
-    title: "ขอลาพักผ่อน",
+    title: "ขอลาติดตามคู่สมรส",
     writeTo: "ผู้อำนวยการสำนักงานเลขาธิการ",
     userName: "นวสรณ์ สร้อยโพธิ์พันธุ์",
     position: "นักวิชาการคอมพิวเตอร์ชำนาญการพิเศษ",
     groupName: "กลุ่มเทคโนโลยีสารสนเทศ",
-    prevYear: "20",
-    leaveLimit: "30",
+    leaveReq: "ติดตามคู่สมรส",
     leaveFromDate: "",
-    leaveFromTimetype: "",
     leaveToDate: "",
-    leaveToTimetype: "",
     leaveDays: "",
-    contactAddress: "",
+    spouseName: "",
+    spousePosition: "",
+    spouseDepartment: "",
+    spouseCountry: "",
+    spouseFromDate: "",
+    spouseToDate: "",
     note: "",
     file: "",
     approveUser: "นภนง ขวัญยืน",
     sendFinal: false,
     status: "รออนุมัติ",
-  });
+});
 
   const handleSubmit = async () => {
     try {
-      await axios.post("http://localhost:8000/uploadform", {
+      await axios.post(`http://localhost:8000/uploadform`, {
         formType: data.formType,
         writeFrom: data.writeFrom,
         writeDate: data.writeDate,
@@ -60,14 +63,16 @@ const Form2 = ({ idForm, closeCanvas }) => {
         userName: data.userName,
         position: data.position,
         groupName: data.groupName,
-        prevYear: data.prevYear,
-        leaveLimit: data.leaveLimit,
+        leaveReq: data.leaveReq,
         leaveFromDate: data.leaveFromDate.toLocaleDateString(),
-        leaveFromTimetype: data.leaveFromTimetype,
         leaveToDate: data.leaveToDate.toLocaleDateString(),
-        leaveToTimetype: data.leaveToTimetype,
         leaveDays: data.leaveDays,
-        contactAddress: data.contactAddress,
+        spouseName: data.spouseName,
+        spousePosition: data.spousePosition,
+        spouseDepartment: data.spouseDepartment,
+        spouseCountry: data.spouseCountry,
+        spouseFromDate: data.spouseFromDate.toLocaleDateString(),
+        spouseToDate: data.spouseToDate.toLocaleDateString(),
         note: data.note,
         file: data.file,
         approveUser: data.approveUser,
@@ -174,31 +179,18 @@ const Form2 = ({ idForm, closeCanvas }) => {
       </FormGroup>
       <FormGroup row>
         <Label className="text-end" xl={2}>
-          วันลาพักผ่อนสะสม
+        มีความประสงค์จะลา
         </Label>
         <Col xl={4}>
-          <Input
-            disabled
-            type="text"
-            onChange={(e) => handleInputChange(e, 'prevYear')}
-            value={data.prevYear}
-          />
+          <Input type="text" readOnly disabled value={data.leaveReq} onChange={(e) => handleInputChange(e, 'leaveReq')} />
         </Col>
       </FormGroup>
       <FormGroup row>
         <Label className="text-end" xl={2}>
-          รวมเป็น
-        </Label>
-        <Col xl={4}>
-          <Input disabled onChange={(e) => handleInputChange(e, 'leaveLimit')} value={data.leaveLimit} type="text" />
-        </Col>
-      </FormGroup>
-      <FormGroup row>
-        <Label className="text-end" xl={2}>
-          ตั้งแต่วันที่
+        ตั้งแต่วันที่
         </Label>
         <Col xl={3}>
-          <Flatpickr
+        <Flatpickr
             className="form-control d-block"
             placeholder="วัน/เดือน/ปี"
             options={{
@@ -213,28 +205,10 @@ const Form2 = ({ idForm, closeCanvas }) => {
                 const newToD = data.leaveToDate
                 if(data.leaveToDate !== "") {
                     const difference = differenceInDays(newToD,newSinceD)+1;
-                    setData((prev) => ({ ...prev, leaveFromDate: e[0],leaveDays: difference}));
+                    setData((prev) => ({ ...prev, leaveFromDate: e[0], leaveDays: difference}));
                 }
-                setData((prev) => ({ ...prev, leaveFromDate: e[0] }))
+                setData((prev) => ({ ...prev, leaveFromDate: e[0]}))
             }}
-          />
-        </Col>
-        <Label style={{ textAlign: "end" }} xl={1}>
-          ช่วงเวลา
-        </Label>
-        <Col xl={3}>
-          <Flatpickr
-            className="form-control d-block"
-            placeholder="ระบุเวลา"
-            options={{
-              enableTime: true,
-              noCalendar: true,
-              dateFormat: "H:i",
-              time_24hr: true,
-              // defaultDate: new Date().getTime(),
-            }}
-            value={data.leaveFromTimetype}
-            onChange={(e) => setData(prev => ({...prev, leaveFromTimetype: e[0].toLocaleTimeString()}))}
           />
         </Col>
       </FormGroup>
@@ -244,55 +218,30 @@ const Form2 = ({ idForm, closeCanvas }) => {
         </Label>
         <Col xl={3}>
           <Flatpickr
-            className="form-control d-block"
-            placeholder="วัน/เดือน/ปี"
-            options={{
-              // altInput: true,
-              dateFormat: "d-m-Y",
-              ariaDateFormat: "F j, Y",
-              locale: "th"
-            }}
-            value={data.leaveToDate}
-            onChange={(e) => {
-                const newToD = e[0]
-                const newSinceD = data.leaveFromDate
-              if(data.leaveFromDate !== "") {
-                const difference = differenceInDays(newToD,newSinceD)+1;
-                setData((prev) => ({ ...prev, leaveToDate: e[0],leaveDays: difference}));
-              }
-              setData((prev) => ({ ...prev, leaveToDate: e[0],}))
-            }}
-          />
-            {/* <Input type="number" onChange={(e) => {
-                const newToD = parseInt(e.target.value) || 0
-                const newSinceD = parseInt(data.sinceD) || 0
-                const newAmountD = newSinceD - newToD;
-                setData(prev => ({...prev, toD: newToD, amountD: newAmountD}))
-                }} 
-            />         */}
-            </Col>
-        <Label style={{ textAlign: "end" }} xl={1}>
-          ช่วงเวลา
-        </Label>
-        <Col xl={3}>
-          <Flatpickr
               className="form-control d-block"
-              placeholder="ระบุเวลา"
+              placeholder="วัน/เดือน/ปี"
               options={{
-                enableTime: true,
-                noCalendar: true,
-                dateFormat: "H:i",
-                time_24hr: true,
-                // defaultDate: new Date().getTime(),
+                // altInput: true,
+                dateFormat: "d-m-Y",
+                ariaDateFormat: "F j, Y",
+                locale: "th"
               }}
-              value={data.leaveToTimetype}
-              onChange={(e) => setData(prev => ({...prev, leaveToTimetype: e[0].toLocaleTimeString()}))}
+              value={data.leaveToDate}
+              onChange={(e) => {
+                  const newToD = e[0]
+                  const newSinceD = data.leaveFromDate
+                if(data.leaveFromDate !== "") {
+                  const difference = differenceInDays(newToD,newSinceD)+1;
+                  setData((prev) => ({ ...prev, leaveToDate: e[0], leaveDays: difference}));
+                }
+                setData((prev) => ({ ...prev, leaveToDate: e[0],}))
+              }}
           />
-        </Col>
+            </Col>
       </FormGroup>
       <FormGroup row style={{display:"flex",alignItems:"center"}}>
         <Label className="text-end" xl={2}>
-          กำหนด
+            กำหนด
         </Label>
         <Col xl={4}>
           <Input
@@ -306,11 +255,77 @@ const Form2 = ({ idForm, closeCanvas }) => {
       </FormGroup>
       <FormGroup row>
         <Label className="text-end" xl={2}>
-          สถานที่ติดต่อ
+        ชื่อคู่สมรส 
         </Label>
-        <Col>
-          <Input onChange={(e) => handleInputChange(e, 'contactAddress')} value={data.contactAddress} style={{ height: "75px" }} type="textarea" />
+        <Col xl={4}>
+          <Input type="text" value={data.spouseName} onChange={(e) => handleInputChange(e, 'spouseName')} />
         </Col>
+      </FormGroup>
+      <FormGroup row>
+        <Label className="text-end" xl={2}>
+        ตำแหน่งคู่สมรส
+        </Label>
+        <Col xl={4}>
+          <Input type="text" value={data.spousePosition} onChange={(e) => handleInputChange(e, 'spousePosition')} />
+        </Col>
+      </FormGroup>
+      <FormGroup row>
+        <Label className="text-end" xl={2}>
+        สังกัดคู่สมรส
+        </Label>
+        <Col xl={4}>
+          <Input type="text" value={data.spouseDepartment} onChange={(e) => handleInputChange(e, 'spouseDepartment')} />
+        </Col>
+      </FormGroup>
+      <FormGroup row>
+        <Label className="text-end" xl={2}>
+        ปฏิบัติงาน ณ ประเทศ
+        </Label>
+        <Col xl={4}>
+          <Input type="text" value={data.spouseCountry} onChange={(e) => handleInputChange(e, 'spouseCountry')} />
+        </Col>
+      </FormGroup>
+      <FormGroup row>
+        <Label className="text-end" xl={2}>
+        ตั้งแต่วันที่
+        </Label>
+        <Col xl={3}>
+        <Flatpickr
+            className="form-control d-block"
+            placeholder="วัน/เดือน/ปี"
+            options={{
+              // altInput: true,
+              dateFormat: "d-m-Y",
+              ariaDateFormat: "F j, Y",
+              locale: "th"
+            }}
+            value={data.spouseFromDate}
+            onChange={(e) => {
+                setData((prev) => ({ ...prev, spouseFromDate: e[0]}))
+            }}
+          />
+        </Col>
+      </FormGroup>
+      <FormGroup row>
+        <Label className="text-end" xl={2}>
+          ถึงวันที่
+        </Label>
+        <Col xl={3}>
+          <Flatpickr
+              className="form-control d-block"
+              placeholder="วัน/เดือน/ปี"
+              options={{
+                // altInput: true,
+                dateFormat: "d-m-Y",
+                ariaDateFormat: "F j, Y",
+                locale: "th"
+              }}
+              value={data.spouseToDate}
+              onChange={(e) => {
+                setData((prev) => ({ ...prev, spouseToDate: e[0],}))
+              }}
+          />
+            </Col>
       </FormGroup>
       <FormGroup row>
         <Label className="text-end" xl={2}>
@@ -375,4 +390,4 @@ const Form2 = ({ idForm, closeCanvas }) => {
   );
 };
 
-export default Form2;
+export default Form8;
