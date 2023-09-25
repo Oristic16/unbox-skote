@@ -6,7 +6,7 @@ const Announce = () => {
   return (
     <React.Fragment>
       <Card>
-        <CardTitle className="p-2">
+        {/* <CardTitle className="p-2">
           <br />
           <Row className="px-2">
             <Col>
@@ -20,8 +20,25 @@ const Announce = () => {
               </Badge>
             </Col>
           </Row>
-        </CardTitle>
+        </CardTitle> */}
         <CardBody>
+          <Row className="">
+            <Col>
+            <h5 className="font-size-16 me-3 card-title">
+            <i className="fa-solid fa-database font-size-20 me-2"></i>
+            INTRANET
+          </h5>
+            </Col>
+            <Col className="text-end">
+              <Badge className="p-2 bg-opacity-25">
+                <Link to="/#" className="has-arrow">
+                  HR
+                </Link>
+              </Badge>
+            </Col>
+          </Row>
+          
+          <hr className="mt-2" />
           <Row
             style={{
               display: 'grid',

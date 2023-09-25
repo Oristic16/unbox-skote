@@ -67,6 +67,7 @@ const TableContainer = ({
   isJobListGlobalFilter,
   isAddOptions,
   isAddUserList,
+  isShowSelect,
   handleOrderClicks,
   handleUserClick,
   handleCustomerClick,
@@ -131,19 +132,22 @@ const TableContainer = ({
   return (
     <Fragment>
       <Row className="mb-2">
-        <Col md={customPageSizeOptions ? 2 : 2}>
+        {isShowSelect && (
+          <Col md={customPageSizeOptions ? 2 : 2}>
           <select
             className="form-select"
             value={pageSize}
             onChange={onChangeInSelect}
           >
-            {[10, 20, 30, 40, 50].map(pageSize => (
+            {[5, 10, 25].map(pageSize => (
               <option key={pageSize} value={pageSize}>
                 Show {pageSize}
               </option>
             ))}
           </select>
-        </Col>
+          </Col>
+        )}
+        
         {isGlobalFilter && (
           <GlobalFilter
             preGlobalFilteredRows={preGlobalFilteredRows}
@@ -238,7 +242,7 @@ const TableContainer = ({
         </Table>
       </div>
 
-      <Row className="justify-content-md-end justify-content-center align-items-center">
+      <Row className="justify-content-md-end justify-content-center align-items-center ms-2">
         <Col className="col-md-auto">
           <div className="d-flex gap-1">
             <Button

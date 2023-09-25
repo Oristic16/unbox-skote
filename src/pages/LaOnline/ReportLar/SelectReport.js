@@ -130,7 +130,7 @@ const SelectReport = ({ idReport }) => {
                 )
             case "3":
                 return (
-                    <Form className='mt-3'>
+                    <Form className='mt-2'>
                         <FormGroup row>
                             <Label className='text-end' xl={3}>ปีงบประมาณ</Label>
                             <Col xl={5}>

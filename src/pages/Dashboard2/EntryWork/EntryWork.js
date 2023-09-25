@@ -122,7 +122,7 @@ const EntryWork = () => {
             </Col>
           </Row>
           <div className="" style={{textAlign:"center"}}>
-                  <Link to="/profile" className="btn btn-primary  btn-md">
+                  <Link to="/entrywork" className="btn btn-primary  btn-md">
                     ดูภาพรวม <i className="mdi mdi-arrow-right ms-1"></i>
                   </Link>
                 </div>

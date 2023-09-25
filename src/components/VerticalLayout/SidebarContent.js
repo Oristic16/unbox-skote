@@ -159,7 +159,7 @@ const SidebarContent = props => {
               </li>
               <li>
                 <Link to="/opdcbox">
-                <i className="fa-solid fa-boxes-packing"></i>
+                <i className="fa-solid fa-rectangle-history"></i>
                   <span>{props.t("OPDC BOX")}</span>
                 </Link>
               </li>
@@ -195,13 +195,13 @@ const SidebarContent = props => {
                 </Link>
               </li>
               <li>
-                <Link to="/logintest">
-                  <i className="bx bxs-bell"></i>
+                <Link to="/entrywork">
+                <i className="bx bxs-timer"></i>
                   <span>{props.t("การลงเวลาออนไลน์")}</span>
                 </Link>
               </li>
               <li>
-                <Link to="/resorceonline">
+                <Link to="/entrywork">
                   <i className="bx bx-data"></i>
                   <span>{props.t("ทรัพยากรออนไลน์")}</span>
                 </Link>

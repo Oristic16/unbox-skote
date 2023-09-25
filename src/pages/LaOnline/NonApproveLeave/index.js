@@ -110,7 +110,7 @@ const NonApproveLeave = () => {
       .get(baseURL + "/getnonapprove/rest")
       .then((res) => {
         setData(res.data);
-        console.log(res.data);
+        console.log("Data NoApprove of Rest: ", res.data);
       })
       .catch((err) => {
         console.error(err);
@@ -121,7 +121,7 @@ const NonApproveLeave = () => {
       .get(baseURL + "/getnonapprove/abroad")
       .then((res) => {
         setData2(res.data);
-        console.log(res.data);
+        console.log("Data NoApprove of Abroad: ", res.data);
       })
       .catch((err) => {
         console.error(err);
@@ -132,7 +132,7 @@ const NonApproveLeave = () => {
       .get(baseURL + "/getemployeename")
       .then((res) => {
         setEmployeeName(res.data);
-        console.log(res.data);
+        console.log("Data Employee Name: ",res.data);
       })
       .catch((err) => {
         console.error(err);
@@ -173,9 +173,7 @@ const NonApproveLeave = () => {
   const [openListAbroad, setopenListAbroad] = useState(false);
 
   return (
-    <div>
-      <Card style={{ minHeight: "280px" }}>
-        <CardBody>
+    <React.Fragment>
           <Nav pills className="navtab-bg nav-justified">
             <NavItem>
               <NavLink
@@ -374,8 +372,6 @@ const NonApproveLeave = () => {
               </Form>
             </TabPane>
           </TabContent>
-        </CardBody>
-      </Card>
       <Modal isOpen={openModalEmp} toggle={toggleModal3}>
         <ModalBody>
           <Input type="select">
@@ -390,6 +386,8 @@ const NonApproveLeave = () => {
       </Modal>
       <Modal size="lg" centered isOpen={openListRest} toggle={toggleModal1}>
         <ModalBody >
+          <Card style={{minHeight:"300px"}}>
+            <CardBody>
           <TableContainer
             columns={columns}
             data={data}
@@ -398,10 +396,16 @@ const NonApproveLeave = () => {
             customPageSize={5}
             className="custom-header-css"
           />
+          
+              
+          </CardBody>
+          </Card>
         </ModalBody>
       </Modal>
       <Modal size="xl" centered isOpen={openListAbroad} toggle={toggleModal2}>
         <ModalBody>
+        <Card style={{minHeight:"300px"}}>
+            <CardBody>
         <TableContainer
             columns={columns2}
             data={data2}
@@ -410,9 +414,11 @@ const NonApproveLeave = () => {
             customPageSize={5}
             className="custom-header-css"
           />
+          </CardBody>
+          </Card>
         </ModalBody>
       </Modal>
-    </div>
+    </React.Fragment>
   );
 };
 

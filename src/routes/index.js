@@ -18,6 +18,7 @@ import RegisterTest from "../pages/Authentication/RegisterTest";
 import LaOnline from '../pages/LaOnline/index'
 import ProfileUser from "../pages/Profile/ProfileUser";
 import ResorceOnline from "../pages/ResorceOnline";
+import EntryWork from "../pages/EntryWork";
 
 const authProtectedRoutes = [
 
@@ -34,6 +35,7 @@ const authProtectedRoutes = [
   { path: "/laonline", component: <LaOnline /> },
   { path: "/profile", component: <ProfileUser /> },
   { path: "/resorceonline", component: <ResorceOnline /> },
+  { path: "/entrywork", component: <EntryWork /> },
   // { path: "*", component: <NotFound404 /> },
   {
     path: "/",

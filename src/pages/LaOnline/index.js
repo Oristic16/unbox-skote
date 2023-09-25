@@ -3,67 +3,23 @@ import {
   Button,
   Card,
   CardBody,
-  CardTitle,
-  Carousel,
-  CarouselCaption,
-  CarouselControl,
-  CarouselIndicators,
-  CarouselItem,
   Col,
   Collapse,
   Container,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
-  Form,
   Input,
   Label,
-  Modal,
-  ModalBody,
-  Nav,
-  NavItem,
-  NavLink,
   Row,
-  TabContent,
-  TabPane,
-  UncontrolledCarousel,
-  UncontrolledCollapse,
 } from "reactstrap";
 import FormTypeLar from "./FormTypeLar";
 import TableForm from "./TableForm";
-import TableHistory from "./TableHistory";
 import Breadcrumb from "../../components/Common/Breadcrumb";
 import ReportType from "./ReportLar/ReportType";
 import SelectReport from "./ReportLar/SelectReport";
 import axios from "axios";
 import ReactApexChart from "react-apexcharts";
-import TableContainer from "../../components/Common/TableContainer";
 import TableApprove from "./WaitApprove/TableApprove";
-import classnames from "classnames";
-import Flatpickr from "react-flatpickr";
 import NonApproveLeave from "./NonApproveLeave";
-
-const items = [
-  {
-    src: "https://picsum.photos/id/123/1200/400",
-    altText: "Slide 1",
-    caption: "Slide 1",
-    key: 1,
-  },
-  {
-    src: "https://picsum.photos/id/456/1200/400",
-    altText: "Slide 2",
-    caption: "Slide 2",
-    key: 2,
-  },
-  {
-    src: "https://picsum.photos/id/678/1200/400",
-    altText: "Slide 3",
-    caption: "Slide 3",
-    key: 3,
-  },
-];
+import TableFormInstead from "./TableFormInstead";
 
 const LarOnline = (args) => {
   const baseURL = "http://localhost:8000";
@@ -99,8 +55,6 @@ const LarOnline = (args) => {
   const [tableFormInstead, setTableFormInstead] = useState(true);
   const [reportLar, setReportLar] = useState(true);
 
-  const [collapMenu, setCollapMenu] = useState(false);
-
   const [selectReport, setSelectReport] = useState(null);
 
   const getData = () => {
@@ -119,54 +73,68 @@ const LarOnline = (args) => {
     getData();
   }, []);
 
-  const [option, setOption] = useState({
-    chart: {
-      id: "basic-bar",
-    },
-    xaxis: {
-      categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998],
-    },
+  const total = 30;
+
+  const [series, setSeries] = useState([90, 80, 50, 40]);
+  const [options, setOptions] = useState({
     stroke: {
       lineCap: "round",
     },
-  });
-
-  const [series, setSeries] = useState([10, 50, 90]);
-
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [animating, setAnimating] = useState(false);
-
-  const next = () => {
-    if (animating) return;
-    const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
-    setActiveIndex(nextIndex);
-  };
-
-  const previous = () => {
-    if (animating) return;
-    const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1;
-    setActiveIndex(nextIndex);
-  };
-
-  const goToIndex = (newIndex) => {
-    if (animating) return;
-    setActiveIndex(newIndex);
-  };
-
-  const slides = items.map((item) => {
-    return (
-      <CarouselItem
-        onExiting={() => setAnimating(true)}
-        onExited={() => setAnimating(false)}
-        key={item.src}
-      >
-        <img src={item.src} alt={item.altText} />
-        <CarouselCaption
-          captionText={item.caption}
-          captionHeader={item.caption}
-        />
-      </CarouselItem>
-    );
+    chart: {
+      height: 350,
+      type: "radialBar",
+    },
+    plotOptions: {
+      radialBar: {
+        offsetY: 0,
+        startAngle: 0,
+        endAngle: 270,
+        hollow: {
+          margin: 5,
+          size: "30%",
+          background: "transparent",
+          image: undefined,
+        },
+        dataLabels: {
+          name: {
+            fontSize: "22px",
+          },
+          value: {
+            fontSize: "16px",
+          },
+          total: {
+            show: true,
+            label: "Total",
+            formatter: function (w) {
+              // By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
+              return 249;
+            },
+          },
+        },
+      },
+    },
+    colors: ["#1ab7ea", "#0084ff", "#39539E", "#0077B5"],
+    labels: ["วันลาคงเหลือ", "ลากิจ", "ลาป่วย", "ลาพักผ่อน"],
+    legend: {
+      show: true,
+      floating: true,
+      fontSize: "16px",
+      position: "left",
+      offsetX: 80,
+      offsetY: 30,
+      labels: {
+        useSeriesColors: true,
+      },
+      markers: {
+        size: 0,
+      },
+      formatter: function (seriesName, opts) {
+        return seriesName + ":  " + opts.w.globals.series[opts.seriesIndex];
+      },
+      itemMargin: {
+        vertical: 3,
+      },
+    },
   });
 
   return (
@@ -183,7 +151,7 @@ const LarOnline = (args) => {
               }
             }
           >
-            <Row className="">
+            <Row className="mb-3">
               {openMenu === false ? (
                 <Col xl={12}>
                   <Button color="dark" onClick={() => setOpenMenu(!openMenu)}>
@@ -231,64 +199,74 @@ const LarOnline = (args) => {
             </Row>
           </Col>
           {tableForm === true ? (
-            <Col xl={6}>
-              <Row
-                className="mb-3"
-                style={{ display: "flex", alignItems: "center" }}
-              >
-                <Col xl={9} className="pt-3">
-                  <h5 className="font-size-16 card-title">
-                    <i className="fa-solid fa-circle-check font-size-16 me-2"></i>
-                    ตารางแสดงข้อมูลการลา
-                  </h5>
-                </Col>
-                <Col xl={3} className="d-flex justify-content-end">
-                  <FormTypeLar />
-                </Col>
-              </Row>
-              <Row>
-                <Col xl={12}>
-                  <TableForm data={data} />
-                </Col>
-              </Row>
+            <Col xl={5}>
+              <Card style={{ minHeight: "450px" }}>
+                <CardBody>
+                  <Row
+                    className="mb-3"
+                    style={{ display: "flex", alignItems: "center" }}
+                  >
+                    <Col xl={9} className="">
+                      <h5 className="font-size-16 card-title">
+                        <i className="fa-solid fa-circle-check font-size-16 me-2"></i>
+                        ตารางแสดงข้อมูลการลา
+                      </h5>
+                    </Col>
+                    <Col xl={3} className="d-flex justify-content-end">
+                      <FormTypeLar />
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col xl={12}>
+                      <TableForm data={data} />
+                    </Col>
+                  </Row>
+                </CardBody>
+              </Card>
             </Col>
           ) : null}
           {approve === true ? (
-            <Col xl={3}>
-              <Row
-                className="mb-3"
-                style={{ display: "flex", alignItems: "center" }}
-              >
-                <Col xl={9} className="pt-3">
-                  <h5 className="font-size-16 card-title">
-                    <i className="fa-solid fa-circle-check font-size-16 me-2"></i>
-                    รายการรออนุมัติ
-                  </h5>
-                </Col>
-                <Col xl={3} className="d-flex justify-content-end"></Col>
-              </Row>
-              <Row>
-                <Col xl={12}>
-                  <TableApprove />
-                </Col>
-              </Row>
+            <Col xl={4}>
+              <Card style={{ minHeight: "450px" }}>
+                <CardBody>
+                  <Row
+                    className="mb-3"
+                    style={{ display: "flex", alignItems: "center" }}
+                  >
+                    <Col xl={9} className="">
+                      <h5 className="font-size-16 card-title">
+                        <i className="fa-solid fa-circle-check font-size-16 me-2"></i>
+                        รายการรออนุมัติ
+                      </h5>
+                    </Col>
+                    <Col xl={3} className="d-flex justify-content-end"></Col>
+                  </Row>
+                  <Row>
+                    <Col xl={12}>
+                      <TableApprove />
+                    </Col>
+                  </Row>
+                </CardBody>
+              </Card>
             </Col>
           ) : null}
           {radialChart === true ? (
-            <Col xl={3}>
-              <Row
-                className="mb-3"
-                style={{ display: "flex", alignItems: "center" }}
-              >
-                <Col xl={9} className="pt-3">
+            <Col
+              xl={3}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Row>
+                <Col xl={9} className="">
                   <div id="wallet-balance-chart">
                     <ReactApexChart
-                      options={option}
+                      options={options}
                       series={series}
                       type="radialBar"
-                      // height={300}
                       width="500"
-                      // className="apex-charts"
                     />
                   </div>
                 </Col>
@@ -297,44 +275,48 @@ const LarOnline = (args) => {
           ) : null}
           {tableFormInstead === true ? (
             <Col xl={4}>
-              <Row
-                className="mb-3"
-                style={{ display: "flex", alignItems: "center" }}
-              >
-                <Col xl={9} className="pt-3">
-                  <h5 className="font-size-16 card-title">
-                    <i className="fa-solid fa-circle-check font-size-16 me-2"></i>
-                    สร้างใบลาแทนเจ้าหน้าที่
-                  </h5>
-                </Col>
-                <Col xl={3} className="d-flex justify-content-end">
-                  <FormTypeLar />
-                </Col>
-              </Row>
-              <Row>
-                <Col xl={12}>
-                  <TableForm data={data} />
-                </Col>
-              </Row>
+              <Card style={{ minHeight: "420px" }}>
+                <CardBody>
+                  <Row
+                    className="mb-3"
+                    style={{ display: "flex", alignItems: "center" }}
+                  >
+                    <Col xl={9} className="">
+                      <h5 className="font-size-16 card-title">
+                        <i className="fa-solid fa-circle-check font-size-16 me-2"></i>
+                        สร้างใบลาแทนเจ้าหน้าที่
+                      </h5>
+                    </Col>
+                    <Col xl={3} className="d-flex justify-content-end">
+                      <FormTypeLar />
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col xl={12}>
+                      <TableFormInstead data={data} />
+                    </Col>
+                  </Row>
+                </CardBody>
+              </Card>
             </Col>
           ) : null}
           {reportLar === true ? (
             <Col xl={4}>
-              <Row
-                className="mb-3"
-                style={{ display: "flex", alignItems: "center" }}
-              >
-                <Col className="pt-3">
-                  <h5 className="font-size-16 card-title">
-                    <i className="fa-solid fa-clipboard-list-check font-size-16 me-2"></i>
-                    รายงานการลา
-                  </h5>
-                </Col>
-              </Row>
-              <Row>
-                <Col>
-                  <Card style={{ minHeight: "280px" }}>
-                    <CardBody>
+              <Card style={{ minHeight: "280px" }}>
+                <CardBody>
+                  <Row
+                    className=""
+                    style={{ display: "flex", alignItems: "center" }}
+                  >
+                    <Col className="">
+                      <h5 className="font-size-16 card-title">
+                        <i className="fa-solid fa-clipboard-list-check font-size-16 me-2"></i>
+                        รายงานการลา
+                      </h5>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
                       <Row
                         style={{
                           display: "flex",
@@ -362,88 +344,33 @@ const LarOnline = (args) => {
                         </Col>
                       </Row>
                       {selectReport && <SelectReport idReport={selectReport} />}
-                    </CardBody>
-                  </Card>
-                </Col>
-              </Row>
+                    </Col>
+                  </Row>
+                </CardBody>
+              </Card>
             </Col>
           ) : null}
           <Col xl={4}>
-            <Row
-              className="mb-3"
-              style={{ display: "flex", alignItems: "center" }}
-            >
-              <Col className="pt-3">
-                <h5 className="font-size-16 card-title">
-                  <i className="fa-solid fa-clipboard-list-check font-size-16 me-2"></i>
-                  การลาที่ยังไม่อนุมัติ
-                </h5>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <NonApproveLeave />
-              </Col>
-            </Row>
-          </Col>
-
-          {/* <Col xl={4}>
-            <Row>
-              <Col>
-                <h5 className="font-size-16 card-title">
-                  <i className="fa-solid fa-clipboard-list-check font-size-16 me-2"></i>
-                  ประวัติการลา
-                </h5>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-              <Card style={{ minHeight: "280px" }}>
-                  <CardBody>
-                    </CardBody>
-                    </Card>
-              </Col>
-            </Row>
-          </Col> */}
-          {/* <div id="wallet-balance-chart"> 
-                    <ReactApexChart
-                      options={option}
-                      series={series}
-                      type="radialBar"
-                      // height={300}
-                      width="500"
-                      className="apex-charts"
-                    />
-                    </div> */}
-          {/* */}
-        </Row>
-        <Row>
-          <Col>
-            <Carousel
-              fade
-              interval={3000}
-              activeIndex={activeIndex}
-              next={next}
-              previous={previous}
-              {...args}
-            >
-              <CarouselIndicators
-                items={items}
-                activeIndex={activeIndex}
-                onClickHandler={goToIndex}
-              />
-              {slides}
-              <CarouselControl
-                direction="prev"
-                directionText="Previous"
-                onClickHandler={previous}
-              />
-              <CarouselControl
-                direction="next"
-                directionText="Next"
-                onClickHandler={next}
-              />
-            </Carousel>
+            <Card style={{ minHeight: "280px" }}>
+              <CardBody>
+                <Row
+                  className="mb-3"
+                  style={{ display: "flex", alignItems: "center" }}
+                >
+                  <Col className="">
+                    <h5 className="font-size-16 card-title">
+                      <i className="fa-solid fa-clipboard-list-check font-size-16 me-2"></i>
+                      การลาที่ยังไม่อนุมัติ
+                    </h5>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <NonApproveLeave />
+                  </Col>
+                </Row>
+              </CardBody>
+            </Card>
           </Col>
         </Row>
       </Container>

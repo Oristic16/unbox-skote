@@ -14,7 +14,7 @@ const TableApprove = () => {
         axios.get(baseURL + "/getapprove")
         .then((res) => {
             setData(res.data)
-            console.log(res.data)
+            console.log("Data TableApprove: ",res.data)
         }).catch(err => {
             console.error(err);
         })
@@ -64,15 +64,8 @@ const TableApprove = () => {
 
   return (
     <React.Fragment>
-        <Card>
-            <CardBody >
-            <Box sx={{ height: 350, width: '100%', whiteSpace:"nowrap" }}>
-                {/* <TableContainer
-                    columns={columns}
-                    data={data}
-                /> */}
                 <div style={{overflow:"scroll",whiteSpace:"nowrap"}}>
-                    <Table bordered hover style={{ width:"10%", verticalAlign:"middle" }}>
+                    <Table bordered hover style={{ width:"100%", verticalAlign:"middle" }}>
                         <thead className='table-light'>
                             <tr>
                                 <th>เรื่อง</th>
@@ -85,13 +78,13 @@ const TableApprove = () => {
                                 {/* <th>พิจารณาอนุมัติ</th> */}
                             </tr>
                         </thead>
-                        <tbody style={{overflow:"auto"}}>
+                        <tbody >
                             {data.slice(0,5).map((item) => {
                                 return (
                                     <tr key={item.id}>
                                         <td>{item.title}</td>
                                         {/* <td className='text-center'>{item.writeDate}</td> */}
-                                        <td>{item.userName}</td>
+                                        <td style={{overflow:"hidden"}}>{item.userName}</td>
                                         <td className='text-center'>{item.leaveFromDate}</td>
                                         <td className='text-center'>{item.leaveToDate}</td>
                                         <td className='text-center'>{item.leaveDays}</td>
@@ -102,9 +95,6 @@ const TableApprove = () => {
                         </tbody>
                     </Table>
                 </div>
-                </Box>
-            </CardBody>
-        </Card>
     </React.Fragment>
   )
 }

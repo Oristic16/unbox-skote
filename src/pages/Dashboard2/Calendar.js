@@ -70,11 +70,10 @@ const Calendar = (props) => {
 
   const getData = () => {
     axios
-      // .get("http://localhost:8000/getevent")
       .get(baseURL + "/getevent")
       .then((res) => {
         setData(res.data);
-        console.log(res.data)
+        console.log("Data Event: ",res.data)
       })
       .catch((err) => {
         console.error(err);

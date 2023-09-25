@@ -17,7 +17,7 @@ const RecentFile = () => {
     <React.Fragment>
       <Card>
         <CardBody>
-          <div className="mt-4">
+          <div className="">
             <div className="d-flex flex-wrap">
               <h5 className="font-size-16 me-3 card-title">
                 <i className="fa-solid fa-file font-size-20 me-2"></i>Recent Files
