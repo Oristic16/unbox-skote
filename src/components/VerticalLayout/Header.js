@@ -126,7 +126,7 @@ const Header = (props) => {
               </Link>
             </div>
 
-            {/* <button
+            <button
               type="button"
               onClick={() => {
                 tToggle();
@@ -135,7 +135,7 @@ const Header = (props) => {
               id="vertical-menu-btn"
             >
               <i className="fa fa-fw fa-bars" />
-            </button> */}
+            </button>
 
             <form className="app-search d-none d-lg-block ms-5">
               <div className="position-relative">

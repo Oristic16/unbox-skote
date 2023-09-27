@@ -201,7 +201,7 @@ const SidebarContent = props => {
                 </Link>
               </li>
               <li>
-                <Link to="/entrywork">
+                <Link to="/resorceonline">
                   <i className="bx bx-data"></i>
                   <span>{props.t("ทรัพยากรออนไลน์")}</span>
                 </Link>

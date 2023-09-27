@@ -9,6 +9,7 @@ import {
   Card,
   CardBody,
   Col,
+  Container,
   Form,
   FormGroup,
   Input,
@@ -25,6 +26,8 @@ import ModalToolType from "./ModalToolType";
 import ToolTypeTable from "./ToolTypeTable";
 import ToolDetailTable from "./ToolDetailTable";
 import ModalAddTool from "./ModalAddTool";
+
+import Breadcrumbs from "../../components/Common/Breadcrumb";
 
 const ResorceOnline = () => {
   const [data, setData] = React.useState({
@@ -49,83 +52,6 @@ const ResorceOnline = () => {
 
   return (
     <div className="page-content">
-      <Row>
-        <Col xxl={8} xl={6} lg={8}>
-          
-          <Row>
-            <Col>
-              <Card>
-                <CardBody>
-                  <Row>
-                    <Col>
-                      <h5 className="font-size-16 card-title">
-                        <i className="fa-solid fa-clipboard-list-check font-size-16 me-2"></i>
-                        รายการยืมอุปกรณ์
-                      </h5>
-                    </Col>
-                    <Col style={{ display: "flex", justifyContent: "end" }}>
-                      <Button color="info" onClick={toggleModal1}>
-                        เพิ่มการยืม
-                      </Button>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <BorrowedTable />
-                    </Col>
-                  </Row>
-                </CardBody>
-              </Card>
-            </Col>
-          </Row>
-          <Row>
-            <Col xl={12}>
-              <Card>
-                <CardBody>
-                  <Row>
-                    <Col>
-                      <h5 className="font-size-16 card-title">
-                        <i className="fa-solid fa-clipboard-list-check font-size-16 me-2"></i>
-                        ข้อมูลอุปกรณ์
-                      </h5>
-                    </Col>
-                    <Col style={{ display: "flex", justifyContent: "end" }}>
-                      <ModalAddTool />
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <ToolDetailTable />
-                    </Col>
-                  </Row>
-                </CardBody>
-              </Card>
-            </Col>
-          </Row>
-        </Col>
-        <Col xxl={4} xl={6} lg={8}>
-          <Card>
-            <CardBody>
-              <Row>
-                <Col>
-                  <h5 className="font-size-16 card-title">
-                    <i className="fa-solid fa-clipboard-list-check font-size-16 me-2"></i>
-                    ประเภทอุปกรณ์
-                  </h5>
-                </Col>
-                <Col style={{ display: "flex", justifyContent: "end" }}>
-                  <ModalToolType />
-                </Col>
-              </Row>
-              <Row>
-                <Col>
-                  <ToolTypeTable />
-                </Col>
-              </Row>
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
       <Modal centered isOpen={openBorrow} toggle={toggleModal1}>
         <Form>
           <ModalHeader>เพิ่มการยืมอุปกรณ์</ModalHeader>
@@ -273,6 +199,87 @@ const ResorceOnline = () => {
           </ModalFooter>
         </Form>
       </Modal>
+      <Container fluid>
+      <Breadcrumbs title="Home" breadcrumbItem="Dashboard" />
+      <Row>
+        <Col xxl={8} xl={6} lg={8}>
+          
+          <Row>
+            <Col>
+              <Card>
+                <CardBody>
+                  <Row>
+                    <Col>
+                      <h5 className="font-size-16 card-title">
+                        <i className="fa-solid fa-clipboard-list-check font-size-16 me-2"></i>
+                        รายการยืมอุปกรณ์
+                      </h5>
+                    </Col>
+                    <Col style={{ display: "flex", justifyContent: "end" }}>
+                      <Button color="info" onClick={toggleModal1}>
+                        เพิ่มการยืม
+                      </Button>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      <BorrowedTable />
+                    </Col>
+                  </Row>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+          <Row>
+            <Col xl={12}>
+              <Card>
+                <CardBody>
+                  <Row>
+                    <Col>
+                      <h5 className="font-size-16 card-title">
+                        <i className="fa-solid fa-clipboard-list-check font-size-16 me-2"></i>
+                        ข้อมูลอุปกรณ์
+                      </h5>
+                    </Col>
+                    <Col style={{ display: "flex", justifyContent: "end" }}>
+                      <ModalAddTool />
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      <ToolDetailTable />
+                    </Col>
+                  </Row>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+        </Col>
+        <Col xxl={4} xl={6} lg={8}>
+          <Card>
+            <CardBody>
+              <Row>
+                <Col>
+                  <h5 className="font-size-16 card-title">
+                    <i className="fa-solid fa-clipboard-list-check font-size-16 me-2"></i>
+                    ประเภทอุปกรณ์
+                  </h5>
+                </Col>
+                <Col style={{ display: "flex", justifyContent: "end" }}>
+                  <ModalToolType />
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <ToolTypeTable />
+                </Col>
+              </Row>
+            </CardBody>
+          </Card>
+        </Col>
+      </Row>
+      
+      </Container>
     </div>
   );
 };
