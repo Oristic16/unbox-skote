@@ -78,7 +78,11 @@ const RecentFile = () => {
             </div>
           </div>
           <div className="mt-4" style={{ textAlign: "end" }}>
-            <Link to="/opdcbox" className="btn btn-primary  btn-md">
+            <Link 
+              to="https://eoffice.opdc.go.th/drive/home" 
+              className="btn btn-primary  btn-md"
+              target="_blank"
+            >
               ดูข้อมูลเพิ่มเติมได้ที่ระบบจัดเก็บและแชร์ไฟล์{" "}
               <i className="mdi mdi-arrow-right ms-1"></i>
             </Link>

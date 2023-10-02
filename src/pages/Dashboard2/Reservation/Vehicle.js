@@ -50,8 +50,11 @@ const Vehicle = () => {
         </tbody>
       </Table>
       <div className="mt-2" style={{ textAlign: "end" }}>
-        <Link to="https://smart.opdc.go.th/" className="btn btn-primary  btn-md">
-          ดูข้อมูลเพิ่มเติมได้ที่ระบบจองยานพาหนะ{" "}
+        <Link 
+          to="https://eoffice.opdc.go.th/car-reservation/home"
+          target="_blank"
+          className="btn btn-primary  btn-md">
+            ดูข้อมูลเพิ่มเติมได้ที่ระบบจองยานพาหนะ{" "}
           <i className="mdi mdi-arrow-right ms-1"></i>
         </Link>
       </div>

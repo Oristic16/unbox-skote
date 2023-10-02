@@ -59,7 +59,8 @@ const MeetingRoom = () => {
       </Table>
       <div className="mt-2" style={{ textAlign: "end" }}>
         <Link
-          to="https://smart.opdc.go.th/"
+          to="https://eoffice.opdc.go.th/room-booking/home"
+          target="_blank"
           className="btn btn-primary  btn-md"
         >
           ดูข้อมูลเพิ่มเติมได้ที่ระบบจองห้องประชุม{" "}
