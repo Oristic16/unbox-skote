@@ -29,7 +29,7 @@ const Reservation = () => {
     <div>
       <Card>
         <CardBody>
-          <h5 className="font-size-16 me-3 card-title">
+          <h5 className="me-3 ">
             <i className="fa-solid fa-circle-check font-size-20 me-2"></i>
             การจองออนไลน์
           </h5>

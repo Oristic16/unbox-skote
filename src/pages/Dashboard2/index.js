@@ -272,9 +272,22 @@ const Dashboard2 = () => {
                   </Row>
                 </Col>
               </Row>
-              
             </Col>
           </Row>
+          <h1>h1</h1>
+          <h2>h2</h2>
+          <h3>h3</h3>
+          <h4>h4</h4>
+          <h5>h5</h5>
+          <h6>h6</h6>
+          <a>a</a>
+          <p>p</p>
+          <div>div</div>
+          <span>span</span><br />
+          <input type="text" placeholder="input" />
+          <td>td</td><br />
+          <th>th</th>
+          <button>button</button>
         </Container>
       </div>
     );

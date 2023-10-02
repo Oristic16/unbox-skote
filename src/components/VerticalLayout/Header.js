@@ -48,6 +48,7 @@ import {
 } from "../../store/actions";
 
 import logogorkoror from "../../assets/images/draft-Logo-กพร-White.png";
+import FontSizeSelect from "../CommonForBoth/TopbarDropdown/FontSizeSelect";
 
 const Header = (props) => {
   const [search, setsearch] = useState(false);
@@ -188,6 +189,8 @@ const Header = (props) => {
                 </form>
               </div>
             </div>
+
+            <FontSizeSelect />
 
             <LanguageDropdown />
 

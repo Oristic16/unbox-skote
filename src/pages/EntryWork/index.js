@@ -185,7 +185,7 @@ const EntryWork = () => {
                     <Row>
                       <Col xs="8">
                         <div className="text-primary p-4">
-                          <h4 className="text-primary" style={{fontFamily:"Kanit"}}>อรุณสวัสดิ์คุณ .....</h4>
+                          <h4 className="text-primary">อรุณสวัสดิ์คุณ .....</h4>
                           <h6>ยินดีต้อนรับเข้าสู่ สำนักงาน ก.พ.ร</h6>
                         </div>
                       </Col>
@@ -260,7 +260,7 @@ const EntryWork = () => {
           <Col xxl={5}>
             <Row>
               <Col xl={6} xxl={12}>
-                <h3 className="me-3" style={{fontFamily:"Noto Sans Thai"}}>เดือน {monthNames[month]}</h3>
+                <h3 className="me-3">เดือน {monthNames[month]}</h3>
                 <hr className="mt-2" />
                 <Card>
                   <CardBody className="pb-0">
