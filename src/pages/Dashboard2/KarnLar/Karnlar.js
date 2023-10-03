@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { HorizonBarChart } from "../HorizonBarChart";
 import {
   Card,
   CardBody,
@@ -12,7 +11,6 @@ import {
   TabContent,
   TabPane,
 } from "reactstrap";
-import { DonutChart } from "../DonutChart";
 import classnames from "classnames";
 import { Link } from "react-router-dom";
 
@@ -28,10 +26,10 @@ const Karnlar = () => {
     <div>
       <Card className="">
         <CardBody className="">
-          <CardTitle>
-            <i className="fa-solid fa-briefcase font-size-18 me-2"></i>
+          <h5>
+            <i className="fa-solid fa-briefcase font-size-20 me-2"></i>
             ภาพรวมการลาปฏิบัติงาน
-          </CardTitle>
+          </h5>
           <Row className="mt-3">
             <Col lg={12} xl={12}>
               <Nav
@@ -66,8 +64,6 @@ const Karnlar = () => {
                     ประเภทการลา
                   </NavLink>
                 </NavItem>
-                <NavItem></NavItem>
-                <NavItem></NavItem>
               </Nav>
               <div
                 className="my-4"
@@ -75,12 +71,10 @@ const Karnlar = () => {
               ></div>
               <TabContent activeTab={activeTab1} className="p-2 text-muted">
                 <TabPane tabId="5">
-                  <CardTitle style={{ color: "#483fd3" }} className="mb-0">
-                    <h5>
-                      <i className="fa-solid fa-memo-circle-info font-size-16 me-1"></i>
-                      ข้อมูลการลา
-                    </h5>
-                  </CardTitle>
+                  <h5>
+                    <i className="fa-solid fa-memo-circle-info font-size-16 me-1"></i>
+                    ข้อมูลการลา
+                  </h5>
                   <Row
                     className="mb-0 mt-3"
                     style={{
@@ -108,8 +102,8 @@ const Karnlar = () => {
                               <h5>33</h5>
                             </Col>
                           </Row> */}
-                      <Row className="mb-1">
-                        <Col className="text-start">
+                      <Row className="mb-1 d-flex align-items-center">
+                        <Col xs={8} className="text-start">
                           <h5>
                             <i
                               style={{ color: "#7180ff" }}
@@ -118,12 +112,12 @@ const Karnlar = () => {
                             จำนวนวันลาทั้งหมด
                           </h5>
                         </Col>
-                        <Col lg={2} className="text-end">
+                        <Col xs={4} lg={2} className="text-end">
                           <h5>30</h5>
                         </Col>
                       </Row>
                       <Row>
-                        <Col className="text-start">
+                        <Col xs={8} className="text-start">
                           <h5>
                             <i
                               style={{ color: "#ff6868" }}
@@ -132,12 +126,12 @@ const Karnlar = () => {
                             ใช้ไปแล้ว
                           </h5>
                         </Col>
-                        <Col lg={2} className="text-end">
+                        <Col xs={4} lg={2} className="text-end">
                           <h5>10</h5>
                         </Col>
                       </Row>
                       <Row className="">
-                        <Col className="text-start">
+                        <Col xs={8} className="text-start">
                           <h5>
                             <i
                               style={{ color: "#4dff62" }}
@@ -146,7 +140,7 @@ const Karnlar = () => {
                             คงเหลือ
                           </h5>
                         </Col>
-                        <Col lg={2} className="text-end">
+                        <Col xs={4} lg={2} className="text-end">
                           <h5>20</h5>
                         </Col>
                       </Row>
@@ -154,106 +148,104 @@ const Karnlar = () => {
                   </Row>
                 </TabPane>
                 <TabPane tabId="6">
-                  <CardTitle style={{ color: "#483fd3" }}>
-                    <h5>
-                      <i className="fa-solid fa-house-person-leave font-size-18 me-1"></i>
-                      ประเภทการลา
-                    </h5>
-                  </CardTitle>
+                  <h5>
+                    <i className="fa-solid fa-house-person-leave font-size-18 me-1"></i>
+                    ประเภทการลา
+                  </h5>
                   <Row className="mt-3">
                     <Col lg={12}>
                       <Row className="mb-1">
                         <Col lg={7}>
                           <Row>
-                            <Col lg={10}>
+                            <Col xs={10} lg={10}>
                               <h5 className="font-size-13">
                                 ลาป่วย ลากิจ ลาคลอดบุตร
                               </h5>
                             </Col>
-                            <Col className="text-end">
+                            <Col xs={2} className="text-end">
                               <h6>7</h6>
                             </Col>
                           </Row>
                         </Col>
                         <Col lg={5}>
                           <Row>
-                            <Col>
+                            <Col xs={10}>
                               <h5 className="font-size-13">ลาพักผ่อน</h5>
                             </Col>
-                            <Col lg={1} className="text-end">
+                            <Col lg={1} xs={2} className="text-end">
                               <h6>3</h6>
                             </Col>
                           </Row>
                         </Col>
                         <Col lg={7}>
                           <Row>
-                            <Col lg={10}>
+                            <Col xs={10} lg={10}>
                               <h5 className="font-size-13">
                                 ขออนุญาติไปต่างประเทศ
                               </h5>
                             </Col>
-                            <Col className="text-end">
+                            <Col xs={2} className="text-end">
                               <h6>0</h6>
                             </Col>
                           </Row>
                         </Col>
                         <Col lg={5} className="text-start">
                           <Row>
-                            <Col>
+                            <Col xs={10}>
                               <h5 className="font-size-13">ลาอุปสมบท</h5>
                             </Col>
-                            <Col lg={1} className="text-end">
+                            <Col lg={1} xs={2} className="text-end">
                               <h6>0</h6>
                             </Col>
                           </Row>
                         </Col>
                         <Col lg={7}>
                           <Row>
-                            <Col lg={10}>
+                            <Col lg={10} xs={10}>
                               <h5 className="font-size-13">
                                 ลาประกอบพิธีฮัจญ์
                               </h5>
                             </Col>
-                            <Col className="text-end">
+                            <Col xs={2} className="text-end">
                               <h6>0</h6>
                             </Col>
                           </Row>
                         </Col>
                         <Col lg={5}>
                           <Row>
-                            <Col>
+                            <Col xs={10}>
                               <h5 className="font-size-13">ลาติดตามคู่สมรส</h5>
                             </Col>
-                            <Col lg={1} className="text-end">
+                            <Col lg={1} xs={2} className="text-end">
                               <h6>0</h6>
                             </Col>
                           </Row>
                         </Col>
-                        <Col lg={7}>
+                        <Col lg={7} >
                           <Row>
-                            <Col lg={10}>
+                            <Col lg={10} xs={10}>
                               <h5 className="font-size-13">
                                 ปฏิบัติราชการนอกสำนักงาน
                               </h5>
                             </Col>
-                            <Col className="text-end">
+                            <Col xs={2} className="text-end">
                               <h6>0</h6>
                             </Col>
                           </Row>
                         </Col>
-                        <Col lg={5}>
+                        <Col lg={5} >
                           <Row>
-                            <Col>
+                            <Col xs={10}>
                               <h5 className="font-size-13">ลากรณีพิเศษ</h5>
                             </Col>
-                            <Col lg={1} className="text-end">
+                            <Col xs={2} lg={1} className="text-end">
                               <h6>0</h6>
                             </Col>
                           </Row>
                         </Col>
-                        <Col lg={7}>
+                        <Col lg={7} >
                           <Row>
-                            <Col lg={10}>
+                            <Col  xs={10} lg={10}>
                               <h5 className="font-size-13">
                                 ลาศึกษา/ฝึกอบรม ดูงาน
                               </h5>
@@ -265,7 +257,7 @@ const Karnlar = () => {
                         </Col>
                         <Col lg={7}>
                           <Row>
-                            <Col lg={10}>
+                            <Col lg={10} xs={10}>
                               <h5 className="font-size-13">
                                 เข้ารับการตรวจเลือก/เตรียมพล
                               </h5>

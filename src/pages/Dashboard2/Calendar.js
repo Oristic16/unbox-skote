@@ -57,7 +57,7 @@ import { useSelector, useDispatch } from "react-redux";
 import TextCard from "./TextCard";
 import axios from "axios";
 
-const Calendar = (props) => {
+const Calendar = () => {
   const baseURL = "http://localhost:8000";
 
   //meta title
@@ -238,7 +238,7 @@ const Calendar = (props) => {
     setData((prevData) => prevData.filter((item) => item.id !== id));
   };
 
-  const [modalDrops, setModalDrops] = useState(data.map(() => false));
+  // const [modalDrops, setModalDrops] = useState(data.map(() => false));
 
   return (
     <React.Fragment>
@@ -251,10 +251,9 @@ const Calendar = (props) => {
             themeSystem="bootstrap"
             height="420px"
             headerToolbar={{
-              start: "prev",
-              center: "title",
-              end: "next",
+              // center: "title",
             }}
+            locale="th"
             events={events}
             editable={true}
             selectable={true}
@@ -354,6 +353,7 @@ const Calendar = (props) => {
         style={{width:"30%"}}
         direction="end"
         isOpen={detail}
+        fade={true}
         toggle={toggleDetail}
       >
         <OffcanvasHeader toggle={toggleDetail}>
@@ -377,10 +377,11 @@ const Calendar = (props) => {
                 onMouseLeave={(e) =>
                   (e.currentTarget.style.background = "#fff")
                 }
-                key={item.id}
+                key={index}
               >
-                <CardBody>
+                <CardBody key={index}>
                   <TextCard
+                    key={index}
                     day={item.day}
                     month={item.month}
                     detail={item.detail}

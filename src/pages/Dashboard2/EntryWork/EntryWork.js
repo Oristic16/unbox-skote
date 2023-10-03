@@ -48,22 +48,22 @@ const EntryWork = () => {
             <i className="fa-solid fa-sun-cloud font-size-18 me-1"></i>
             ลงเวลาปฏิบัติงาน
           </CardTitle>
-          <Row className="mb-3">
-            <Col sm={1} lg={1}>
+          <Row className="mb-3 d-flex">
+            <Col xs={1} sm={1} lg={1}>
               <div className="event-timeline-dot">
                 <i className="bx bxs-right-arrow-circle font-size-18 bx-fade-right text-primary" />
               </div>
             </Col>
             <Col
-              xs={6}
-              sm={6}
+              xs={5}
+              sm={5}
               lg={5}
               style={{ display: "flex", justifyContent: "end" }}
             >
-              <h5 style={{ fontSize: "15px" }}>เวลาเข้างาน</h5>
+              <h5>เวลาเข้างาน</h5>
             </Col>
-            <Col xs={6} sm={6} lg={5}>
-              <h5 style={{ fontSize: "15px" }}>เวลาออกงาน</h5>
+            <Col xs={5} sm={5} lg={5}>
+              <h5>เวลาออกงาน</h5>
             </Col>
           </Row>
           <Row className="mb-3">

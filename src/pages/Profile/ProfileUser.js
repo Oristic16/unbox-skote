@@ -100,7 +100,7 @@ const ProfileUser = () => {
                     <FormFeedback type="invalid">{validation.errors.username}</FormFeedback>
                   ) : null}
                   </Col>
-                  <Col lg={4} className='text-end'>
+                  <Col lg={4} className='text-start'>
                     <Label className="form-label">Upload Image</Label>
                     <Input type='file' />
                   </Col>

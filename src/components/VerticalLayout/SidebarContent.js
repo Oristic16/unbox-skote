@@ -157,12 +157,12 @@ const SidebarContent = props => {
                   <span>{props.t("OPDC Timeline")}</span>
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/opdcbox">
                 <i className="fa-solid fa-rectangle-history"></i>
                   <span>{props.t("OPDC BOX")}</span>
                 </Link>
-              </li>
+              </li> */}
 
               {/* <li>
                 <Link to="/managesorce">
@@ -170,30 +170,30 @@ const SidebarContent = props => {
                   <span>{props.t("บริหารทรัพยากรออนไลน์")}</span>
                 </Link>
               </li> */}
-              <li>
+              {/* <li>
                 <Link to="/testapi">
                 <i className="fa-regular fa-people-roof"></i>
                   <span>{props.t("test api")}</span>
                 </Link>
-              </li>
-              <li>
+              </li> */}
+              {/* <li>
                 <Link to="/setdata">
                 <i className="fa-solid fa-file-shield"></i>
                   <span>{props.t("กำหนดข้อมูล")}</span>
                 </Link>
-              </li>
-              <li>
+              </li> */}
+              {/* <li>
                 <Link to="/page1">
                 <i className="fa-solid fa-user-shield"></i>
                   <span>{props.t("การประเมินผลการปฏิบัติราชการ")}</span>
                 </Link>
-              </li>
-              <li>
+              </li> */}
+              {/* <li>
                 <Link to="/page2">
                   <i className="bx bxs-bell"></i>
                   <span>{props.t("การลาออนไลน์")}</span>
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link to="/entrywork">
                 <i className="bx bxs-timer"></i>
@@ -209,7 +209,13 @@ const SidebarContent = props => {
               <li>
                 <Link to="/laonline">
                   <i className="fas fa-hand-peace"></i>
-                  <span>{props.t("การลาออนไลน์2")}</span>
+                  <span>{props.t("การลาออนไลน์")}</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/sarabun">
+                  <i className="fas fa-books"></i>
+                  <span>{props.t("สารบรรณ")}</span>
                 </Link>
               </li>
               {/* <li>

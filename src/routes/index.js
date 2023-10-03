@@ -19,6 +19,7 @@ import LaOnline from '../pages/LaOnline/index'
 import ProfileUser from "../pages/Profile/ProfileUser";
 import ResorceOnline from "../pages/ResorceOnline";
 import EntryWork from "../pages/EntryWork";
+import Sarabun from "../pages/Sarabun";
 
 const authProtectedRoutes = [
 
@@ -36,6 +37,7 @@ const authProtectedRoutes = [
   { path: "/profile", component: <ProfileUser /> },
   { path: "/resorceonline", component: <ResorceOnline /> },
   { path: "/entrywork", component: <EntryWork /> },
+  { path: "/sarabun", component: <Sarabun /> },
   // { path: "*", component: <NotFound404 /> },
   {
     path: "/",

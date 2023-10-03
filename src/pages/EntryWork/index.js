@@ -24,6 +24,9 @@ import { useMemo } from "react";
 import TableContainer from "../../components/Common/TableContainer";
 
 const EntryWork = () => {
+
+  const baseURL = "http://localhost:8000/";
+  
   const colums = useMemo(() => [
     {
       Header: "วันที่",
@@ -82,7 +85,6 @@ const EntryWork = () => {
 
   const month = new Date().getMonth();
 
-  const baseURL = "http://localhost:8000/";
   const amountDays = [18, 1, 0, 0];
 
   const [data, setData] = useState([]);
@@ -185,7 +187,7 @@ const EntryWork = () => {
                     <Row>
                       <Col xs="8">
                         <div className="text-primary p-4">
-                          <h4 className="text-primary">อรุณสวัสดิ์คุณ .....</h4>
+                          <h4 className="text-primary" style={{fontFamily:"Kanit"}}>อรุณสวัสดิ์คุณ .....</h4>
                           <h6>ยินดีต้อนรับเข้าสู่ สำนักงาน ก.พ.ร</h6>
                         </div>
                       </Col>
@@ -251,7 +253,7 @@ const EntryWork = () => {
               <Col xxl={12} >
                 <Card>
                   <CardBody className="pb-3">
-                    <h1>Hello Pete</h1>
+                    <h1></h1>
                   </CardBody>
                 </Card>
               </Col>
@@ -260,7 +262,7 @@ const EntryWork = () => {
           <Col xxl={5}>
             <Row>
               <Col xl={6} xxl={12}>
-                <h3 className="me-3">เดือน {monthNames[month]}</h3>
+                <h3 className="me-3" style={{fontFamily:"Noto Sans Thai"}}>เดือน {monthNames[month]}</h3>
                 <hr className="mt-2" />
                 <Card>
                   <CardBody className="pb-0">

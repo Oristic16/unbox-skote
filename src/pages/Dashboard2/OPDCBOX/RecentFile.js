@@ -19,7 +19,7 @@ const RecentFile = () => {
         <CardBody>
           <div className="">
             <div className="d-flex flex-wrap">
-              <h5 className="font-size-16 me-3 card-title">
+              <h5 className="me-3">
                 <i className="fa-solid fa-file font-size-20 me-2"></i>Recent Files
               </h5>
 

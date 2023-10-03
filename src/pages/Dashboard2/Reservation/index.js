@@ -29,7 +29,7 @@ const Reservation = () => {
     <div>
       <Card>
         <CardBody>
-          <h5 className="me-3 ">
+          <h5 className="me-3">
             <i className="fa-solid fa-circle-check font-size-20 me-2"></i>
             การจองออนไลน์
           </h5>
@@ -38,6 +38,7 @@ const Reservation = () => {
             // tabs
             pills
             className="navtab-bg"
+            fill
           >
             <NavItem>
               <NavLink
