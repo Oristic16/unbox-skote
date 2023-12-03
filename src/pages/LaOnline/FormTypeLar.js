@@ -7,11 +7,13 @@ import { useEffect } from 'react';
 
 const FormTypeLar = ({ paramValue, getLeaveDataTable, userInfo }) => {
 
+    const baseURL = process.env.REACT_APP_API_CORS;
+
     const [configForm, setConfigForm] = useState([])
     const token = GetCookieToken("userToken")
     const getConfigAll = () => {
         axios
-        .get("http://15.235.142.92:1979/api/leave/config/all", {
+        .get(baseURL+"/api/leave/config/all", {
             headers: {
             Authorization: `Bearer ${token}`
             }

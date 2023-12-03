@@ -33,7 +33,7 @@ import TextCard from "./TextCard";
 import axios from "axios";
 
 const Calendar = () => {
-  const baseURL = "http://localhost:8000";
+  const baseURL = "";
 
   //meta title
   // document.title = "Calendar | Skote - React Admin & Dashboard Template";
