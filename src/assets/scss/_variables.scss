@@ -14,7 +14,8 @@ $sidebar-menu-item-active-color: #556ee6;
 $sidebar-width:  250px;
 $sidebar-collapsed-width:  70px;
 $sidebar-width-sm:  160px;
-$layout-collapsed-min-height: 1760px;
+// $layout-collapsed-min-height: 1760px;
+$layout-collapsed-min-height: 1000px;
 
 // Vertical Sidebar - Dark
 $sidebar-dark-bg: #2a3042; //2c313a
@@ -621,7 +622,9 @@ $aspect-ratios: (
 
 // scss-docs-start font-variables
 // stylelint-disable value-keyword-case
-$font-family-sans-serif:      'Poppins', sans-serif;
+// $font-family-sans-serif:      'Poppins', sans-serif;
+$font-family-sans-serif:      'Noto Sans Thai', sans-serif;
+// $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
 // stylelint-enable value-keyword-case
@@ -1321,7 +1324,8 @@ $card-border-color:                 $gray-300;
 $card-inner-border-radius:          calc(#{$card-border-radius} - #{$card-border-width});
 $card-cap-padding-y:                $card-spacer-y * 0.5;
 $card-cap-padding-x:                $card-spacer-x;
-$card-cap-bg:                       rgba($black, .03);
+// $card-cap-bg:                       rgba($black, .03);
+$card-cap-bg:                       null;
 $card-cap-color:                    null;
 $card-height:                       null;
 $card-color:                        null;

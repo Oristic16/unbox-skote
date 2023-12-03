@@ -1,0 +1,13 @@
+.div {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10%;
+    i {
+        color: black;
+        font-size: 8em;
+    }
+}

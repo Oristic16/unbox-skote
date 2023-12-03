@@ -25,6 +25,7 @@ import "./assets/scss/theme.scss";
 // import fakeBackend from "./helpers/AuthType/fakeBackend";
 
 // Activating fake backend
+// fakeBackend();
 
 // const firebaseConfig = {
 //   apiKey: process.env.REACT_APP_APIKEY,
@@ -56,19 +57,7 @@ const getLayout = (layoutType) => {
   return Layout;
 };
 
-export const createThemeLocalStore = () => {
-  if(!localStorage.getItem('theme')) {
-    localStorage.setItem('theme', 'light')
-
-
-  } else {
-
-  }
-}
-
 const App = () => {
-
-  createThemeLocalStore()
 
   const { layoutType } = useSelector((state) => ({
     layoutType: state.Layout.layoutType,

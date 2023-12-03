@@ -20,6 +20,7 @@ import RightSidebar from "../CommonForBoth/RightSidebar";
 
 //redux
 import { useSelector, useDispatch } from "react-redux";
+import { Container } from "reactstrap";
 
 const Layout = props => {
   const dispatch = useDispatch();

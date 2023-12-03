@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Container, Row, Col } from 'reactstrap'
 
 import error from '../../assets/images/error-img.png'
 
-export default class NotFound404 extends Component {
-  render() {
+const NotFound404 = () => {
+
+  const navigate = useNavigate()
+
     return (
         <React.Fragment>
       <div className="account-pages my-5 pt-5">
@@ -21,7 +23,7 @@ export default class NotFound404 extends Component {
                 <div className="mt-5 text-center">
                   <Link
                     className="btn btn-primary waves-effect waves-light "
-                    to="/page1"
+                    to="/dashboard"
                   >
                     Back to Dashboard
                   </Link>
@@ -41,4 +43,5 @@ export default class NotFound404 extends Component {
     </React.Fragment>
     )
   }
-}
+
+export default NotFound404;

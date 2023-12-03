@@ -1,44 +1,80 @@
 import PropTypes from 'prop-types';
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import { connect } from "react-redux";
-import { Row, Col, Button } from "reactstrap";
-import { Link, useNavigate } from "react-router-dom";
-
-// Reactstrap
-import { Dropdown, DropdownToggle, DropdownMenu } from "reactstrap";
+import { connect } from 'react-redux';
+import {
+  Row,
+  Col,
+  Button,
+  Container,
+  DropdownItem,
+  UncontrolledDropdown,
+  Form,
+  Label,
+  Input,
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+} from 'reactstrap';
+import { Link, useNavigate } from 'react-router-dom';
 
 // Import menuDropdown
-import LanguageDropdown from "../CommonForBoth/TopbarDropdown/LanguageDropdown";
-import NotificationDropdown from "../CommonForBoth/TopbarDropdown/NotificationDropdown";
-import ProfileMenu from "../CommonForBoth/TopbarDropdown/ProfileMenu";
-import megamenuImg from "../../assets/images/megamenu-img.png";
+import LanguageDropdown from '../CommonForBoth/TopbarDropdown/LanguageDropdown';
+import NotificationDropdown from '../CommonForBoth/TopbarDropdown/NotificationDropdown';
+import ProfileMenu from '../CommonForBoth/TopbarDropdown/ProfileMenu';
+import megamenuImg from '../../assets/images/megamenu-img.png';
 
 // import images
-import github from "../../assets/images/brands/github.png";
-import bitbucket from "../../assets/images/brands/bitbucket.png";
-import dribbble from "../../assets/images/brands/dribbble.png";
-import dropbox from "../../assets/images/brands/dropbox.png";
-import mail_chimp from "../../assets/images/brands/mail_chimp.png";
-import slack from "../../assets/images/brands/slack.png";
+import github from '../../assets/images/brands/github.png';
+import bitbucket from '../../assets/images/brands/bitbucket.png';
+import dribbble from '../../assets/images/brands/dribbble.png';
+import dropbox from '../../assets/images/brands/dropbox.png';
+import mail_chimp from '../../assets/images/brands/mail_chimp.png';
+import slack from '../../assets/images/brands/slack.png';
 
-import logo from "../../assets/images/logo.svg";
-import logoLightSvg from "../../assets/images/logo-light.svg";
+import logo from '../../assets/images/logo.svg';
+import logoLightSvg from '../../assets/images/logo-light.svg';
+
+import logogorporor from '../../assets/images/draft-Logo-White.png';
 
 //i18n
-import { withTranslation } from "react-i18next";
+import { withTranslation } from 'react-i18next';
 
 // Redux Store
 import {
   showRightSidebarAction,
   toggleLeftmenu,
   changeSidebarType,
-} from "../../store/actions";
+} from '../../store/actions';
+
+import FontSizeSelect from "../CommonForBoth/TopbarDropdown/FontSizeSelect";
+import logogorkoror from '../../assets/images/draft-Logo-White.png';
+import ModalLayout from '../../pages/Dashboard/ModalLayout/ModalLayout';
+import { useLayOutConText } from '../../pages/Context/LayOutContext';
+import { useEffect } from 'react';
+import { GetCookieToken } from '../../pages/Cookie/GetCookie';
+import axios from 'axios';
 
 const Header = props => {
+
+  const baseURL = process.env.REACT_APP_API_CORS
+  const token = GetCookieToken("userToken")
+
+  const navigate = useNavigate();
+  const { layOut, setLayOut } = useLayOutConText();
+
   const [search, setsearch] = useState(false);
   const [megaMenu, setmegaMenu] = useState(false);
   const [socialDrp, setsocialDrp] = useState(false);
+  const [MenuDrp, setMenuDrp] = useState(false);
+  const [checkedMenu, setCheckedMenu] = useState({
+    checkedWel: false,
+  });
+
+  const handleChange = () => {
+    setCheckedMenu(!checkedMenu);
+    console.log(checkedMenu);
+  };
 
   function toggleFullscreen() {
     if (
@@ -70,27 +106,45 @@ const Header = props => {
   function tToggle() {
     var body = document.body;
     if (window.screen.width <= 998) {
-      body.classList.toggle("sidebar-enable");
+      body.classList.toggle('sidebar-enable');
     } else {
-      body.classList.toggle("vertical-collpsed");
-      body.classList.toggle("sidebar-enable");
+      body.classList.toggle('vertical-collpsed');
+      body.classList.toggle('sidebar-enable');
     }
-
   }
 
-  const navigate = useNavigate();
+  const handleLogout = (name,token) => {
+    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+    document.cookie = token + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+    return navigate('/login');
+  };
 
-  const handleLogout = () => {
-    localStorage.removeItem("authUser")
-    return navigate("/")
+  const [user, setUser] = useState([])
+
+  const getUserInfo = () => {
+    axios.get(baseURL+"/api/users/info", {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then((res) => {
+      console.log("User Info from Header: ",res)
+      setUser(res.data.result)
+    })
+    .catch((err) => {
+      console.error(err);
+    })
   }
+
+  useEffect(() => {
+    getUserInfo();
+  },[])
 
   return (
     <React.Fragment>
       <header id="page-topbar">
         <div className="navbar-header">
           <div className="d-flex">
-
             <div className="navbar-brand-box d-lg-none d-md-block">
               <Link to="/" className="logo logo-dark">
                 <span className="logo-sm">
@@ -100,7 +154,7 @@ const Header = props => {
 
               <Link to="/" className="logo logo-light">
                 <span className="logo-sm">
-                  <img src={logoLightSvg} alt="" height="22" />
+                  <img src={logogorkoror} alt="" height="19" />
                 </span>
               </Link>
             </div>
@@ -116,166 +170,16 @@ const Header = props => {
               <i className="fa fa-fw fa-bars" />
             </button>
 
-            <form className="app-search d-none d-lg-block">
+            <form className="app-search d-none d-lg-block ms-5">
               <div className="position-relative">
                 <input
                   type="text"
                   className="form-control"
-                  placeholder={props.t("Search") + "..."}
+                  placeholder={props.t('Search') + '...'}
                 />
                 <span className="bx bx-search-alt" />
               </div>
             </form>
-
-            {/* <Dropdown
-              className="dropdown-mega d-none d-lg-block ms-2"
-              isOpen={megaMenu}
-              toggle={() => {
-                setmegaMenu(!megaMenu);
-              }}
-            >
-              <DropdownToggle
-                className="btn header-item "
-                caret
-                tag="button"
-              >
-                {" "}
-                {props.t("Mega Menu")} <i className="mdi mdi-chevron-down" />
-              </DropdownToggle>
-              <DropdownMenu className="dropdown-megamenu">
-                <Row>
-                  <Col sm={8}>
-                    <Row>
-                      <Col md={4}>
-                        <h5 className="font-size-14 mt-0">
-                          {props.t("UI Components")}
-                        </h5>
-                        <ul className="list-unstyled megamenu-list">
-                          <li>
-                            <Link to="#">{props.t("Lightbox")}</Link>
-                          </li>
-                          <li>
-                            <Link to="#">{props.t("Range Slider")}</Link>
-                          </li>
-                          <li>
-                            <Link to="#">{props.t("Sweet Alert")}</Link>
-                          </li>
-                          <li>
-                            <Link to="#">{props.t("Rating")}</Link>
-                          </li>
-                          <li>
-                            <Link to="#">{props.t("Forms")}</Link>
-                          </li>
-                          <li>
-                            <Link to="#">{props.t("Tables")}</Link>
-                          </li>
-                          <li>
-                            <Link to="#">{props.t("Charts")}</Link>
-                          </li>
-                        </ul>
-                      </Col>
-
-                      <Col md={4}>
-                        <h5 className="font-size-14 mt-0">
-                          {props.t("Applications")}
-                        </h5>
-                        <ul className="list-unstyled megamenu-list">
-                          <li>
-                            <Link to="#">{props.t("Ecommerce")}</Link>
-                          </li>
-                          <li>
-                            <Link to="#">{props.t("Calendar")}</Link>
-                          </li>
-                          <li>
-                            <Link to="#">{props.t("Email")}</Link>
-                          </li>
-                          <li>
-                            <Link to="#">{props.t("Projects")}</Link>
-                          </li>
-                          <li>
-                            <Link to="#">{props.t("Tasks")}</Link>
-                          </li>
-                          <li>
-                            <Link to="#">{props.t("Contacts")}</Link>
-                          </li>
-                        </ul>
-                      </Col>
-
-                      <Col md={4}>
-                        <h5 className="font-size-14 mt-0">
-                          {props.t("Extra Pages")}
-                        </h5>
-                        <ul className="list-unstyled megamenu-list">
-                          <li>
-                            <Link to="#">{props.t("Light Sidebar")}</Link>
-                          </li>
-                          <li>
-                            <Link to="#">{props.t("Compact Sidebar")}</Link>
-                          </li>
-                          <li>
-                            <Link to="#">{props.t("Horizontal layout")}</Link>
-                          </li>
-                          <li>
-                            <Link to="#"> {props.t("Maintenance")}</Link>
-                          </li>
-                          <li>
-                            <Link to="#">{props.t("Coming Soon")}</Link>
-                          </li>
-                          <li>
-                            <Link to="#">{props.t("Timeline")}</Link>
-                          </li>
-                          <li>
-                            <Link to="#">{props.t("FAQs")}</Link>
-                          </li>
-                        </ul>
-                      </Col>
-                    </Row>
-                  </Col>
-                  <Col sm={4}>
-                    <Row>
-                      <Col sm={6}>
-                        <h5 className="font-size-14 mt-0">
-                          {props.t("UI Components")}
-                        </h5>
-                        <ul className="list-unstyled megamenu-list">
-                          <li>
-                            <Link to="#">{props.t("Lightbox")}</Link>
-                          </li>
-                          <li>
-                            <Link to="#">{props.t("Range Slider")}</Link>
-                          </li>
-                          <li>
-                            <Link to="#">{props.t("Sweet Alert")}</Link>
-                          </li>
-                          <li>
-                            <Link to="#">{props.t("Rating")}</Link>
-                          </li>
-                          <li>
-                            <Link to="#">{props.t("Forms")}</Link>
-                          </li>
-                          <li>
-                            <Link to="#">{props.t("Tables")}</Link>
-                          </li>
-                          <li>
-                            <Link to="#">{props.t("Charts")}</Link>
-                          </li>
-                        </ul>
-                      </Col>
-
-                      <Col sm={5}>
-                        <div>
-                          <img
-                            src={megamenuImg}
-                            alt=""
-                            className="img-fluid mx-auto d-block"
-                          />
-                        </div>
-                      </Col>
-                    </Row>
-                  </Col>
-                </Row>
-              </DropdownMenu>
-            </Dropdown> */}
           </div>
           <div className="d-flex">
             <div className="dropdown d-inline-block d-lg-none ms-2">
@@ -292,8 +196,8 @@ const Header = props => {
               <div
                 className={
                   search
-                    ? "dropdown-menu dropdown-menu-lg dropdown-menu-end p-0 show"
-                    : "dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+                    ? 'dropdown-menu dropdown-menu-lg dropdown-menu-end p-0 show'
+                    : 'dropdown-menu dropdown-menu-lg dropdown-menu-end p-0'
                 }
                 aria-labelledby="page-header-search-dropdown"
               >
@@ -317,9 +221,53 @@ const Header = props => {
               </div>
             </div>
 
-            <LanguageDropdown />
+            <FontSizeSelect />
+            {/* <ModalLayout setLayOutValue={setLayOut} /> */}
 
-            <Dropdown
+            {/* <LanguageDropdown /> */}
+
+            {/* <UncontrolledDropdown
+              className="d-none d-lg-inline-block ms-1"
+              isOpen={MenuDrp}
+              toggle={() => {
+                setMenuDrp(!MenuDrp);
+              }}
+            >
+              <DropdownToggle
+                className="btn header-item noti-icon "
+                tag="button"
+              >
+                <i className="bx bx-food-menu"></i>
+              </DropdownToggle>
+              <DropdownToggle
+                className="btn header-item noti-icon "
+                tag="button"
+              >
+                <i className="" />
+              </DropdownToggle>
+              <DropdownMenu className="dropdown-menu-lg dropdown-menu-end p-2">
+              <div className="form-check form-check-primary mb-3">
+                <input
+                  type="checkbox"
+                  className="form-check-input"
+                  id="customCheckcolor1"
+                  checked={checkedMenu.checkedWel}
+                  onChange={(e) => {
+                    setCheckedMenu((prev) => ({
+                      ...prev,
+                      checkedWel: e.target.checked,
+                    }));
+                  }}
+                />
+
+                  <label className="form-check-label" htmlFor="customCheckcolor1">
+                    WelcomeComp
+                  </label>
+                </div>
+              </DropdownMenu>
+            </UncontrolledDropdown> */}
+
+            {/* <Dropdown
               className="d-none d-lg-inline-block ms-1"
               isOpen={socialDrp}
               toggle={() => {
@@ -377,7 +325,7 @@ const Header = props => {
                   </Row>
                 </div>
               </DropdownMenu>
-            </Dropdown>
+            </Dropdown> */}
 
             <div className="dropdown d-none d-lg-inline-block ms-1">
               <button
@@ -393,31 +341,34 @@ const Header = props => {
             </div>
 
             <NotificationDropdown />
-            {/* <ProfileMenu /> */}
+            <ProfileMenu picture={user?.user_pic} />
 
             <div
-               onClick={() => {
+              onClick={() => {
                 props.showRightSidebarAction(!props.showRightSidebar);
               }}
               className="dropdown d-inline-block"
             >
-              {/* <button
+              <button
                 type="button"
                 className="btn header-item noti-icon right-bar-toggle "
               >
                 <i className="bx bx-cog bx-spin" />
-              </button> */}
-              
+              </button>
             </div>
             {/* d-none d-lg-inline-block ms-1 */}
             {/* <Button className='my-3' onClick={handleLogout}>ออกจากระบบ</Button> */}
 
-            <Button
-              style={{background:"NONE",border:"none",whiteSpace:"nowrap"}}
-              onClick={handleLogout}
+            <button
+              style={{}}
+              onClick={() => {
+                handleLogout("userData","userToken")
+              }}
               color="primary"
-              // className="btn btn-primary waves-effect waves-light"
-            >ออกจากระบบ</Button>
+              className="btn header-item noti-icon right-bar-toggle"
+            >
+              ออกจากระบบ
+            </button>
           </div>
         </div>
       </header>
@@ -432,16 +383,12 @@ Header.propTypes = {
   showRightSidebar: PropTypes.any,
   showRightSidebarAction: PropTypes.func,
   t: PropTypes.any,
-  toggleLeftmenu: PropTypes.func
+  toggleLeftmenu: PropTypes.func,
 };
 
 const mapStatetoProps = state => {
-  const {
-    layoutType,
-    showRightSidebar,
-    leftMenu,
-    leftSideBarType,
-  } = state.Layout;
+  const { layoutType, showRightSidebar, leftMenu, leftSideBarType } =
+    state.Layout;
   return { layoutType, showRightSidebar, leftMenu, leftSideBarType };
 };
 
