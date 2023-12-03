@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  Button,
   Card,
   CardBody,
   Col,
@@ -264,6 +263,11 @@ const CheckUserLogin = () => {
   };
 
  
+
+  const authHandler = (err, data) => {
+    console.log(err, data);
+  };
+
 
   return (
     <React.Fragment>

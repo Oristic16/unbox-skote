@@ -1,16 +1,16 @@
-import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
-import { Badge, Card, CardBody, CardTitle, Col, Row, Table } from 'reactstrap';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Badge, Card, CardBody, CardTitle, Col, Row } from "reactstrap";
 
-function TextCard2() {
+const Announce = () => {
   return (
-    <Fragment>
+    <React.Fragment>
       <Card>
-        <CardTitle className="p-2">
+        {/* <CardTitle className="p-2">
           <br />
           <Row className="px-2">
             <Col>
-              <i className="fa-solid fa-database"></i> INTRANET
+              <i className="fa-solid fa-database me-2 "></i>INTRANET
             </Col>
             <Col className="text-end">
               <Badge className="p-2 bg-opacity-25">
@@ -20,8 +20,25 @@ function TextCard2() {
               </Badge>
             </Col>
           </Row>
-        </CardTitle>
+        </CardTitle> */}
         <CardBody>
+          <Row className="">
+            <Col>
+            <h5 className="font-size-16 me-3 card-title">
+            <i className="fa-solid fa-database font-size-20 me-2"></i>
+            INTRANET
+          </h5>
+            </Col>
+            <Col className="text-end">
+              <Badge className="p-2 bg-opacity-25">
+                <Link to="/#" className="has-arrow">
+                  HR
+                </Link>
+              </Badge>
+            </Col>
+          </Row>
+          
+          <hr className="mt-2" />
           <Row
             style={{
               display: 'grid',
@@ -114,8 +131,8 @@ function TextCard2() {
           </Row>
         </CardBody>
       </Card>
-    </Fragment>
+    </React.Fragment>
   );
-}
+};
 
-export default TextCard2;
+export default Announce;

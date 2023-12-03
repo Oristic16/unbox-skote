@@ -37,6 +37,8 @@ import logoLightSvg from '../../assets/images/logo-light.svg';
 
 import logogorporor from '../../assets/images/draft-Logo-White.png';
 
+import logogorporor from "../../assets/images/draft-Logo-กพร-White.png";
+
 //i18n
 import { withTranslation } from 'react-i18next';
 
